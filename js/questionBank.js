@@ -946,7 +946,606 @@ options:[
 ],
 answer:0,
 explanation:"REMOVE deletes staged files."
-}
+},
+{
+id:61,
+difficulty:"medium",
+category:"architecture",
+question:"What is the main purpose of Snowflake virtual warehouses?",
+options:[
+"Data storage",
+"Query compute execution",
+"Metadata management",
+"User authentication"
+],
+answer:1,
+explanation:"Virtual warehouses provide independent compute resources used to run queries."
+},
+
+{
+id:62,
+difficulty:"easy",
+category:"architecture",
+question:"Where does Snowflake store table data?",
+options:[
+"Virtual Warehouse",
+"Cloud Storage Layer",
+"Metadata Layer",
+"Client Cache"
+],
+answer:1,
+explanation:"Snowflake stores table data in the cloud storage layer."
+},
+
+{
+id:63,
+difficulty:"medium",
+category:"architecture",
+question:"Which Snowflake layer manages query parsing and optimization?",
+options:[
+"Cloud Services Layer",
+"Storage Layer",
+"Compute Layer",
+"Network Layer"
+],
+answer:0,
+explanation:"The Cloud Services layer manages query parsing, optimization, and metadata."
+},
+
+{
+id:64,
+difficulty:"medium",
+category:"query_optimization",
+question:"Which feature allows Snowflake to prune unnecessary data blocks during queries?",
+options:[
+"Result Cache",
+"Micro-partition pruning",
+"Query acceleration",
+"Materialized views"
+],
+answer:1,
+explanation:"Snowflake uses micro-partition metadata to skip irrelevant partitions."
+},
+
+{
+id:65,
+difficulty:"medium",
+category:"query_optimization",
+question:"Which cache stores results of previously executed queries?",
+options:[
+"Metadata cache",
+"Result cache",
+"Query cache",
+"Warehouse cache"
+],
+answer:1,
+explanation:"Snowflake result cache stores query results for reuse."
+},
+
+{
+id:66,
+difficulty:"hard",
+category:"query_optimization",
+question:"What happens if underlying data changes after a cached query?",
+options:[
+"Cache remains valid",
+"Cache invalidates automatically",
+"Query fails",
+"Manual refresh required"
+],
+answer:1,
+explanation:"Snowflake invalidates cached results when underlying data changes."
+},
+
+{
+id:67,
+difficulty:"medium",
+category:"streams",
+question:"What is the primary purpose of a Snowflake stream?",
+options:[
+"Store backup data",
+"Track table changes",
+"Optimize query plans",
+"Manage compute clusters"
+],
+answer:1,
+explanation:"Streams track change data capture (CDC) for tables."
+},
+
+{
+id:68,
+difficulty:"medium",
+category:"streams",
+question:"Streams record which type of changes?",
+options:[
+"INSERT only",
+"UPDATE only",
+"INSERT UPDATE DELETE",
+"DDL changes"
+],
+answer:2,
+explanation:"Streams track insert, update, and delete changes."
+},
+
+{
+id:69,
+difficulty:"hard",
+category:"streams",
+question:"What happens when a stream is consumed by a task?",
+options:[
+"Data deletes from table",
+"Stream offset advances",
+"Table resets",
+"Warehouse restarts"
+],
+answer:1,
+explanation:"Consuming a stream advances the stream offset."
+},
+
+{
+id:70,
+difficulty:"medium",
+category:"tasks",
+question:"Which feature schedules SQL statements automatically?",
+options:[
+"Streams",
+"Tasks",
+"Procedures",
+"Warehouses"
+],
+answer:1,
+explanation:"Tasks allow scheduled execution of SQL statements."
+},
+
+{
+id:71,
+difficulty:"medium",
+category:"tasks",
+question:"Which syntax creates a scheduled Snowflake task?",
+options:[
+"CREATE TASK",
+"CREATE JOB",
+"CREATE PROCESS",
+"CREATE SCHEDULE"
+],
+answer:0,
+explanation:"CREATE TASK defines a scheduled SQL job."
+},
+
+{
+id:72,
+difficulty:"hard",
+category:"tasks",
+question:"Which object can trigger a task automatically when new data arrives?",
+options:[
+"Stage",
+"Stream",
+"External function",
+"Warehouse"
+],
+answer:1,
+explanation:"Tasks can be triggered by streams detecting data changes."
+},
+
+{
+id:73,
+difficulty:"medium",
+category:"dynamic_tables",
+question:"Dynamic tables are primarily used for what purpose?",
+options:[
+"Automated data transformation pipelines",
+"External data sharing",
+"User authentication",
+"File staging"
+],
+answer:0,
+explanation:"Dynamic tables automate incremental data transformations."
+},
+
+{
+id:74,
+difficulty:"medium",
+category:"dynamic_tables",
+question:"Dynamic tables refresh based on what parameter?",
+options:[
+"Warehouse size",
+"Target lag",
+"Query cost",
+"Cache duration"
+],
+answer:1,
+explanation:"Dynamic tables maintain freshness using the TARGET_LAG parameter."
+},
+
+{
+id:75,
+difficulty:"hard",
+category:"dynamic_tables",
+question:"Dynamic tables replace which traditional pipeline components?",
+options:[
+"Streams and Tasks",
+"External functions",
+"Stages",
+"Materialized views"
+],
+answer:0,
+explanation:"Dynamic tables simplify pipelines by replacing streams and tasks."
+},
+
+{
+id:76,
+difficulty:"medium",
+category:"snowpark",
+question:"What language is Snowpark primarily designed to support?",
+options:[
+"JavaScript",
+"Python",
+"COBOL",
+"Swift"
+],
+answer:1,
+explanation:"Snowpark supports Python, Scala, and Java."
+},
+
+{
+id:77,
+difficulty:"medium",
+category:"snowpark",
+question:"Snowpark allows developers to run code where?",
+options:[
+"Client machines",
+"Snowflake compute layer",
+"External servers",
+"Browser"
+],
+answer:1,
+explanation:"Snowpark executes code inside Snowflake warehouses."
+},
+
+{
+id:78,
+difficulty:"hard",
+category:"snowpark",
+question:"What is a Snowpark DataFrame?",
+options:[
+"A Snowflake table",
+"A distributed data abstraction",
+"A warehouse",
+"A schema object"
+],
+answer:1,
+explanation:"Snowpark DataFrames represent distributed datasets similar to Spark."
+},
+
+{
+id:79,
+difficulty:"medium",
+category:"iceberg",
+question:"Snowflake Iceberg tables store data where?",
+options:[
+"Snowflake storage",
+"External object storage",
+"Virtual warehouses",
+"Local disk"
+],
+answer:1,
+explanation:"Iceberg tables store data in external object storage like S3."
+},
+
+{
+id:80,
+difficulty:"medium",
+category:"iceberg",
+question:"Iceberg tables allow interoperability with which engines?",
+options:[
+"Spark",
+"Trino",
+"Flink",
+"All of the above"
+],
+answer:3,
+explanation:"Iceberg tables enable multi-engine access."
+},
+
+{
+id:81,
+difficulty:"hard",
+category:"iceberg",
+question:"Which metadata format do Iceberg tables use?",
+options:[
+"JSON metadata files",
+"Binary logs",
+"SQL tables",
+"CSV"
+],
+answer:0,
+explanation:"Iceberg uses JSON metadata manifests."
+},
+
+{
+id:82,
+difficulty:"medium",
+category:"security",
+question:"Which Snowflake feature restricts access to specific rows?",
+options:[
+"Row Access Policies",
+"Column masking",
+"Network policies",
+"Stages"
+],
+answer:0,
+explanation:"Row access policies enforce row-level security."
+},
+
+{
+id:83,
+difficulty:"medium",
+category:"security",
+question:"What feature hides sensitive column values?",
+options:[
+"Column masking policies",
+"Streams",
+"Stages",
+"Tasks"
+],
+answer:0,
+explanation:"Masking policies protect sensitive column data."
+},
+
+{
+id:84,
+difficulty:"hard",
+category:"security",
+question:"Which object manages IP restrictions?",
+options:[
+"Security policy",
+"Network policy",
+"RBAC policy",
+"Access rule"
+],
+answer:1,
+explanation:"Network policies restrict allowed IP addresses."
+},
+
+{
+id:85,
+difficulty:"medium",
+category:"rbac",
+question:"In Snowflake RBAC, privileges are granted to what?",
+options:[
+"Users only",
+"Roles",
+"Tables",
+"Warehouses"
+],
+answer:1,
+explanation:"Privileges are assigned to roles."
+},
+
+{
+id:86,
+difficulty:"medium",
+category:"rbac",
+question:"Which role has the highest privileges in Snowflake?",
+options:[
+"SYSADMIN",
+"ACCOUNTADMIN",
+"SECURITYADMIN",
+"PUBLIC"
+],
+answer:1,
+explanation:"ACCOUNTADMIN is the top-level role."
+},
+
+{
+id:87,
+difficulty:"hard",
+category:"rbac",
+question:"Which role typically manages users and roles?",
+options:[
+"SYSADMIN",
+"ACCOUNTADMIN",
+"SECURITYADMIN",
+"ORGADMIN"
+],
+answer:2,
+explanation:"SECURITYADMIN manages users and roles."
+},
+
+{
+id:88,
+difficulty:"medium",
+category:"cost",
+question:"What primarily drives Snowflake compute cost?",
+options:[
+"Storage usage",
+"Virtual warehouse runtime",
+"Number of users",
+"Schema count"
+],
+answer:1,
+explanation:"Compute cost depends on warehouse runtime."
+},
+
+{
+id:89,
+difficulty:"medium",
+category:"cost",
+question:"Auto-suspend helps reduce costs by:",
+options:[
+"Deleting data",
+"Stopping idle warehouses",
+"Reducing storage",
+"Compressing tables"
+],
+answer:1,
+explanation:"Auto-suspend stops compute when idle."
+},
+
+{
+id:90,
+difficulty:"hard",
+category:"cost",
+question:"Which feature helps identify expensive queries?",
+options:[
+"QUERY_HISTORY",
+"STAGE_HISTORY",
+"USER_HISTORY",
+"ROLE_HISTORY"
+],
+answer:0,
+explanation:"QUERY_HISTORY provides query execution metrics."
+},
+
+{
+id:91,
+difficulty:"medium",
+category:"architecture",
+question:"Which Snowflake feature enables secure data sharing without copying data?",
+options:[
+"Data replication",
+"Secure data sharing",
+"External tables",
+"Snowpipe"
+],
+answer:1,
+explanation:"Secure data sharing allows cross-account data access without copying."
+},
+
+{
+id:92,
+difficulty:"medium",
+category:"architecture",
+question:"What is the smallest unit of data storage in Snowflake?",
+options:[
+"File block",
+"Micro-partition",
+"Segment",
+"Chunk"
+],
+answer:1,
+explanation:"Snowflake automatically partitions data into micro-partitions."
+},
+
+{
+id:93,
+difficulty:"hard",
+category:"architecture",
+question:"Approximate size of a Snowflake micro-partition?",
+options:[
+"1MB",
+"16MB",
+"50MB",
+"200MB"
+],
+answer:1,
+explanation:"Micro-partitions are typically around 16MB compressed."
+},
+
+{
+id:94,
+difficulty:"medium",
+category:"query_optimization",
+question:"Which feature precomputes query results for faster execution?",
+options:[
+"Materialized views",
+"Stages",
+"Streams",
+"Tasks"
+],
+answer:0,
+explanation:"Materialized views store precomputed query results."
+},
+
+{
+id:95,
+difficulty:"hard",
+category:"query_optimization",
+question:"Which function analyzes query execution plans?",
+options:[
+"EXPLAIN",
+"PLAN",
+"ANALYZE",
+"PROFILE"
+],
+answer:0,
+explanation:"EXPLAIN shows query execution plans."
+},
+
+{
+id:96,
+difficulty:"medium",
+category:"snowpipe",
+question:"Snowpipe is used for what purpose?",
+options:[
+"Batch data loading",
+"Continuous data ingestion",
+"Query optimization",
+"Warehouse scaling"
+],
+answer:1,
+explanation:"Snowpipe enables automatic continuous ingestion."
+},
+
+{
+id:97,
+difficulty:"medium",
+category:"snowpipe",
+question:"Snowpipe is typically triggered by:",
+options:[
+"File arrival events",
+"Manual SQL queries",
+"User login",
+"Warehouse restart"
+],
+answer:0,
+explanation:"Snowpipe listens for new file events."
+},
+
+{
+id:98,
+difficulty:"hard",
+category:"snowpipe",
+question:"Snowpipe relies on which messaging service?",
+options:[
+"SQS / PubSub",
+"Kafka",
+"RabbitMQ",
+"SMTP"
+],
+answer:0,
+explanation:"Snowpipe uses cloud event messaging such as SQS."
+},
+
+{
+id:99,
+difficulty:"medium",
+category:"governance",
+question:"Which feature tracks data lineage in Snowflake?",
+options:[
+"Access history",
+"Object dependencies",
+"Streams",
+"Tasks"
+],
+answer:1,
+explanation:"Object dependencies track lineage between objects."
+},
+
+{
+id:100,
+difficulty:"medium",
+category:"governance",
+question:"Which view tracks object access for auditing?",
+options:[
+"ACCESS_HISTORY",
+"QUERY_HISTORY",
+"LOGIN_HISTORY",
+"TABLE_HISTORY"
+],
+answer:0,
+explanation:"ACCESS_HISTORY tracks object usage."
+},  
 
 ];
 
