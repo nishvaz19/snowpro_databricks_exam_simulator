@@ -1995,7 +1995,305 @@ options:[
 answer:0,
 explanation:"SQL compilation happens in the cloud services layer."
 },
-  
+{
+id:131,
+difficulty:"medium",
+category:"architecture",
+question:"Which Snowflake feature enables automatic query acceleration for large scans?",
+options:[
+"Search Optimization Service",
+"Query Acceleration Service",
+"Auto Clustering",
+"Warehouse Scaling"
+],
+answer:1,
+explanation:"Query Acceleration Service offloads parts of large queries to shared compute."
+},
+
+{
+id:132,
+difficulty:"medium",
+category:"architecture",
+question:"Which service automatically organizes micro-partitions to improve pruning?",
+options:[
+"Automatic Clustering",
+"Materialized Views",
+"Search Optimization",
+"Streams"
+],
+answer:0,
+explanation:"Automatic clustering reorganizes micro-partitions to improve performance."
+},
+
+{
+id:133,
+difficulty:"hard",
+category:"architecture",
+question:"Which Snowflake feature provides cross-region disaster recovery?",
+options:[
+"Failover Groups",
+"Replication Groups",
+"Warehouse Backup",
+"Stage Replication"
+],
+answer:0,
+explanation:"Failover groups enable cross-region disaster recovery."
+},
+
+{
+id:134,
+difficulty:"medium",
+category:"snowpark",
+question:"Snowpark allows which type of execution model?",
+options:[
+"Client-side processing",
+"In-database compute execution",
+"Edge compute",
+"Serverless Python runtime"
+],
+answer:1,
+explanation:"Snowpark executes code directly inside Snowflake warehouses."
+},
+
+{
+id:135,
+difficulty:"hard",
+category:"snowpark",
+question:"Which API structure is central to Snowpark transformations?",
+options:[
+"Snowpark DataFrame API",
+"SQL Executor",
+"Warehouse Engine",
+"Compute Handler"
+],
+answer:0,
+explanation:"Snowpark uses DataFrame APIs similar to Spark."
+},
+
+{
+id:136,
+difficulty:"medium",
+category:"streams",
+question:"Which object records row-level changes for CDC pipelines?",
+options:[
+"Stream",
+"Task",
+"Stage",
+"Pipe"
+],
+answer:0,
+explanation:"Streams capture change data for tables."
+},
+
+{
+id:137,
+difficulty:"hard",
+category:"streams",
+question:"What happens when a stream becomes stale?",
+options:[
+"Stream resets automatically",
+"Stream becomes unreadable",
+"Offset resets",
+"Stream deletes data"
+],
+answer:1,
+explanation:"If data retention passes, streams can become stale."
+},
+
+{
+id:138,
+difficulty:"medium",
+category:"tasks",
+question:"Which Snowflake object schedules recurring SQL execution?",
+options:[
+"Task",
+"Procedure",
+"Stream",
+"Pipeline"
+],
+answer:0,
+explanation:"Tasks schedule SQL execution."
+},
+
+{
+id:139,
+difficulty:"hard",
+category:"tasks",
+question:"Which feature allows dependency chains between tasks?",
+options:[
+"Task graphs",
+"Stream triggers",
+"Warehouse scaling",
+"SQL pipelines"
+],
+answer:0,
+explanation:"Task graphs allow dependent tasks."
+},
+
+{
+id:140,
+difficulty:"medium",
+category:"dynamic_tables",
+question:"Dynamic tables aim to replace which ETL pattern?",
+options:[
+"Streams + Tasks pipelines",
+"Stored procedures",
+"External stages",
+"Secure views"
+],
+answer:0,
+explanation:"Dynamic tables simplify pipelines built using streams and tasks."
+},
+
+{
+id:141,
+difficulty:"medium",
+category:"dynamic_tables",
+question:"Dynamic table freshness is controlled using:",
+options:[
+"TARGET_LAG",
+"REFRESH_TIME",
+"SCHEDULE_INTERVAL",
+"PIPELINE_DELAY"
+],
+answer:0,
+explanation:"TARGET_LAG determines freshness goals."
+},
+
+{
+id:142,
+difficulty:"hard",
+category:"dynamic_tables",
+question:"Dynamic tables internally rely on:",
+options:[
+"Materialized views",
+"Streams and tasks",
+"Stages",
+"External compute"
+],
+answer:1,
+explanation:"Dynamic tables use streams and tasks internally."
+},
+
+{
+id:143,
+difficulty:"medium",
+category:"iceberg",
+question:"Iceberg tables allow Snowflake to query:",
+options:[
+"External open table formats",
+"Temporary tables",
+"Only Snowflake tables",
+"JSON metadata only"
+],
+answer:0,
+explanation:"Iceberg tables support open table formats."
+},
+
+{
+id:144,
+difficulty:"hard",
+category:"iceberg",
+question:"Which engine interoperability is supported by Iceberg?",
+options:[
+"Spark",
+"Trino",
+"Flink",
+"All of the above"
+],
+answer:3,
+explanation:"Iceberg supports multiple engines."
+},
+
+{
+id:145,
+difficulty:"medium",
+category:"security",
+question:"Which feature masks sensitive column values dynamically?",
+options:[
+"Masking policies",
+"Streams",
+"Views",
+"Tasks"
+],
+answer:0,
+explanation:"Masking policies dynamically mask column data."
+},
+
+{
+id:146,
+difficulty:"hard",
+category:"security",
+question:"Which Snowflake feature enforces row-level filtering?",
+options:[
+"Row access policies",
+"Network policies",
+"Secure views",
+"Masking policies"
+],
+answer:0,
+explanation:"Row access policies filter rows dynamically."
+},
+
+{
+id:147,
+difficulty:"medium",
+category:"rbac",
+question:"Privileges in Snowflake are granted to:",
+options:[
+"Roles",
+"Users",
+"Tables",
+"Schemas"
+],
+answer:0,
+explanation:"Privileges are assigned to roles."
+},
+
+{
+id:148,
+difficulty:"hard",
+category:"rbac",
+question:"Which role manages users and roles?",
+options:[
+"ACCOUNTADMIN",
+"SECURITYADMIN",
+"SYSADMIN",
+"ORGADMIN"
+],
+answer:1,
+explanation:"SECURITYADMIN manages users and roles."
+},
+
+{
+id:149,
+difficulty:"medium",
+category:"cost",
+question:"Which parameter suspends warehouses when idle?",
+options:[
+"AUTO_SUSPEND",
+"AUTO_STOP",
+"COST_LIMIT",
+"WAREHOUSE_TIMEOUT"
+],
+answer:0,
+explanation:"AUTO_SUSPEND pauses warehouses when idle."
+},
+
+{
+id:150,
+difficulty:"hard",
+category:"cost",
+question:"Which table shows compute credit usage history?",
+options:[
+"WAREHOUSE_METERING_HISTORY",
+"QUERY_HISTORY",
+"COST_USAGE",
+"ACCOUNT_HISTORY"
+],
+answer:0,
+explanation:"Warehouse metering history shows compute credit usage."
+},  
 
 ];
 
