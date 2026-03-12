@@ -4346,11 +4346,9 @@ Focus: Model Serving, Quantization, Orchestration, and Monitoring
 
   /* ... IDs 311-390 covering Latency, Throughput, Token Limits, etc. ... */
 /* ======================================================
-   BATCH 7 & 8: AI SYSTEM PERFORMANCE & INFRASTRUCTURE (IDs 311 - 390)
+   AI SYSTEM PERFORMANCE & INFRASTRUCTURE (IDs 311 - 390)
    Focus: Latency, Throughput, Token Economics, and Memory Management
    ====================================================== */
-
-const batch_Performance_Engineering = [
   // --- LATENCY & BOTTLENECKS (311 - 330) ---
   {
     id: 311,
