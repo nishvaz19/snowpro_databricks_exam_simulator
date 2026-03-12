@@ -7,6 +7,7 @@
    181-220: Unity Catalog (Permissions, Lineage, External Locations)
    221-250: DLT (SCD Type 1 & 2, Quality Expectations)
    251-280: Databricks SQL & Security (Dashboards, Alerts, Service Principals)
+   281-305: Custom scenarios 
 */
 
 
