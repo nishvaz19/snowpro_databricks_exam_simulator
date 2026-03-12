@@ -3661,7 +3661,7 @@ Focus: Model Serving, Quantization, Orchestration, and Monitoring
       "Tracing, debugging, and evaluating LLM applications and chains",
       "Converting text to speech",
       "Translating prompts automatically"
-n    ],
+    ],
     answer: 1,
     explanation: "LangSmith provides visibility into complex LLM chains, showing exactly what was sent to the model at each step and what it cost.",
     hint: "It's the 'Observability' platform for LangChain."
