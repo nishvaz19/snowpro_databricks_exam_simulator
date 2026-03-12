@@ -200,6 +200,159 @@ renderDB(dbKeywords.filter(k => k.word.toLowerCase().includes(q)));
 </script>
 
 </div>
+<div id="ai-engineering-cloud">
+    <style>
+        #ai-engineering-cloud {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a; /* Darker professional background */
+            padding: 30px;
+            margin-bottom: 40px;
+            color: #f8fafc;
+            border-radius: 8px;
+        }
+
+        #ai-engineering-cloud h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        #ai-engineering-cloud .search {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        #ai-engineering-cloud input {
+            padding: 10px;
+            width: 320px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: white;
+        }
+
+        #ai-engineering-cloud .cloud {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #ai-engineering-cloud .tag {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: white;
+        }
+
+        #ai-engineering-cloud .tag:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Frequency sizing */
+        .freq1 { font-size: 12px; opacity: 0.7; }
+        .freq2 { font-size: 14px; opacity: 0.8; }
+        .freq3 { font-size: 18px; opacity: 0.9; }
+        .freq4 { font-size: 24px; font-weight: 500; }
+        .freq5 { font-size: 34px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        /* AI Categories */
+        .rag { background: #3b82f6; }        /* Retrieval Augmented Generation */
+        .infra { background: #8b5cf6; }      /* Infrastructure & Scaling */
+        .eval { background: #ef4444; }       /* Evaluation & Safety */
+        .optim { background: #10b981; }      /* Model Optimization */
+        .agent { background: #f59e0b; }      /* Agents & Orchestration */
+        .ops { background: #6366f1; }        /* LLMOps */
+        .vector { background: #0ea5e9; }     /* Vector Databases */
+
+        #ai-engineering-cloud .legend {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #ai-engineering-cloud .legend span {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 13px;
+        }
+    </style>
+
+    <h2>AI Engineering & LLM Architecture Buzzword Cloud</h2>
+
+    <div class="search">
+        <input id="aiSearch" placeholder="Search AI keyword (e.g. RAG, TTFT, LoRA)">
+    </div>
+
+    <div class="cloud" id="aiCloud"></div>
+
+    <div class="legend">
+        <span class="rag">RAG Architecture</span>
+        <span class="infra">Inference & Infra</span>
+        <span class="eval">Eval & Guardrails</span>
+        <span class="optim">Optimization</span>
+        <span class="agent">Agentic Workflows</span>
+        <span class="ops">LLMOps</span>
+        <span class="vector">Vector Search</span>
+    </div>
+
+    <script>
+        const aiKeywords = [
+            {word:"RAG", freq:5, domain:"rag", desc:"Retrieval-Augmented Generation: Grounding LLMs with external data"},
+            {word:"Vector Database", freq:5, domain:"vector", desc:"Specialized DB for storing and searching high-dimensional embeddings"},
+            {word:"Semantic Search", freq:4, domain:"vector", desc:"Searching by meaning rather than keyword matching"},
+            {word:"Cosine Similarity", freq:3, domain:"vector", desc:"Mathematical metric used to measure vector closeness"},
+            {word:"TTFT", freq:5, domain:"infra", desc:"Time to First Token: Key latency metric for UI responsiveness"},
+            {word:"TPOT", freq:4, domain:"infra", desc:"Time Per Output Token: The reading speed of the LLM stream"},
+            {word:"LoRA", freq:5, domain:"optim", desc:"Low-Rank Adaptation: Efficiently fine-tuning specific model layers"},
+            {word:"Quantization", freq:4, domain:"optim", desc:"Reducing bit-precision (e.g. FP16 to INT4) to save VRAM"},
+            {word:"Continuous Batching", freq:4, domain:"infra", desc:"Iteration-level scheduling to maximize throughput"},
+            {word:"PagedAttention", freq:4, domain:"infra", desc:"vLLM's memory management to reduce KV cache fragmentation"},
+            {word:"Chain of Thought", freq:5, domain:"agent", desc:"Prompting technique to improve model reasoning step-by-step"},
+            {word:"LangChain", freq:4, domain:"agent", desc:"Popular framework for building LLM applications"},
+            {word:"Multi-Agent Systems", freq:4, domain:"agent", desc:"Orchestrating multiple LLMs to perform complex tasks"},
+            {word:"Lost in the Middle", freq:3, domain:"rag", desc:"The phenomenon where LLMs ignore info in the center of long prompts"},
+            {word:"Re-ranking", freq:4, domain:"rag", desc:"Using a second model to refine top results from vector search"},
+            {word:"Prompt Injection", freq:5, domain:"eval", desc:"Security vulnerability where users bypass system instructions"},
+            {word:"Hallucination", freq:5, domain:"eval", desc:"When an LLM generates factually incorrect information"},
+            {word:"Guardrails", freq:4, domain:"eval", desc:"Software layers (like NeMo) that filter toxic or off-topic inputs"},
+            {word:"Fine-Tuning", freq:4, domain:"optim", desc:"Specializing a model on a domain-specific dataset"},
+            {word:"KV Cache", freq:4, domain:"infra", desc:"Storing past token keys/values to speed up generation"},
+            {word:"Speculative Decoding", freq:3, domain:"optim", desc:"Using a small model to draft tokens for a larger model to verify"},
+            {word:"GPU VRAM", freq:4, domain:"infra", desc:"The primary hardware bottleneck for serving large models"},
+            {word:"Tokenization", freq:3, domain:"ops", desc:"Converting raw text into numerical IDs for the model"},
+            {word:"Context Window", freq:5, domain:"infra", desc:"The total number of tokens a model can process at once"},
+            {word:"Chunking Strategy", freq:3, domain:"rag", desc:"How documents are split (Recursive, Semantic, Fixed) for RAG"},
+            {word:"LLM Routing", freq:3, domain:"ops", desc:"Directing queries to cheaper or smarter models based on complexity"}
+        ];
+
+        const aiCloud = document.getElementById("aiCloud");
+
+        function renderAI(list) {
+            aiCloud.innerHTML = "";
+            list.forEach(k => {
+                let tag = document.createElement("span");
+                tag.className = `tag freq${k.freq} ${k.domain}`;
+                tag.textContent = k.word;
+                tag.title = k.desc;
+                aiCloud.appendChild(tag);
+            });
+        }
+
+        renderAI(aiKeywords);
+
+        document.getElementById("aiSearch").addEventListener("keyup", e => {
+            let q = e.target.value.toLowerCase();
+            renderAI(aiKeywords.filter(k => k.word.toLowerCase().includes(q)));
+        });
+    </script>
+</div>
   
 <h2>Snowflake Architecture</h2>
 
