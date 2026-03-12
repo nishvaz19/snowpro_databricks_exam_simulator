@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Databricks Lakehouse Exam Buzzword Cloud</title>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f6f8;
+margin:40px;
+color:#333;
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+}
+
+.search{
+text-align:center;
+margin-bottom:30px;
+}
+
+input{
+padding:10px;
+width:320px;
+font-size:16px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.cloud{
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+.tag{
+display:inline-block;
+margin:8px;
+padding:10px 16px;
+border-radius:25px;
+cursor:pointer;
+transition:0.2s;
+color:white;
+}
+
+.tag:hover{
+transform:scale(1.15);
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* frequency weighting */
+
+.freq1{font-size:12px}
+.freq2{font-size:14px}
+.freq3{font-size:18px}
+.freq4{font-size:24px}
+.freq5{font-size:34px;font-weight:bold}
+
+/* domain colors */
+
+.arch{background:#3b82f6}
+.delta{background:#10b981}
+.spark{background:#f59e0b}
+.streaming{background:#ef4444}
+.governance{background:#8b5cf6}
+.performance{background:#6366f1}
+.ml{background:#14b8a6}
+.workspace{background:#0ea5e9}
+
+.legend{
+margin-top:40px;
+text-align:center;
+}
+
+.legend span{
+display:inline-block;
+margin:5px 10px;
+padding:6px 12px;
+border-radius:10px;
+color:white;
+font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Databricks Lakehouse Interview / Exam Buzzword Cloud</h1>
+
+<div class="search">
+<input id="searchBox" placeholder="Search keyword (Ctrl+F style)">
+</div>
+
+<div class="cloud" id="cloud"></div>
+
+<div class="legend">
+
+<span style="background:#3b82f6">Architecture</span> <span style="background:#10b981">Delta Lake</span> <span style="background:#f59e0b">Spark</span> <span style="background:#ef4444">Streaming</span> <span style="background:#8b5cf6">Governance</span> <span style="background:#6366f1">Performance</span> <span style="background:#14b8a6">Machine Learning</span> <span style="background:#0ea5e9">Workspace</span>
+
+</div>
+
+<script>
+
+/* keyword dataset with frequency weighting */
+
+const keywords = [
+
+{word:"Delta Lake",freq:5,domain:"delta",desc:"Open-source storage layer enabling ACID transactions on data lakes"},
+{word:"ACID Transactions",freq:5,domain:"delta",desc:"Atomicity, Consistency, Isolation, Durability guarantees"},
+{word:"Time Travel",freq:4,domain:"delta",desc:"Query previous versions of Delta tables"},
+{word:"Transaction Log",freq:4,domain:"delta",desc:"Delta _delta_log storing commit history"},
+{word:"OPTIMIZE",freq:4,domain:"performance",desc:"Compacts small files to improve read performance"},
+{word:"VACUUM",freq:3,domain:"delta",desc:"Deletes obsolete files after retention period"},
+{word:"Z-ORDER",freq:4,domain:"performance",desc:"Clusters related data to improve query skipping"},
+{word:"Medallion Architecture",freq:5,domain:"arch",desc:"Layered architecture: Bronze → Silver → Gold"},
+{word:"Bronze Layer",freq:3,domain:"arch",desc:"Raw ingested data"},
+{word:"Silver Layer",freq:3,domain:"arch",desc:"Cleaned and validated data"},
+{word:"Gold Layer",freq:3,domain:"arch",desc:"Aggregated analytics-ready data"},
+{word:"Databricks Lakehouse",freq:5,domain:"arch",desc:"Unified platform combining data lake and warehouse"},
+{word:"Apache Spark",freq:5,domain:"spark",desc:"Distributed data processing engine used by Databricks"},
+{word:"Spark Driver",freq:3,domain:"spark",desc:"Controls Spark job execution"},
+{word:"Spark Executors",freq:3,domain:"spark",desc:"Worker processes executing tasks"},
+{word:"Catalyst Optimizer",freq:4,domain:"spark",desc:"Spark SQL query optimizer"},
+{word:"Lazy Evaluation",freq:2,domain:"spark",desc:"Spark defers execution until action is triggered"},
+{word:"DAG Execution",freq:2,domain:"spark",desc:"Directed acyclic graph execution plan"},
+{word:"Structured Streaming",freq:4,domain:"streaming",desc:"Unified batch and streaming processing model"},
+{word:"Auto Loader",freq:3,domain:"streaming",desc:"Incremental cloud file ingestion"},
+{word:"Checkpointing",freq:3,domain:"streaming",desc:"Stores streaming progress for fault tolerance"},
+{word:"Exactly Once Processing",freq:2,domain:"streaming",desc:"Guarantees each record processed once"},
+{word:"Unity Catalog",freq:5,domain:"governance",desc:"Central governance layer for data and AI"},
+{word:"Data Lineage",freq:3,domain:"governance",desc:"Tracks data origins and transformations"},
+{word:"Row Level Security",freq:3,domain:"governance",desc:"Restricts rows based on policies"},
+{word:"Column Level Security",freq:3,domain:"governance",desc:"Controls access to sensitive columns"},
+{word:"Data Skipping",freq:4,domain:"performance",desc:"Uses statistics to skip irrelevant files"},
+{word:"Partition Pruning",freq:3,domain:"performance",desc:"Reads only required partitions"},
+{word:"Broadcast Join",freq:3,domain:"performance",desc:"Broadcasts small table to all executors"},
+{word:"Adaptive Query Execution",freq:3,domain:"performance",desc:"Optimizes query plan during runtime"},
+{word:"MLflow",freq:4,domain:"ml",desc:"ML lifecycle management platform"},
+{word:"Feature Store",freq:3,domain:"ml",desc:"Centralized repository for ML features"},
+{word:"Model Registry",freq:3,domain:"ml",desc:"Versioning and lifecycle management for ML models"},
+{word:"Notebook",freq:4,domain:"workspace",desc:"Interactive development environment"},
+{word:"Jobs",freq:4,domain:"workspace",desc:"Scheduled or triggered workflows"},
+{word:"Clusters",freq:3,domain:"workspace",desc:"Compute resources running Spark workloads"},
+{word:"Repos",freq:2,domain:"workspace",desc:"Git integration for version control"},
+{word:"DBFS",freq:2,domain:"workspace",desc:"Databricks File System abstraction over cloud storage"}
+
+];
+
+const cloud = document.getElementById("cloud");
+
+function render(list){
+
+cloud.innerHTML="";
+
+list.forEach(k=>{
+
+let tag=document.createElement("span");
+
+tag.className=`tag freq${k.freq} ${k.domain}`;
+tag.textContent=k.word;
+tag.title=k.desc;
+
+cloud.appendChild(tag);
+
+});
+
+}
+
+render(keywords);
+
+document.getElementById("searchBox").addEventListener("keyup",e=>{
+
+let q=e.target.value.toLowerCase();
+
+render(keywords.filter(k => k.word.toLowerCase().includes(q)));
+
+});
+
+</script>
+
+</body>
+</html>
