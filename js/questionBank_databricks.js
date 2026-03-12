@@ -562,7 +562,6 @@ options:[
 answer:0,
 explanation:"Delta's MERGE INTO supports optional conditions on the WHEN MATCHED clause for fine-grained logic."
 },
-const questionBank = [
 /* ======================================================
 DELTA LAKE DEEP DIVE (36 - 60)
 ====================================================== */
