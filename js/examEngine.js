@@ -5,7 +5,7 @@ let examQuestions = [];
 let answers = {};
 let flagged = [];
 let current = 0;
-let EXAM_SIZE = 0; // Updated dynamically based on loaded bank
+let EXAM_SIZE = 0; 
 
 let examTimer;
 let timeRemaining = 60 * 120; // 120 minutes
@@ -14,33 +14,29 @@ let timeRemaining = 60 * 120; // 120 minutes
    CORE EXAM ENGINE
    ====================================================== */
 
-// Wait for all scripts and the DOM to be fully ready
-/*window.onload = function() {
-    console.log("Checking for questionBank...");
-    if (typeof questionBank !== 'undefined' && questionBank.length > 0) {
-        console.log("Bank loaded with " + questionBank.length + " questions.");
-        startExam(); 
-    } else {
-        alert("Error: questionBank not found. Ensure the JS data file is linked correctly in your HTML.");
-    }
-};*/
-
+/**
+ * Triggered by the onload event of the dynamically 
+ * injected script in your HTML.
+ */
 function startExam() {
-    // Ensure data exists
-    if (typeof questionBank === 'undefined') return;
+    // 1. Safety Check: Ensure the questionBank variable exists in the data file
+    if (typeof questionBank === 'undefined') {
+        console.error("Data file loaded, but 'questionBank' variable is missing.");
+        alert("Error: questionBank is not defined in the loaded file.");
+        return;
+    }
 
-    // Load questions (shuffled or direct)
-    // To shuffle, use: examQuestions = shuffle(questionBank);
+    // 2. Load Questions
+    // Use [...questionBank] to create a copy so we don't mutate the source data
     examQuestions = [...questionBank]; 
-    
-    // Set the global size based on the actual bank size
     EXAM_SIZE = examQuestions.length; 
 
-    // Reset session data
+    // 3. Reset Session State
     current = 0;
     answers = {};
     flagged = [];
     
+    // 4. Initialize UI
     startTimer();
     loadQuestion();
 }
@@ -112,7 +108,7 @@ function shuffle(array) {
 
 function showHint() {
     let h = document.getElementById("hint");
-    h.style.display = (h.style.display === "block") ? "none" : "block";
+    if(h) h.style.display = (h.style.display === "block") ? "none" : "block";
 }
 
 function flagCurrent() {
@@ -130,6 +126,18 @@ function jumpTo(qIndex) {
     window.scrollTo(0,0);
 }
 
+function reviewExam() {
+    let html = "<h3>Flagged Questions</h3><br>";
+    if (flagged.length === 0) {
+        html += "No flagged questions.";
+    } else {
+        flagged.forEach(qIdx => {
+            html += `<button onclick="jumpTo(${qIdx})" style="margin:5px;">Question ${qIdx + 1}</button>`;
+        });
+    }
+    document.getElementById("results").innerHTML = html;
+}
+
 /* ======================================================
    TIMER LOGIC
    ====================================================== */
@@ -142,8 +150,10 @@ function startTimer() {
         let minutes = Math.floor(timeRemaining / 60);
         let seconds = timeRemaining % 60;
 
-        document.getElementById("timer").innerHTML = 
-            `Time: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        const timerEl = document.getElementById("timer");
+        if(timerEl) {
+            timerEl.innerHTML = `Time: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        }
 
         if (timeRemaining <= 0) {
             clearInterval(examTimer);
@@ -191,10 +201,8 @@ function submitExam() {
     const percent = Math.round((score / EXAM_SIZE) * 100);
     const passed = percent >= 70;
 
-    // Save to LocalStorage
-    saveExamResults(window.currentExamType || "Azure", score, EXAM_SIZE, levelBreakdown);
+    saveExamResults(window.currentExamType || "General", score, EXAM_SIZE, levelBreakdown);
 
-    // Render Results UI
     const summaryHTML = `
         <div class="results-summary" style="text-align:center; padding:20px; background:#f0f4f8; border-radius:10px;">
             <h2>Exam Completed</h2>
