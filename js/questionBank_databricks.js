@@ -5145,6 +5145,81 @@ explanation:"If the data is small, adding workers increases the time spent movin
     answer: 1,
     explanation: "Auto Loader is optimized for high-scale incremental ingestion with schema evolution and fault tolerance (checkpointing).",
     hint: "Think 'Real-time' and 'Incremental'."
-  } 
+  },
+  {
+  "id": 322,
+  "difficulty": "hard",
+  "category": "performance",
+  "question": "A production Databricks job is suffering from slow execution due to data skew and inefficient file management. Which combination of 2026 features provides the most automated performance lift?",
+  "options": [
+    "Switching to All-Purpose Clusters and using manual Z-Order indexing",
+    "Implementing Liquid Clustering, enabling Photon, and using Serverless Compute",
+    "Using Python UDFs and increasing the shuffle partition count manually",
+    "Moving all data to CSV format and using standard Hive partitioning"
+  ],
+  "answer": 1,
+  "explanation": "Liquid Clustering automates data layout to handle skew, Photon provides a high-performance C++ engine, and Serverless eliminates cluster spin-up overhead.",
+  "hint": "Focus on the 'C++ engine' and 'Modern dynamic partitioning' features."
+  },
+  {
+    "id": 323,
+    "difficulty": "hard",
+    "category": "performance",
+    "question": "A data engineer needs to optimize a massive Databricks join operation suffering from high shuffle latency and slow UDF execution. What is the most effective optimization strategy?",
+    "options": [
+      "Use Python UDFs for complex logic and increase cluster worker nodes to 100",
+      "Enable Predictive I/O in Unity Catalog, use Broadcast Hints for small tables, and replace UDFs with Native Spark functions",
+      "Manually set shuffle partitions to 200 and switch to an All-Purpose cluster",
+      "Disable Adaptive Query Execution (AQE) and force all joins to SortMergeJoin"
+    ],
+    "answer": 1,
+    "explanation": "Broadcast hints eliminate shuffles for small tables, Native Spark functions avoid Python serialization overhead (unlike UDFs), and Predictive I/O automates data skipping and file management.",
+    "hint": "Avoid the 'Shuffle' and 'Python-to-JVM' overhead."
+  },
+  {
+    "id": 324,
+    "difficulty": "hard",
+    "category": "cost-optimization",
+    "question": "An enterprise is seeing a spike in DBUs for their daily ETL jobs. Which architectural shift provides the highest cost reduction while maintaining performance?",
+    "options": [
+      "Switching from Job Clusters to All-Purpose Clusters to allow for easier debugging",
+      "Using Manual Clusters with Spot Instances and disabling Auto-scaling",
+      "Using Serverless Compute, enabling Predictive I/O, and replacing Python UDFs with Native Spark/AQE",
+      "Increasing the instance size to 'Extra Large' to ensure jobs finish under 1 minute"
+    ],
+    "answer": 2,
+    "explanation": "Serverless Compute eliminates 'idle time' costs and cold-start delays. Predictive I/O reduces data scanning (lowering I/O costs), and Native Spark functions/AQE reduce CPU cycles compared to expensive Python UDFs.",
+    "hint": "Think about 'Zero Idle Time' and 'Reduced I/O Overhead'."
+  },
+   {
+    "id": 325,
+    "difficulty": "hard",
+    "category": "performance",
+    "question": "A Spark job is failing with 'MetadataFetchException' and 'OOM' errors during a wide transformation. Which sequence of actions best reduces shuffle volume?",
+    "options": [
+      "Increase shuffle partitions to 5000 and use a larger All-Purpose cluster",
+      "Apply broadcast hints to small tables, enable AQE, and use Liquid Clustering on join keys",
+      "Convert all tables to CSV and disable Photon to save memory",
+      "Replace all joins with cross-joins and use Python UDFs for filtering"
+    ],
+    "answer": 1,
+    "explanation": "Broadcasting small tables avoids the shuffle entirely, AQE manages data skew dynamically, and Liquid Clustering ensures physical data proximity on disk.",
+    "hint": "Broadcasting is the 'Shuffle Killer'."
+  },
+   {
+    "id": 326,
+    "difficulty": "hard",
+    "category": "architecture",
+    "question": "You are configuring a job with 10 executors (8 cores each). The total dataset is 240 GB. Which configuration balances parallelism and I/O efficiency?",
+    "options": [
+      "10 partitions (1 per executor) at 24 GB per file",
+      "800 partitions at ~300 MB per file, using AQE to coalesce small shuffles",
+      "24,000 partitions at 10 MB per file to maximize concurrency",
+      "Disable partitioning entirely and use a single large CSV file"
+    ],
+    "answer": 1,
+    "explanation": "800 partitions provides 10x the core count (80 cores), allowing for 'over-parallelism' to handle data skew, while the ~300 MB file size sits perfectly in the recommended 100-500 MB range.",
+    "hint": "Aim for a partition count that is a multiple of your total cores and file sizes that aren't 'tiny' or 'gigantic'."
+  }
 ];  
 
