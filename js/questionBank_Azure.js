@@ -3,7 +3,7 @@
    Topics: Governance, Entra ID (Identity), Core Compute, Networking
    ====================================================== */
 
-const questionBank = [
+var batch1 = [
   {
     id: 1,
     difficulty: "easy",
@@ -1510,7 +1510,7 @@ const batch2 = [
 ];
 
 // Append to main database
-questionBank.push(...batch2);
+//questionBank.push(...batch2);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 3/7)
    Topics: Containers, Big Data, Messaging, & Advanced Storage
@@ -2270,7 +2270,7 @@ const batch3 = [
 ];
 
 // Append to main database
-questionBank.push(...batch3);
+//questionBank.push(...batch3);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 4/7)
    Topics: DR, Advanced Networking, Hybrid Identity, Security
@@ -3028,7 +3028,7 @@ n    ],
 ];
 
 // Append to main database
-questionBank.push(...batch4);
+//questionBank.push(...batch4);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 5/7)
    Topics: Migration, IoT, AI, Serverless, & Governance
@@ -3788,7 +3788,7 @@ n    ],
 ];
 
 // Append to main database
-questionBank.push(...batch5);
+//questionBank.push(...batch5);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 6/7)
    Topics: Hybrid Cloud, Advanced Serverless, Firewall, & Clustering
@@ -4548,7 +4548,7 @@ const batch6 = [
 ];
 
 // Append to main database
-questionBank.push(...batch6);
+//questionBank.push(...batch6);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 7/7)
    Topics: Cost-Optimization, AI, Quantum, & Advanced Security
@@ -5307,8 +5307,8 @@ const batch7 = [
   }
 ];
 
-// Final update to main database
-questionBank.push(...batch7);
+//  update to main database
+//questionBank.push(...batch7);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 8/8)
    Topics: SRE, Enterprise Integration, & Global Networking
@@ -6068,7 +6068,7 @@ const batch8 = [
 ];
 
 // Final database update
-questionBank.push(...batch8);
+//questionBank.push(...batch8);
 
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 1 - Renumbered)
@@ -6579,7 +6579,7 @@ const azureBatch9 = [
 ];
 
 // Append to master database
-questionBank.push(...azureBatch9);
+//questionBank.push(...azureBatch9);
 /* ======================================================
    AZURE MASTER QUESTION BANK (Batch 2: 451-500)
    Topics: Governance, DevOps, Advanced Security, & Well-Architected
@@ -7159,4 +7159,5 @@ const azureBatch10 = [
 ];
 
 // Combine into main db
-questionBank.push(...azureBatch10);
+//questionBank.push(...azureBatch10);
+const questionBank = [...batch1, ...batch2,...batch3, ...batch4,...batch5, ...batch6,...batch7, ...batch8, ...azureBatch9, ...azureBatch10];
