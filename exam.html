@@ -76,20 +76,20 @@
     };
 
     const config = examMap[examType];
-
     if (config) {
-        document.getElementById('examTitle').innerText = config.title;
-        
-        // 3. Dynamically inject the Question Bank Script
-        const script = document.createElement('script');
-        script.src = config.file;
-        script.onload = () => {
-            console.log(`${config.title} data loaded.`);
-            startExam(); // Call the function inside examEngine.js
-        };
-        document.head.appendChild(script);
+      document.getElementById('examTitle').innerText = config.title;
+    
+      const script = document.createElement('script');
+      // Adding ?v= + timestamp forces the browser to download the newest file
+      script.src = config.file + '?v=' + new Date().getTime(); 
+    
+      script.onload = () => {
+        console.log(`${config.title} data loaded.`);
+        startExam(); 
+      };
+      document.head.appendChild(script);
     } else {
-        document.getElementById('examTitle').innerText = "Exam Not Found";
+      document.getElementById('examTitle').innerText = "Exam Not Found";
     }
 </script>
 
