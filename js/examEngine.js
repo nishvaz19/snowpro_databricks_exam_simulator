@@ -223,3 +223,20 @@ document.getElementById("results").innerHTML = resultHTML
 window.scrollTo(0,document.body.scrollHeight)
 
 }
+// examEngine.js should call this upon submission for analytics 
+function saveExamResults(examType, score, total, levelBreakdown) {
+    let history = JSON.parse(localStorage.getItem("exam_history") || "[]");
+    
+    const session = {
+        date: new Date().toLocaleString(),
+        exam: examType,
+        score: score,
+        total: total,
+        percentage: Math.round((score / total) * 100),
+        levels: levelBreakdown // e.g., { Associate: {correct: 5, total: 8}, Professional: {correct: 2, total: 5} }
+    };
+
+    history.push(session);
+    localStorage.setItem("exam_history", JSON.stringify(history));
+}
+  
