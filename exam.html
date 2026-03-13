@@ -6,32 +6,60 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         .btn-analytics {
-            background: #64748b; /* Professional Slate Grey */
+            background: #64748b;
             color: white;
             padding: 8px 16px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.9rem;
-            margin-left: 15px;
+            margin-left: 10px;
         }
         .btn-analytics:hover { background: #475569; }
+
+        /* Search Bar Styling */
+        .search-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .search-container input {
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            flex-grow: 1;
+            font-size: 0.85rem;
+        }
+        .btn-focus {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
     <script src="js/examEngine.js"></script>
 </head>
 <body>
      
 <div class="exam-wrapper">
-    <header class="exam-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-        <h1 id="examTitle">Loading Examination...</h1>
-        <div class="exam-meta">
-            <div id="timer" class="timer"></div>
-            <div id="progress" class="progress"></div>
-            <div id="runningScore" class="running-score" style="font-family: monospace; background: #1e293b; color: #38bdf8; padding: 5px 10px; border-radius: 4px; margin-top: 5px;">
-    H:0 M:0 E:0 | Score: 0/0
-</div>
-        </div>
+    <header class="exam-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px;">
+            <h1 id="examTitle">Loading Examination...</h1>
+            <div class="exam-meta">
+                <div id="timer" class="timer"></div>
+                <div id="progress" class="progress"></div>
+                <div id="runningScore" class="running-score" style="font-family: monospace; background: #1e293b; color: #38bdf8; padding: 5px 10px; border-radius: 4px; margin-top: 5px;">
+                    H:0 M:0 E:0 | Score: 0/0
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="keywordSearch" placeholder="Focus by keyword (e.g. Networking, Security)...">
+                <button class="btn-focus" onclick="startExam()">Apply Focus</button>
+            </div>
         </div>
         <button class="btn-analytics" onclick="window.location.href='analytics.html'">📊 View Analytics</button>    
     </header>
@@ -62,14 +90,11 @@
 </div>
 
 <script>
-    // 1. Parse URL Parameters
-    // Logic to parse URL and load JS
     const urlParams = new URLSearchParams(window.location.search);
-    window.currentExamType = urlParams.get('type'); // Store globally for engine
+    window.currentExamType = urlParams.get('type'); 
    
     const examType = urlParams.get('type');
 
-    // 2. Map types to your specific JS filenames
     const examMap = {
         'snowflake': { title: 'Snowflake Certification', file: 'js/questionBank_snowflake.js' },
         'databricks': { title: 'Databricks Certification', file: 'js/questionBank_databricks.js' },
@@ -87,15 +112,9 @@
     const config = examMap[examType];
     if (config) {
       document.getElementById('examTitle').innerText = config.title;
-    
       const script = document.createElement('script');
-      // Adding ?v= + timestamp forces the browser to download the newest file
       script.src = config.file + '?v=' + new Date().getTime(); 
-    
-      script.onload = () => {
-        console.log(`${config.title} data loaded.`);
-        startExam(); 
-      };
+      script.onload = () => { startExam(); };
       document.head.appendChild(script);
     } else {
       document.getElementById('examTitle').innerText = "Exam Not Found";
