@@ -15,7 +15,7 @@ let timeRemaining = 60 * 120; // 120 minutes
    ====================================================== */
 
 // Wait for all scripts and the DOM to be fully ready
-window.onload = function() {
+/*window.onload = function() {
     console.log("Checking for questionBank...");
     if (typeof questionBank !== 'undefined' && questionBank.length > 0) {
         console.log("Bank loaded with " + questionBank.length + " questions.");
@@ -23,7 +23,7 @@ window.onload = function() {
     } else {
         alert("Error: questionBank not found. Ensure the JS data file is linked correctly in your HTML.");
     }
-};
+};*/
 
 function startExam() {
     // Ensure data exists
