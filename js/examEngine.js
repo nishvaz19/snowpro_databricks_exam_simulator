@@ -1,269 +1,215 @@
+/* ======================================================
+   GLOBAL STATE
+   ====================================================== */
 let examQuestions = [];
 let answers = {};
 let flagged = [];
 let current = 0;
-let EXAM_SIZE = 0; // Use 'let' so it can be updated by the actual bank size
+let EXAM_SIZE = 0; // Updated dynamically based on loaded bank
 
 let examTimer;
-let timeRemaining = 60 * 120 // 120 minutes
+let timeRemaining = 60 * 120; // 120 minutes
 
-function shuffle(array){
-return [...array].sort(()=>Math.random()-0.5)
-}
+/* ======================================================
+   CORE EXAM ENGINE
+   ====================================================== */
 
-// 1. ADD THIS: Wait for the page and all scripts to load
+// Wait for all scripts and the DOM to be fully ready
 window.onload = function() {
     console.log("Checking for questionBank...");
-    if (typeof questionBank !== 'undefined') {
+    if (typeof questionBank !== 'undefined' && questionBank.length > 0) {
         console.log("Bank loaded with " + questionBank.length + " questions.");
         startExam(); 
     } else {
-        alert("Error: questionBank not found. Ensure the JS file is linked correctly.");
+        alert("Error: questionBank not found. Ensure the JS data file is linked correctly in your HTML.");
     }
 };
 
 function startExam() {
-    // 2. Double check questionBank exists here
-    if (!window.questionBank) return;
+    // Ensure data exists
+    if (typeof questionBank === 'undefined') return;
 
-    // Use slice or shuffle
-    //examQuestions = shuffle(questionBank).slice(0,EXAM_SIZE)
-    //examQuestions = questionBank.slice(0, questionBank.length);
-    examQuestions = questionBank;
+    // Load questions (shuffled or direct)
+    // To shuffle, use: examQuestions = shuffle(questionBank);
+    examQuestions = [...questionBank]; 
+    
+    // Set the global size based on the actual bank size
     EXAM_SIZE = examQuestions.length; 
 
-    // Reset counters
+    // Reset session data
     current = 0;
     answers = {};
+    flagged = [];
     
     startTimer();
     loadQuestion();
 }
 
-// 3. THE UTILITY FUNCTION
-function getRandomQuestions(count){
-    // Changed 'bank' to 'questionBank'
-    return [...questionBank].sort(()=>0.5-Math.random()).slice(0,count);
+function loadQuestion() {
+    let q = examQuestions[current];
+    
+    if (!q) {
+        console.error("No question found at index: " + current);
+        return;
+    }
+
+    // Render Question Text
+    document.getElementById("question").innerHTML = (current + 1) + ". " + q.question;
+
+    // Render Progress and Flag status
+    let flagMark = flagged.includes(current) ? " 🚩" : "";
+    document.getElementById("progress").innerHTML = `Question ${current + 1} / ${EXAM_SIZE}${flagMark}`;
+
+    renderOptions(q);
+
+    // Prepare Hint/Explanation (Hidden by default)
+    const hintBox = document.getElementById("hint");
+    hintBox.innerHTML = q.explanation || "No explanation available.";
+    hintBox.style.display = "none"; 
 }
 
-function startTimer(){
-
-examTimer = setInterval(()=>{
-
-timeRemaining--
-
-let minutes = Math.floor(timeRemaining/60)
-let seconds = timeRemaining % 60
-
-document.getElementById("timer").innerHTML =
-"Time: " + minutes + ":" + (seconds<10?"0":"") + seconds
-
-if(timeRemaining<=0){
-clearInterval(examTimer)
-submitExam()
+function renderOptions(q) {
+    let html = "";
+    q.options.forEach((opt, i) => {
+        let checked = answers[current] === i ? "checked" : "";
+        html += `
+            <label class="option" style="display:block; margin-bottom:10px; cursor:pointer;">
+                <input type="radio" name="opt" value="${i}" ${checked} onclick="saveAnswer(${i})">
+                ${opt}
+            </label>
+        `;
+    });
+    document.getElementById("options").innerHTML = html;
 }
 
-},1000)
-
+function saveAnswer(value) {
+    answers[current] = value;
 }
 
-function loadQuestion(){
+/* ======================================================
+   NAVIGATION & UTILITIES
+   ====================================================== */
 
-let q = examQuestions[current]
-
-document.getElementById("question").innerHTML =
-(current+1) + ". " + q.question
-
-let flagMark = flagged.includes(current) ? " 🚩" : ""
-
-document.getElementById("progress").innerHTML =
-"Question " + (current+1) + " / " + EXAM_SIZE + flagMark
-
-renderOptions(q)
-
-document.getElementById("hint").innerHTML = q.explanation || ""
-
+function nextQuestion() {
+    if (current < EXAM_SIZE - 1) {
+        current++;
+        loadQuestion();
+        window.scrollTo(0,0);
+    }
 }
 
-function renderOptions(q){
-
-let html=""
-
-q.options.forEach((opt,i)=>{
-
-let checked = answers[current]===i ? "checked" : ""
-
-html += `
-<label class="option">
-<input type="radio"
-name="opt"
-value="${i}"
-${checked}
-onclick="saveAnswer(${i})">
-${opt}
-</label>
-`
-
-})
-
-document.getElementById("options").innerHTML = html
-
+function prevQuestion() {
+    if (current > 0) {
+        current--;
+        loadQuestion();
+        window.scrollTo(0,0);
+    }
 }
 
-function saveAnswer(value){
-
-answers[current] = value
-
+function shuffle(array) {
+    return [...array].sort(() => Math.random() - 0.5);
 }
 
-function nextQuestion(){
-
-if(current < EXAM_SIZE-1){
-current++
-loadQuestion()
+function showHint() {
+    let h = document.getElementById("hint");
+    h.style.display = (h.style.display === "block") ? "none" : "block";
 }
 
+function flagCurrent() {
+    if (flagged.includes(current)) {
+        flagged = flagged.filter(f => f !== current);
+    } else {
+        flagged.push(current);
+    }
+    loadQuestion();
 }
 
-function prevQuestion(){
-
-if(current > 0){
-current--
-loadQuestion()
+function jumpTo(qIndex) {
+    current = qIndex;
+    loadQuestion();
+    window.scrollTo(0,0);
 }
 
+/* ======================================================
+   TIMER LOGIC
+   ====================================================== */
+
+function startTimer() {
+    if (examTimer) clearInterval(examTimer);
+    
+    examTimer = setInterval(() => {
+        timeRemaining--;
+        let minutes = Math.floor(timeRemaining / 60);
+        let seconds = timeRemaining % 60;
+
+        document.getElementById("timer").innerHTML = 
+            `Time: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+        if (timeRemaining <= 0) {
+            clearInterval(examTimer);
+            submitExam();
+        }
+    }, 1000);
 }
 
-function showHint(){
-
-let h = document.getElementById("hint")
-
-h.style.display =
-h.style.display === "block" ? "none":"block"
-
-}
-
-function flagCurrent(){
-
-if(flagged.includes(current)){
-flagged = flagged.filter(f => f !== current)
-alert("Flag removed")
-}
-else{
-flagged.push(current)
-alert("Question flagged")
-}
-
-loadQuestion()
-
-}
-
-function reviewExam(){
-
-let html = "<h3>Flagged Questions</h3><br>"
-
-if(flagged.length===0){
-html += "No flagged questions."
-}
-else{
-
-flagged.forEach(q=>{
-
-html += `
-<button onclick="jumpTo(${q})">
-Question ${q+1}
-</button><br><br>
-`
-
-})
-
-}
-
-document.getElementById("results").innerHTML = html
-
-}
-
-function jumpTo(q){
-
-current = q
-
-loadQuestion()
-
-window.scrollTo(0,0)
-
-}
+/* ======================================================
+   SUBMISSION & ANALYTICS
+   ====================================================== */
 
 function submitExam() {
     clearInterval(examTimer);
-
     let score = 0;
     let levelBreakdown = {}; 
-    let detailedReviewHTML = ""; // Temporary string to hold question reviews
+    let detailedReviewHTML = ""; 
 
-    // Use actual length in case EXAM_SIZE was modified
-    const totalQuestions = examQuestions.length;
-
-    // SINGLE LOOP: Calculate score, breakdown, and build review HTML
     examQuestions.forEach((q, i) => {
         const difficulty = q.difficulty || "unclassified";
-        
-        // Initialize difficulty tracking
         if (!levelBreakdown[difficulty]) {
             levelBreakdown[difficulty] = { correct: 0, total: 0 };
         }
         levelBreakdown[difficulty].total++;
 
-        // Check Answer
         const isCorrect = answers[i] === q.answer;
         if (isCorrect) {
             score++;
             levelBreakdown[difficulty].correct++;
         }
 
-        // Build individual question review
         detailedReviewHTML += `
-            <div class="review-item" style="margin-bottom:20px; padding:10px; border-bottom:1px solid #eee;">
+            <div class="review-item" style="margin-bottom:20px; padding:15px; border:1px solid #ddd; border-radius:8px;">
                 <b>Q${i + 1}:</b> ${q.question}<br>
-                <span style="color: ${answers[i] === undefined ? 'gray' : 'black'}">
+                <span style="color: ${answers[i] === undefined ? 'gray' : (isCorrect ? 'green' : 'red')}">
                     Your answer: ${q.options[answers[i]] || "<i>Not answered</i>"}
                 </span><br>
                 <span style="color: green">Correct answer: ${q.options[q.answer]}</span><br>
                 <b>${isCorrect ? "✅ Correct" : "❌ Incorrect"}</b>
-                <br><i style="font-size:0.9em; color:#555;">${q.explanation || ""}</i>
+                <p style="font-size:0.9em; background:#f9f9f9; padding:5px;"><i>Explanation: ${q.explanation || ""}</i></p>
             </div>
         `;
     });
 
-    // FINAL CALCULATIONS
-    const percent = Math.round((score / totalQuestions) * 100);
+    const percent = Math.round((score / EXAM_SIZE) * 100);
     const passed = percent >= 70;
 
-    // --- SAVE TO ANALYTICS (Call this ONCE) ---
-    saveExamResults(window.currentExamType || "General", score, totalQuestions, levelBreakdown);
+    // Save to LocalStorage
+    saveExamResults(window.currentExamType || "Azure", score, EXAM_SIZE, levelBreakdown);
 
-    // --- RENDER RESULTS UI ---
+    // Render Results UI
     const summaryHTML = `
-        <div class="results-summary" style="text-align:center; padding:20px; background:#f8fafc; border-radius:10px;">
-            <h2>Exam Results Submitted!</h2>
-            <p>Data saved to your <a href="analytics.html">Study Analytics</a>.</p>
-            <h1 style="font-size: 3.5rem; margin:10px 0; color: ${passed ? '#10b981' : '#ef4444'}">${percent}%</h1>
-            <h3>Final Score: ${score} / ${totalQuestions}</h3>
-            <span class="badge" style="background:${passed ? '#dcfce7' : '#fee2e2'}; color:${passed ? '#166534' : '#991b1b'}; padding:5px 15px; border-radius:20px; font-weight:bold;">
-                ${passed ? "PASSED" : "RETAKE REQUIRED"}
-            </span>
+        <div class="results-summary" style="text-align:center; padding:20px; background:#f0f4f8; border-radius:10px;">
+            <h2>Exam Completed</h2>
+            <h1 style="font-size: 3rem; color: ${passed ? '#2ecc71' : '#e74c3c'}">${percent}%</h1>
+            <h3>Score: ${score} / ${EXAM_SIZE}</h3>
+            <p>${passed ? "CONGRATULATIONS! YOU PASSED." : "RETAKE SUGGESTED."}</p>
+            <button onclick="location.reload()" style="padding:10px 20px;">Restart Exam</button>
         </div>
-        <hr style="margin:30px 0;">
-        <h3>Detailed Review</h3>
+        <hr>
     `;
 
-    // Combine summary with the detailed review we built in the loop
     document.getElementById("results").innerHTML = summaryHTML + detailedReviewHTML;
-
-    // Scroll to results
     window.scrollTo({ top: document.getElementById("results").offsetTop, behavior: 'smooth' });
 }
 
-// Add this helper function at the top for analytics 
 function saveExamResults(examType, score, total, levelBreakdown) {
     let history = JSON.parse(localStorage.getItem("exam_history") || "[]");
     const session = {
@@ -278,31 +224,8 @@ function saveExamResults(examType, score, total, levelBreakdown) {
     localStorage.setItem("exam_history", JSON.stringify(history));
 }
 
-/* ======================================================
-UTILITIES
-====================================================== */
-
 const ExamEngine = {
-    // Pass 'questionBank' as an argument so it works for ANY certification file
     getRandom: (bank, count) => [...bank].sort(() => 0.5 - Math.random()).slice(0, count),
-    
     getByLevel: (bank, level) => bank.filter(q => q.difficulty === level),
-    
     getByCategory: (bank, cat) => bank.filter(q => q.category.toLowerCase() === cat.toLowerCase())
 };
-
-
-
-
-function getQuestionsByDifficulty(level){
-return questionBank.filter(q=>q.difficulty===level);
-}
-
-function getQuestionsByCategory(category){
-return questionBank.filter(q=>q.category===category);
-}
-
-
-
-// Usage:
-/const myAzureExam = ExamEngine.getRandom(questionBank, 20);
