@@ -7,7 +7,7 @@
    181-220: Unity Catalog (Permissions, Lineage, External Locations)
    221-250: DLT (SCD Type 1 & 2, Quality Expectations)
    251-280: Databricks SQL & Security (Dashboards, Alerts, Service Principals)
-   281-321: Custom scenarios 
+   281-: Custom scenarios and MCQ
 */
 const questionBank = [
 /* ======================================================
@@ -5220,6 +5220,193 @@ explanation:"If the data is small, adding workers increases the time spent movin
     "answer": 1,
     "explanation": "800 partitions provides 10x the core count (80 cores), allowing for 'over-parallelism' to handle data skew, while the ~300 MB file size sits perfectly in the recommended 100-500 MB range.",
     "hint": "Aim for a partition count that is a multiple of your total cores and file sizes that aren't 'tiny' or 'gigantic'."
-  }
+  },
+  /* ======================================================
+   AI & GENAI WORKFLOWS (RAG, LLM, AGENTS)
+   ====================================================== */
+
+{
+  id: 327,
+  difficulty: "hard",
+  category: "gen_ai",
+  question: "In a production Retrieval-Augmented Generation (RAG) pipeline, what is the correct sequence of operations to ground an LLM with enterprise data?",
+  options: [
+    "Generate -> Retrieve -> Embed -> Chunk",
+    "Chunk -> Embed -> Store in Vector DB -> Retrieve -> Generate",
+    "Embed -> Retrieve -> Generate -> Chunk",
+    "Retrieve -> Chunk -> Embed -> Generate"
+  ],
+  answer: 1,
+  explanation: "RAG requires breaking documents into chunks, converting them to vector embeddings, storing them for similarity search, and then retrieving relevant context to inform the LLM's final generation.",
+  hint: "Grounding involves context retrieval before response generation."
+},
+
+{
+  id: 328,
+  difficulty: "medium",
+  category: "gen_ai",
+  question: "Which component of the Databricks AI stack is specifically used for agent-based orchestration and building complex AI workflows?",
+  options: [
+    "MLflow",
+    "Mosaic AI Agent Framework",
+    "Delta Live Tables",
+    "Unity Catalog"
+  ],
+  answer: 1,
+  explanation: "Mosaic AI Agent Framework provides the tools to build, deploy, and monitor agents that can use tools and reason through multi-step tasks.",
+  hint: "Think 'Agent-based orchestration'."
+},
+
+{
+  id: 329,
+  difficulty: "medium",
+  category: "gen_ai",
+  question: "What is the primary purpose of using 'LangChain' in a Databricks-based AI solution?",
+  options: [
+    "To manage Spark cluster autoscaling",
+    "To connect LLMs with retrievers, external tools, and multi-step workflows",
+    "To convert SQL tables into Python dictionaries",
+    "To provide a frontend UI for Databricks SQL"
+  ],
+  answer: 1,
+  explanation: "LangChain is a framework that simplifies building LLM applications by providing a standard interface for 'chains' of components like prompts, models, and data retrievers.",
+  hint: "Connecting LLMs to tools."
+},
+
+{
+  id: 330,
+  difficulty: "hard",
+  category: "ai_ops",
+  question: "When productionizing models using MLflow, what is the primary difference between 'Experiment Tracking' and 'Model Registry'?",
+  options: [
+    "Tracking is for notebooks; Registry is for SQL",
+    "Tracking captures parameters and metrics of runs; Registry manages versions and lifecycle stages (e.g., Staging, Production)",
+    "Tracking is only for Spark; Registry is only for Python",
+    "There is no difference; they are synonymous"
+  ],
+  answer: 1,
+  explanation: "Tracking is used during the development/tuning phase to record artifacts and metrics. The Registry is a central hub for managing the governance and promotion of finalized models.",
+  hint: "Governance vs. Logging."
+},
+
+/* ======================================================
+   SPARK INTERNALS & PERFORMANCE OPTIMIZATION
+   ====================================================== */
+
+{
+  id: 331,
+  difficulty: "hard",
+  category: "spark_performance",
+  question: "During a Spark job, a 'Job' is split into 'Stages'. What is the primary factor that defines a Stage boundary?",
+  options: [
+    "Every 10 minutes of execution time",
+    "A 'Shuffle' boundary (Wide Transformation) where data must be redistributed across executors",
+    "The number of rows in the DataFrame",
+    "Each time a .select() or .filter() is called"
+  ],
+  answer: 1,
+  explanation: "Narrow transformations (select, filter) happen within a stage. Wide transformations (join, groupBy, repartition) require a shuffle, which triggers the start of a new stage.",
+  hint: "Wide transformations cause shuffles."
+},
+
+{
+  id: 332,
+  difficulty: "hard",
+  category: "spark_performance",
+  question: "How does 'Adaptive Query Execution' (AQE) specifically handle the 'Skew Join' optimization at runtime?",
+  options: [
+    "By deleting the skewed rows automatically",
+    "By identifying skewed partitions and splitting them into smaller sub-partitions to balance the workload across more tasks",
+    "By converting all joins into Cross Joins",
+    "By restarting the cluster with more RAM"
+  ],
+  answer: 1,
+  explanation: "AQE monitors shuffle statistics. If it detects a highly skewed partition, it splits that partition so that multiple tasks can process it in parallel, preventing a single long-running task.",
+  hint: "Dynamic runtime partition splitting."
+},
+
+{
+  id: 333,
+  difficulty: "medium",
+  category: "spark_performance",
+  question: "Which technique is recommended in the 'Master Document' to resolve 'Data Skew' by modifying the join key to redistribute the data more evenly?",
+  options: [
+    "Caching",
+    "Salting (adding a random prefix or suffix to the key)",
+    "Using a CSV format",
+    "Decreasing the cluster size"
+  ],
+  answer: 1,
+  explanation: "Salting involves adding a random element to a skewed key so that the data for that key is spread across multiple partitions instead of concentrating in one.",
+  hint: "Add 'flavor' to balance the distribution."
+},
+
+/* ======================================================
+   CLOUD INTEGRATION & OPERATIONS
+   ====================================================== */
+
+{
+  id: 334,
+  difficulty: "medium",
+  category: "cloud_azure",
+  question: "What is the key functional difference between Azure Data Lake Storage (ADLS Gen2) and standard Azure Blob Storage?",
+  options: [
+    "Blob Storage is faster",
+    "ADLS Gen2 features a 'Hierarchical Namespace' (HNS) optimized for big data analytics and directory-level security",
+    "Blob Storage only supports text files",
+    "ADLS Gen2 does not support Unity Catalog"
+  ],
+  answer: 1,
+  explanation: "ADLS Gen2 combines Blob storage's cost with a hierarchical file system, allowing for efficient folder-level operations common in Spark workloads.",
+  hint: "Hierarchical Namespace (HNS)."
+},
+
+{
+  id: 335,
+  difficulty: "medium",
+  category: "cloud_azure",
+  question: "How does Azure Data Factory (ADF) typically integrate with Databricks for production orchestration?",
+  options: [
+    "ADF copies the Databricks code into its own memory",
+    "ADF uses a 'Linked Service' to trigger Databricks Notebooks/Jobs and can pass parameters for execution",
+    "Databricks must be deleted for ADF to work",
+    "ADF only supports SQL Warehouses"
+  ],
+  answer: 1,
+  explanation: "ADF acts as the high-level orchestrator, using Linked Services and 'Databricks Notebook' activities to trigger logic and manage end-to-end data movement.",
+  hint: "Linked Services and parameter passing."
+},
+
+{
+  id: 336,
+  difficulty: "medium",
+  category: "cost_optimization",
+  question: "According to the 'Master Document', which cluster configuration is best suited for fault-tolerant, non-interactive production workloads to reduce costs?",
+  options: [
+    "All-Purpose Clusters with GPUs",
+    "Spot Instances",
+    "Single Node Clusters",
+    "High-Concurrency Clusters with No-Isolation"
+  ],
+  answer: 1,
+  explanation: "Spot instances leverage spare cloud capacity at a steep discount, making them ideal for jobs that can handle the occasional pre-emption/interruption.",
+  hint: "Use 'spare' cloud capacity for savings."
+},
+
+{
+  id: 337,
+  difficulty: "easy",
+  category: "architecture",
+  question: "What is the primary role of 'Shell Scripting' in a professional Databricks environment?",
+  options: [
+    "To replace PySpark for all data transformations",
+    "To act as 'operational glue logic' for job automation, parameter passing, and monitoring",
+    "To build machine learning models",
+    "To create visual dashboards"
+  ],
+  answer: 1,
+  explanation: "Shell scripts are used for operational tasks like triggering CLI commands, managing environment setup, and handling pre/post-job logic.",
+  hint: "Operational glue logic."
+} 
 ];  
 
