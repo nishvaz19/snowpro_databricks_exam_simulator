@@ -270,7 +270,7 @@ const dbKeywords = [
   {word:"Transaction Log",freq:4,domain:"delta",desc:"Delta _delta_log storing commit history"},
   {word:"VACUUM",freq:3,domain:"delta",desc:"Deletes obsolete files after retention period"},
   {word:"Change Data Feed",freq:3,domain:"delta",desc:"Tracking row-level changes between table versions"},
-  {word:"Schema Enforcement",freq:4,domain:"delta",desc:"Prevents data corruption by rejecting mismatched schemas"},
+  {word:"Schema",freq:4,domain:"delta",desc:"Schema Enforcement prevents data corruption by rejecting mismatched schemas"},
 
   // --- Performance & Optimization ---
   {word:"OPTIMIZE",freq:4,domain:"performance",desc:"Compacts small files to improve read performance"},
@@ -278,7 +278,7 @@ const dbKeywords = [
   {word:"Liquid Clustering",freq:5,domain:"performance",desc:"Next-gen replacement for Z-Ordering and Partitioning"},
   {word:"Photon Engine",freq:5,domain:"performance",desc:"High-performance C++ vectorized execution engine"},
   {word:"Data Skipping",freq:4,domain:"performance",desc:"Uses statistics to skip irrelevant files"},
-  {word:"Partition Pruning",freq:3,domain:"performance",desc:"Reads only required partitions"},
+  {word:"Pruning",freq:3,domain:"performance",desc:"Reads only required partitions"},
   {word:"Broadcast Join",freq:3,domain:"performance",desc:"Broadcasts small table to all executors"},
   {word:"Adaptive Query Execution",freq:3,domain:"performance",desc:"Optimizes query plan during runtime"},
 
@@ -292,25 +292,26 @@ const dbKeywords = [
 
   // --- Apache Spark Core ---
   {word:"Apache Spark",freq:5,domain:"spark",desc:"Distributed data processing engine"},
-  {word:"Spark Driver",freq:3,domain:"spark",desc:"Controls Spark job execution and scheduling"},
-  {word:"Spark Executors",freq:3,domain:"spark",desc:"Worker processes executing individual tasks"},
+  {word:"Driver",freq:3,domain:"spark",desc:"Controls Spark job execution and scheduling"},
+  {word:"Executor",freq:3,domain:"spark",desc:"Worker processes executing individual tasks"},
   {word:"Catalyst Optimizer",freq:4,domain:"spark",desc:"Spark SQL query optimizer and generator"},
-  {word:"Lazy Evaluation",freq:2,domain:"spark",desc:"Defers execution until an action is triggered"},
-  {word:"DAG Execution",freq:3,domain:"spark",desc:"Directed Acyclic Graph of execution stages"},
-  {word:"Tungsten",freq:3,domain:"spark",desc:"Memory management and code generation engine"},
+  {word:"Lazy",freq:2,domain:"spark",desc:"Defers execution until an action is triggered"},
+  {word:"Execution",freq:3,domain:"spark",desc:"execution stages"},
+   {word:"DAG",freq:3,domain:"spark",desc:"DAG: Directed Acyclic Graph of execution stages"},
+    // {word:"Tungsten",freq:3,domain:"spark",desc:"Spark Execution engine: Memory management and code generation engine"},
 
   // --- Streaming & Ingestion ---
   {word:"Structured Streaming",freq:4,domain:"streaming",desc:"Unified batch and streaming processing model"},
   {word:"Auto Loader",freq:4,domain:"streaming",desc:"Incremental cloud file ingestion with schema inference"},
   {word:"DLT",freq:5,domain:"streaming",desc:"Delta Live Tables - Declarative framework for building reliable data pipelines with quality constraints"},
   {word:"Checkpointing",freq:3,domain:"streaming",desc:"Stores streaming progress for fault tolerance"},
-  {word:"Exactly Once Processing",freq:2,domain:"streaming",desc:"Guarantees each record is processed exactly once"},
+  {word:"Processing",freq:2,domain:"streaming",desc:"Processing: Exactly once - Guarantees each record is processed exactly once"},
 
   // --- Governance & Security ---
   {word:"Unity Catalog",freq:5,domain:"governance",desc:"Central governance layer for data, AI, and files"},
   {word:"Data Lineage",freq:4,domain:"governance",desc:"Visual tracking of data origins and downstream usage"},
-  {word:"Row Level Security",freq:3,domain:"governance",desc:"Restricts rows based on user identity policies"},
-  {word:"Column Level Security",freq:3,domain:"governance",desc:"Controls access to sensitive data columns"},
+  {word:"Row Level",freq:3,domain:"governance",desc:"Restricts rows based on user identity policies"},
+  {word:"Column Level",freq:3,domain:"governance",desc:"Controls access to sensitive data columns"},
   {word:"System Tables",freq:3,domain:"governance",desc:"Operational metadata for billing and audit usage"},
 
   // --- Machine Learning ---
@@ -353,20 +354,20 @@ const aiKeywords = [
   {word:"PagedAttention", freq:4, domain:"infra", desc:"vLLM's memory management to reduce KV cache fragmentation"},
   {word:"CoT", freq:5, domain:"agent", desc:"Chain of Thought: Prompting technique to improve model reasoning step-by-step"},
   {word:"LangChain", freq:4, domain:"agent", desc:"Popular framework for building LLM applications"},
-  {word:"Multi-Agent Systems", freq:4, domain:"agent", desc:"Orchestrating multiple LLMs to perform complex tasks"},
+  {word:"Multi-Agent", freq:4, domain:"agent", desc:"Orchestrating multiple LLMs to perform complex tasks"},
   {word:"Lost in the Middle", freq:3, domain:"rag", desc:"The phenomenon where LLMs ignore info in the center of long prompts"},
   {word:"Re-ranking", freq:4, domain:"rag", desc:"Using a second model to refine top results from vector search"},
   {word:"Guardrails", freq:4, domain:"eval", desc:"Software layers (like NeMo) that filter toxic or off-topic inputs"},
   {word:"Fine-Tuning", freq:4, domain:"optim", desc:"Specializing a model on a domain-specific dataset"},
   {word:"Speculative Decoding", freq:3, domain:"optim", desc:"Using a small model to draft tokens for a larger model to verify"},
-  {word:"Chunking Strategy", freq:3, domain:"rag", desc:"How documents are split (Recursive, Semantic, Fixed) for RAG"},
-  {word:"LLM Routing", freq:3, domain:"ops", desc:"Directing queries to cheaper or smarter models based on complexity"}
+  {word:"Chunking", freq:3, domain:"rag", desc:"How documents are split (Recursive, Semantic, Fixed) for RAG"},
+  {word:"Routing", freq:3, domain:"ops", desc:"Directing queries to cheaper or smarter models based on complexity"}
 ];
 
 const awsKeywords = [
   {word:"Nitro", freq:5, domain:"aws-core", desc:"Underlying hardware acceleration for instances"},
   {word:"EventBridge", freq:5, domain:"aws-serverless", desc:"Serverless event bus for decoupled architectures"},
-  {word:"IAM Policy Eval", freq:5, domain:"aws-sec", desc:"The logic flow of Allow vs Deny statements"},
+  {word:"IAM Policy", freq:5, domain:"aws-sec", desc:"IAM Policy Evaluation is the logic flow of Allow vs Deny statements"},
   {word:"S3 Glacier", freq:4, domain:"aws-core", desc:"Lowest cost storage for long-term retention"},
   {word:"AppSync", freq:4, domain:"aws-serverless", desc:"Managed GraphQL service with real-time subscriptions"},
   {word:"Aurora Serverless", freq:4, domain:"aws-db", desc:"Instant scaling relational database"},
