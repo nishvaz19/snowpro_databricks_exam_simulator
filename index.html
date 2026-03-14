@@ -22,6 +22,17 @@
         }
         .mg-atlas { background: #13aa52; } /* MongoDB Green */
         .mg-perf { background: #00684a; }  /* Deep Green */
+        /* Snowflake Domains */
+.sn-core { background: #29b5e8; }
+.sn-compute { background: #005685; }
+.sn-storage { background: #1a6d91; }
+.sn-services { background: #5db0d7; }
+
+/* Kafka Domains */
+.kf-core { background: #000000; color: #fff; }
+.kf-stream { background: #333333; }
+.kf-connect { background: #555555; }
+.kf-ops { background: #777777; }
         .r-core { background: #61dafb; color: #20232a !important; } /* React Blue */
         .r-perf { background: #4a5568; }
         .agent { background: #f59e0b; }    
@@ -219,7 +230,25 @@
         <div class="search-box"><input id="awsSearch" placeholder="Search AWS..." style="background: #37475a; color: white; border:none;"></div>
         <div class="cloud-display" id="awsCloud"></div>
     </div>
+<div id="snowflake-cloud" class="cloud-section" style="background: #e1f5fe;">
+    <h2 style="color: #29b5e8;">Snowflake Data Cloud</h2>
+    <div class="search-box"><input id="snSearch" placeholder="Search Snowflake (Micro-partitions, Zero-copy...)"></div>
+    <div class="cloud-display" id="snCloud"></div>
+    <div class="legend">
+        <span class="sn-core">Core</span><span class="sn-compute">Compute</span>
+        <span class="sn-storage">Storage</span><span class="sn-services">Services</span>
+    </div>
+</div>
 
+<div id="kafka-cloud" class="cloud-section" style="background: #f3f4f6;">
+    <h2 style="color: #000000;">Apache Kafka Ecosystem</h2>
+    <div class="search-box"><input id="kfSearch" placeholder="Search Kafka (Topics, KSQL...)"></div>
+    <div class="cloud-display" id="kfCloud"></div>
+    <div class="legend">
+        <span class="kf-core">Core</span><span class="kf-stream">Streaming</span>
+        <span class="kf-connect">Connect</span><span class="kf-ops">Ops</span>
+    </div>
+</div>
     <div style="background: white; padding: 25px; border-radius: 12px; text-align: center;">
         <h2>Snowflake Architecture</h2>
         <img src="assets/snowflake_architecture.png" alt="Snowflake Architecture">
