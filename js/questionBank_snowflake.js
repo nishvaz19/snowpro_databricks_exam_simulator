@@ -4244,6 +4244,8 @@ explanation:"USERADMIN manages users and roles."
 },
  {
     id: 281,
+   difficulty:"easy",
+   category:"architecture_design",
     question: "Which Snowflake feature allows you to create a snapshot of a table, schema, or database without duplicating the underlying data files?",
     options: [
         "Data Replication",
@@ -4251,25 +4253,14 @@ explanation:"USERADMIN manages users and roles."
         "Time Travel",
         "Materialized Views"
     ],
-    answer: "Zero-copy Cloning",
+    answer: 1,
     explanation: "Zero-copy Cloning uses metadata to point to existing micro-partitions. New storage is only consumed when data is modified in the clone (Copy-on-Write).",
     domain: "sn-core"
 },
 {
     id: 282,
-    question: "Which Snowflake feature allows you to create a snapshot of a table, schema, or database without duplicating the underlying data files?",
-    options: [
-        "Data Replication",
-        "Zero-copy Cloning",
-        "Time Travel",
-        "Materialized Views"
-    ],
-    answer: "Zero-copy Cloning",
-    explanation: "Zero-copy Cloning uses metadata to point to existing micro-partitions. New storage is only consumed when data is modified in the clone.",
-    domain: "sn-core"
-},
-{
-    id: 283,
+    difficulty:"medium",
+    category:"architecture_design",
     question: "What is the primary mechanism Snowflake uses to enable continuous, serverless ingestion from cloud storage (like S3 or Azure Blob)?",
     options: [
         "COPY INTO Command",
@@ -4282,7 +4273,9 @@ explanation:"USERADMIN manages users and roles."
     domain: "sn-services"
 },
 {
-    id: 284,
+    id: 283,
+    difficulty:"hard",
+    category:"architecture_design",
     question: "In the Snowflake architecture, where is the 'Metadata' for micro-partitions (such as min/max values used for pruning) stored?",
     options: [
         "In the Storage Layer",
@@ -4295,7 +4288,9 @@ explanation:"USERADMIN manages users and roles."
     domain: "sn-services"
 },
 {
-    id: 285,
+    id: 284,
+    difficulty:"easy",
+    category:"architecture_design",
     question: "Which feature allows a 'Provider' to share a database with a 'Consumer' without the data actually being moved or copied?",
     options: [
         "Data Mirroring",
@@ -4308,7 +4303,9 @@ explanation:"USERADMIN manages users and roles."
     domain: "sn-services"
 },
 {
-    id: 286,
+    id: 285,
+    difficulty:"medium",
+    category:"architecture_design",
     question: "If a table is dropped accidentally, which feature allows you to restore it immediately without a backup?",
     options: [
         "Fail-safe",
