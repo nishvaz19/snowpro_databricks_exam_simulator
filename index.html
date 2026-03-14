@@ -1,47 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Enterprise MCQ Platform</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise MCQ Platform | Professional Edition</title>
     <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg: #f1f5f9;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 15px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* Selector Card */
         .exam-selector-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             max-width: 500px;
-            margin: 2rem auto;
+            margin: 1.5rem auto;
             text-align: center;
         }
+
         select {
             width: 100%;
             padding: 12px;
-            margin: 20px 0;
+            margin: 15px 0;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 16px;
             background-color: #f8fafc;
         }
+
         .btn-primary {
-            background: #3b82f6;
+            background: var(--primary);
             color: white;
             padding: 12px 24px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
+            width: 100%;
             transition: background 0.2s;
         }
-        .btn-primary:hover { background: #2563eb; }
+
+        .btn-primary:hover { background: var(--primary-dark); }
+
+        .menu-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .menu-links a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.9rem; }
+
+        /* Shared Cloud Component Styles */
+        .cloud-section {
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .cloud-section h2 { text-align: center; margin-top: 0; font-size: 1.5rem; }
+        .search-box { text-align: center; margin-bottom: 20px; }
+        .search-box input {
+            padding: 10px 15px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 25px;
+            border: 1px solid #cbd5e1;
+            font-size: 1rem;
+        }
+
+        .cloud-display { text-align: center; min-height: 100px; }
+
+        /* Tag Styling */
+        .tag {
+            display: inline-block;
+            margin: 6px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            color: white;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .tag:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+        /* Frequencies */
+        .freq1 { font-size: 12px; opacity: 0.8; }
+        .freq2 { font-size: 14px; }
+        .freq3 { font-size: 18px; font-weight: 500; }
+        .freq4 { font-size: 22px; font-weight: 600; }
+        .freq5 { font-size: 28px; font-weight: 800; }
+
+        /* Colors by Domain */
+        .delta, .db-delta { background: #10b981; }
+        .arch, .db-arch, .mg-arch { background: #3b82f6; }
+        .spark, .db-spark { background: #f59e0b; }
+        .streaming, .db-stream { background: #ef4444; }
+        .governance { background: #8b5cf6; }
+        .performance { background: #6366f1; }
+        .ml { background: #14b8a6; }
+        .workspace { background: #0ea5e9; }
+        .az-compute { background: #0078d4; }
+        .az-data { background: #5ea0ef; }
+        .az-identity { background: #323130; }
+        .az-net { background: #00ad56; }
+        .aws-core { background: #ff9900; color: #232f3e !important; }
+        .aws-serverless { background: #ec7211; }
+        .aws-db { background: #3b48cc; }
+        .aws-sec { background: #7aa116; }
+        .mg-crud { background: #13aa52; }
+        .r-hooks { background: #61dafb; color: #20232a !important; }
+        .r-state { background: #fb7e61; }
+        .rag { background: #3b82f6; }
+        .infra { background: #8b5cf6; }
+        .optim { background: #10b981; }
+
+        .legend { margin-top: 20px; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .legend span { padding: 4px 10px; border-radius: 6px; color: white; font-size: 11px; text-transform: uppercase; font-weight: bold; }
+
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px; }
+
+        @media (max-width: 600px) {
+            .freq5 { font-size: 22px; }
+            .freq4 { font-size: 18px; }
+            .cloud-section { padding: 15px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Certification Prep Portal</h1>
+    <h1 style="text-align: center;">Certification Prep Portal</h1>
 
     <div class="exam-selector-card">
         <h3>Select Your Examination</h3>
+        <h3>Select Your Examination</h3>
+        .menu-links a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.9rem; }
         <select id="examPicker">
             <option value="snowflake">SnowPro Core/Assoc./Pro Certification</option>
             <option value="databricks">Databricks Data Engineer</option>
@@ -62,550 +169,278 @@
         <button class="btn-primary" onclick="launchExam()">Start Examination</button>
     </div>
 
-    <div class="menu" style="justify-content: center; margin-top: 10px;">
-        <a href="practice.html">💻 SQL Practice Lab</a>
-        <a href="analytics.html">📊 Study Analytics</a>
-    </div><!-- Databricks buzzword cloud Component -->
+    <div class="menu-links">
+        <a href="practice.html">💻 SQL Lab</a>
+        <a href="analytics.html">📊 Analytics</a>
+    </div>
 
-<div id="databricks-cloud">
+    <div id="databricks-cloud" class="cloud-section" style="background: #f4f6f8;">
+        <h2 style="color: #ff3621;">Databricks Lakehouse Cloud</h2>
+        <div class="search-box"><input id="dbSearch" placeholder="Search Databricks..."></div>
+        <div class="cloud-display" id="dbCloud"></div>
+        <div class="legend">
+            <span class="db-arch">Architecture</span><span class="db-delta">Delta</span>
+            <span class="db-spark">Spark</span><span class="db-stream">Streaming</span>
+        </div>
+    </div>
 
-<style>
+    <div id="ai-cloud" class="cloud-section" style="background: #0f172a; color: white;">
+        <h2 style="color: #38bdf8;">AI & LLM Architecture Cloud</h2>
+        <div class="search-box"><input id="aiSearch" placeholder="Search AI (RAG, TTFT...)" style="background: #1e293b; color: white;"></div>
+        <div class="cloud-display" id="aiCloud"></div>
+        <div class="legend">
+            <span class="rag">RAG</span><span class="infra">Infra</span>
+            <span class="optim">Optim</span><span class="agent" style="background: #f59e0b;">Agents</span>
+        </div>
+    </div>
 
-#databricks-cloud{
-font-family:Arial, Helvetica, sans-serif;
-background:#f4f6f8;
-padding:30px;
-margin-bottom:40px;
-color:#333;
-border-radius:8px;
-}
+    <div id="azure-cloud" class="cloud-section" style="background: #f0f4f8;">
+        <h2 style="color: #0078d4;">Azure Solutions Cloud</h2>
+        <div class="search-box"><input id="azSearch" placeholder="Search Azure..."></div>
+        <div class="cloud-display" id="azCloud"></div>
+    </div>
 
-#databricks-cloud h2{
-text-align:center;
-margin-bottom:10px;
-}
+    <div id="aws-cloud" class="cloud-section" style="background: #232f3e; color: white;">
+        <h2 style="color: #ff9900;">AWS Solutions Cloud</h2>
+        <div class="search-box"><input id="awsSearch" placeholder="Search AWS..." style="background: #37475a; color: white; border:none;"></div>
+        <div class="cloud-display" id="awsCloud"></div>
+    </div>
 
-#databricks-cloud .search{
-text-align:center;
-margin-bottom:25px;
-}
-
-#databricks-cloud input{
-padding:10px;
-width:320px;
-font-size:16px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-#databricks-cloud .cloud{
-max-width:1100px;
-margin:auto;
-text-align:center;
-}
-
-#databricks-cloud .tag{
-display:inline-block;
-margin:8px;
-padding:10px 16px;
-border-radius:25px;
-cursor:pointer;
-transition:0.2s;
-color:white;
-}
-
-#databricks-cloud .tag:hover{
-transform:scale(1.15);
-box-shadow:0 3px 8px rgba(0,0,0,0.2);
-}
-
-.freq1{font-size:12px}
-.freq2{font-size:14px}
-.freq3{font-size:18px}
-.freq4{font-size:24px}
-.freq5{font-size:34px;font-weight:bold}
-
-.arch{background:#3b82f6}
-.delta{background:#10b981}
-.spark{background:#f59e0b}
-.streaming{background:#ef4444}
-.governance{background:#8b5cf6}
-.performance{background:#6366f1}
-.ml{background:#14b8a6}
-.workspace{background:#0ea5e9}
-
-#databricks-cloud .legend{
-margin-top:30px;
-text-align:center;
-}
-
-#databricks-cloud .legend span{
-display:inline-block;
-margin:5px 10px;
-padding:6px 12px;
-border-radius:10px;
-color:white;
-font-size:13px;
-}
-
-</style>
-
-<h2>Databricks Lakehouse Interview / Exam Buzzword Cloud</h2>
-
-<div class="search">
-<input id="dbSearch" placeholder="Search keyword">
-</div>
-
-<div class="cloud" id="dbCloud"></div>
-
-<div class="legend">
-<span style="background:#3b82f6">Architecture</span>
-<span style="background:#10b981">Delta Lake</span>
-<span style="background:#f59e0b">Spark</span>
-<span style="background:#ef4444">Streaming</span>
-<span style="background:#8b5cf6">Governance</span>
-<span style="background:#6366f1">Performance</span>
-<span style="background:#14b8a6">Machine Learning</span>
-<span style="background:#0ea5e9">Workspace</span>
+    <div style="background: white; padding: 25px; border-radius: 12px; text-align: center;">
+        <h2>Snowflake Architecture</h2>
+        <img src="https://placehold.co/700x350/2563eb/white?text=Snowflake+Architecture+Diagram" alt="Snowflake Architecture">
+        <ul style="display: inline-block; text-align: left;">
+            <li>Cloud Services Layer</li>
+            <li>Compute Layer (Virtual Warehouses)</li>
+            <li>Storage Layer (Micro-partitions)</li>
+        </ul>
+    </div>
 </div>
 
 <script>
-
+    // --- DATASETS ---
 const dbKeywords = [
+  // --- Delta Lake & Storage ---
+  {word:"Delta Lake",freq:5,domain:"delta",desc:"Open-source storage layer enabling ACID transactions on data lakes"},
+  {word:"ACID Transactions",freq:5,domain:"delta",desc:"Atomicity, Consistency, Isolation, Durability guarantees"},
+  {word:"Time Travel",freq:4,domain:"delta",desc:"Query previous versions of Delta tables"},
+  {word:"Transaction Log",freq:4,domain:"delta",desc:"Delta _delta_log storing commit history"},
+  {word:"VACUUM",freq:3,domain:"delta",desc:"Deletes obsolete files after retention period"},
+  {word:"Change Data Feed",freq:3,domain:"delta",desc:"Tracking row-level changes between table versions"},
+  {word:"Schema Enforcement",freq:4,domain:"delta",desc:"Prevents data corruption by rejecting mismatched schemas"},
 
-{word:"Delta Lake",freq:5,domain:"delta",desc:"Open-source storage layer enabling ACID transactions on data lakes"},
-{word:"ACID Transactions",freq:5,domain:"delta",desc:"Atomicity, Consistency, Isolation, Durability guarantees"},
-{word:"Time Travel",freq:4,domain:"delta",desc:"Query previous versions of Delta tables"},
-{word:"Transaction Log",freq:4,domain:"delta",desc:"Delta _delta_log storing commit history"},
-{word:"OPTIMIZE",freq:4,domain:"performance",desc:"Compacts small files to improve read performance"},
-{word:"VACUUM",freq:3,domain:"delta",desc:"Deletes obsolete files after retention period"},
-{word:"Z-ORDER",freq:4,domain:"performance",desc:"Clusters related data to improve query skipping"},
-{word:"Medallion Architecture",freq:5,domain:"arch",desc:"Layered architecture: Bronze → Silver → Gold"},
-{word:"Bronze Layer",freq:3,domain:"arch",desc:"Raw ingested data"},
-{word:"Silver Layer",freq:3,domain:"arch",desc:"Cleaned and validated data"},
-{word:"Gold Layer",freq:3,domain:"arch",desc:"Aggregated analytics-ready data"},
-{word:"Databricks Lakehouse",freq:5,domain:"arch",desc:"Unified platform combining data lake and warehouse"},
-{word:"Apache Spark",freq:5,domain:"spark",desc:"Distributed data processing engine used by Databricks"},
-{word:"Spark Driver",freq:3,domain:"spark",desc:"Controls Spark job execution"},
-{word:"Spark Executors",freq:3,domain:"spark",desc:"Worker processes executing tasks"},
-{word:"Catalyst Optimizer",freq:4,domain:"spark",desc:"Spark SQL query optimizer"},
-{word:"Lazy Evaluation",freq:2,domain:"spark",desc:"Spark defers execution until action is triggered"},
-{word:"DAG Execution",freq:2,domain:"spark",desc:"Directed acyclic graph execution plan"},
-{word:"Structured Streaming",freq:4,domain:"streaming",desc:"Unified batch and streaming processing model"},
-{word:"Auto Loader",freq:3,domain:"streaming",desc:"Incremental cloud file ingestion"},
-{word:"Checkpointing",freq:3,domain:"streaming",desc:"Stores streaming progress for fault tolerance"},
-{word:"Exactly Once Processing",freq:2,domain:"streaming",desc:"Guarantees each record processed once"},
-{word:"Unity Catalog",freq:5,domain:"governance",desc:"Central governance layer for data and AI"},
-{word:"Data Lineage",freq:3,domain:"governance",desc:"Tracks data origins and transformations"},
-{word:"Row Level Security",freq:3,domain:"governance",desc:"Restricts rows based on policies"},
-{word:"Column Level Security",freq:3,domain:"governance",desc:"Controls access to sensitive columns"},
-{word:"Data Skipping",freq:4,domain:"performance",desc:"Uses statistics to skip irrelevant files"},
-{word:"Partition Pruning",freq:3,domain:"performance",desc:"Reads only required partitions"},
-{word:"Broadcast Join",freq:3,domain:"performance",desc:"Broadcasts small table to all executors"},
-{word:"Adaptive Query Execution",freq:3,domain:"performance",desc:"Optimizes query plan during runtime"},
-{word:"MLflow",freq:4,domain:"ml",desc:"ML lifecycle management platform"},
-{word:"Feature Store",freq:3,domain:"ml",desc:"Centralized repository for ML features"},
-{word:"Model Registry",freq:3,domain:"ml",desc:"Versioning and lifecycle management for ML models"},
-{word:"Notebook",freq:4,domain:"workspace",desc:"Interactive development environment"},
-{word:"Jobs",freq:4,domain:"workspace",desc:"Scheduled workflows"},
-{word:"Clusters",freq:3,domain:"workspace",desc:"Compute resources running Spark workloads"},
-{word:"Repos",freq:2,domain:"workspace",desc:"Git integration for version control"},
-{word:"DBFS",freq:2,domain:"workspace",desc:"Databricks File System abstraction"}
+  // --- Performance & Optimization ---
+  {word:"OPTIMIZE",freq:4,domain:"performance",desc:"Compacts small files to improve read performance"},
+  {word:"Z-ORDER",freq:4,domain:"performance",desc:"Clusters related data to improve query skipping"},
+  {word:"Liquid Clustering",freq:5,domain:"performance",desc:"Next-gen replacement for Z-Ordering and Partitioning"},
+  {word:"Photon Engine",freq:5,domain:"performance",desc:"High-performance C++ vectorized execution engine"},
+  {word:"Data Skipping",freq:4,domain:"performance",desc:"Uses statistics to skip irrelevant files"},
+  {word:"Partition Pruning",freq:3,domain:"performance",desc:"Reads only required partitions"},
+  {word:"Broadcast Join",freq:3,domain:"performance",desc:"Broadcasts small table to all executors"},
+  {word:"Adaptive Query Execution",freq:3,domain:"performance",desc:"Optimizes query plan during runtime"},
 
+  // --- Architecture ---
+  {word:"Medallion Architecture",freq:5,domain:"arch",desc:"Layered architecture: Bronze (Raw) → Silver (Cleaned) → Gold (Business)"},
+  {word:"Bronze Layer",freq:3,domain:"arch",desc:"Raw ingested data (In-situ)"},
+  {word:"Silver Layer",freq:3,domain:"arch",desc:"Cleaned, filtered, and augmented data"},
+  {word:"Gold Layer",freq:3,domain:"arch",desc:"Aggregated business-level analytics data"},
+  {word:"Databricks Lakehouse",freq:5,domain:"arch",desc:"Unified platform combining data lake and warehouse"},
+  {word:"Serverless SQL",freq:4,domain:"arch",desc:"Instant, elastic compute for SQL workloads without cluster management"},
+
+  // --- Apache Spark Core ---
+  {word:"Apache Spark",freq:5,domain:"spark",desc:"Distributed data processing engine"},
+  {word:"Spark Driver",freq:3,domain:"spark",desc:"Controls Spark job execution and scheduling"},
+  {word:"Spark Executors",freq:3,domain:"spark",desc:"Worker processes executing individual tasks"},
+  {word:"Catalyst Optimizer",freq:4,domain:"spark",desc:"Spark SQL query optimizer and generator"},
+  {word:"Lazy Evaluation",freq:2,domain:"spark",desc:"Defers execution until an action is triggered"},
+  {word:"DAG Execution",freq:3,domain:"spark",desc:"Directed Acyclic Graph of execution stages"},
+  {word:"Tungsten",freq:3,domain:"spark",desc:"Memory management and code generation engine"},
+
+  // --- Streaming & Ingestion ---
+  {word:"Structured Streaming",freq:4,domain:"streaming",desc:"Unified batch and streaming processing model"},
+  {word:"Auto Loader",freq:4,domain:"streaming",desc:"Incremental cloud file ingestion with schema inference"},
+  {word:"DLT (Delta Live Tables)",freq:5,domain:"streaming",desc:"Declarative framework for building reliable data pipelines with quality constraints"},
+  {word:"Checkpointing",freq:3,domain:"streaming",desc:"Stores streaming progress for fault tolerance"},
+  {word:"Exactly Once Processing",freq:2,domain:"streaming",desc:"Guarantees each record is processed exactly once"},
+
+  // --- Governance & Security ---
+  {word:"Unity Catalog",freq:5,domain:"governance",desc:"Central governance layer for data, AI, and files"},
+  {word:"Data Lineage",freq:4,domain:"governance",desc:"Visual tracking of data origins and downstream usage"},
+  {word:"Row Level Security",freq:3,domain:"governance",desc:"Restricts rows based on user identity policies"},
+  {word:"Column Level Security",freq:3,domain:"governance",desc:"Controls access to sensitive data columns"},
+  {word:"System Tables",freq:3,domain:"governance",desc:"Operational metadata for billing and audit usage"},
+
+  // --- Machine Learning ---
+  {word:"MLflow",freq:5,domain:"ml",desc:"Open-source platform for the ML lifecycle"},
+  {word:"Feature Store",freq:3,domain:"ml",desc:"Centralized repository for discoverable ML features"},
+  {word:"Model Registry",freq:4,domain:"ml",desc:"Centralized model store with versioning and stage transitions"},
+  {word:"Mosaic AI",freq:4,domain:"ml",desc:"Unified tools for building and deploying GenAI"},
+  {word:"Vector Search",freq:3,domain:"ml",desc:"Integrated vector DB for RAG applications"},
+
+  // --- Workspace & Infrastructure ---
+  {word:"Notebook",freq:4,domain:"workspace",desc:"Collaborative interactive development environment"},
+  {word:"Jobs & Workflows",freq:4,domain:"workspace",desc:"Orchestration for scheduled data tasks"},
+  {word:"Clusters",freq:3,domain:"workspace",desc:"Compute resources running Spark workloads"},
+  {word:"Repos",freq:2,domain:"workspace",desc:"Git integration for version control and CI/CD"},
+  {word:"DBFS",freq:2,domain:"workspace",desc:"Databricks File System abstraction layer"}
 ];
 
-const dbCloud=document.getElementById("dbCloud");
+const aiKeywords = [
+  {word:"RAG", freq:5, domain:"rag", desc:"Retrieval-Augmented Generation: Grounding LLMs with external data"},
+  {word:"Function Calling", freq:5, domain:"agent", desc:"Models calling external APIs via structured JSON"},
+  {word:"Agentic Workflows", freq:5, domain:"agent", desc:"Iterative loops where LLMs reason and act"},
+  {word:"Context Window", freq:5, domain:"infra", desc:"The total number of tokens a model can process at once"},
+  {word:"LoRA/QLoRA", freq:5, domain:"optim", desc:"Low-Rank Adaptation: Efficiently fine-tuning specific model layers"},
+  {word:"Embedding Model", freq:4, domain:"rag", desc:"Converting text to high-dimensional vectors"},
+  {word:"DSPy", freq:3, domain:"optim", desc:"Programmatic optimization of LLM prompts"},
+  {word:"RLHF", freq:4, domain:"eval", desc:"Reinforcement Learning from Human Feedback"},
+  {word:"Tokenization", freq:3, domain:"infra", desc:"Breaking text into numerical chunks (BPE, SentencePiece)"},
+  {word:"KV Cache", freq:4, domain:"infra", desc:"Storing past token keys/values to speed up generation"},
+  {word:"Vector Database", freq:5, domain:"rag", desc:"Specialized DB for storing and searching high-dimensional embeddings"},
+  {word:"Semantic Search", freq:4, domain:"rag", desc:"Searching by meaning rather than keyword matching"},
+  {word:"TTFT", freq:5, domain:"infra", desc:"Time to First Token: Key latency metric for UI responsiveness"},
+  {word:"Quantization", freq:4, domain:"optim", desc:"Reducing bit-precision (e.g. FP16 to INT4) to save VRAM"},
+  {word:"Prompt Injection", freq:5, domain:"infra", desc:"Security vulnerability where users bypass system instructions"},
+  {word:"Hallucination", freq:5, domain:"rag", desc:"When an LLM generates factually incorrect information"},
+  {word:"GPU VRAM", freq:4, domain:"infra", desc:"The primary hardware bottleneck for serving large models"},
+  {word:"Cosine Similarity", freq:3, domain:"vector", desc:"Mathematical metric used to measure vector closeness"},
+  {word:"TPOT", freq:4, domain:"infra", desc:"Time Per Output Token: The reading speed of the LLM stream"},
+  {word:"Continuous Batching", freq:4, domain:"infra", desc:"Iteration-level scheduling to maximize throughput"},
+  {word:"PagedAttention", freq:4, domain:"infra", desc:"vLLM's memory management to reduce KV cache fragmentation"},
+  {word:"Chain of Thought", freq:5, domain:"agent", desc:"Prompting technique to improve model reasoning step-by-step"},
+  {word:"LangChain", freq:4, domain:"agent", desc:"Popular framework for building LLM applications"},
+  {word:"Multi-Agent Systems", freq:4, domain:"agent", desc:"Orchestrating multiple LLMs to perform complex tasks"},
+  {word:"Lost in the Middle", freq:3, domain:"rag", desc:"The phenomenon where LLMs ignore info in the center of long prompts"},
+  {word:"Re-ranking", freq:4, domain:"rag", desc:"Using a second model to refine top results from vector search"},
+  {word:"Guardrails", freq:4, domain:"eval", desc:"Software layers (like NeMo) that filter toxic or off-topic inputs"},
+  {word:"Fine-Tuning", freq:4, domain:"optim", desc:"Specializing a model on a domain-specific dataset"},
+  {word:"Speculative Decoding", freq:3, domain:"optim", desc:"Using a small model to draft tokens for a larger model to verify"},
+  {word:"Chunking Strategy", freq:3, domain:"rag", desc:"How documents are split (Recursive, Semantic, Fixed) for RAG"},
+  {word:"LLM Routing", freq:3, domain:"ops", desc:"Directing queries to cheaper or smarter models based on complexity"}
+];
 
-function renderDB(list){
+const awsKeywords = [
+  {word:"Nitro", freq:5, domain:"aws-core", desc:"Underlying hardware acceleration for instances"},
+  {word:"EventBridge", freq:5, domain:"aws-serverless", desc:"Serverless event bus for decoupled architectures"},
+  {word:"IAM Policy Eval", freq:5, domain:"aws-sec", desc:"The logic flow of Allow vs Deny statements"},
+  {word:"S3 Glacier", freq:4, domain:"aws-core", desc:"Lowest cost storage for long-term retention"},
+  {word:"AppSync", freq:4, domain:"aws-serverless", desc:"Managed GraphQL service with real-time subscriptions"},
+  {word:"Aurora Serverless", freq:4, domain:"aws-db", desc:"Instant scaling relational database"},
+  {word:"Control Tower", freq:3, domain:"aws-sec", desc:"Setting up and governing multi-account environments"},
+  {word:"Transit Gateway", freq:4, domain:"aws-net", desc:"Central hub for connecting VPCs and on-prem networks"},
+  {word:"EC2", freq:5, domain:"aws-core", desc:"Elastic Compute Cloud: Virtual servers"},
+  {word:"S3", freq:5, domain:"aws-core", desc:"Simple Storage Service: Scalable object storage"},
+  {word:"Lambda", freq:5, domain:"aws-serverless", desc:"Serverless functions: Run code without managing servers"},
+  {word:"IAM", freq:5, domain:"aws-sec", desc:"Identity and Access Management"},
+  {word:"DynamoDB", freq:5, domain:"aws-db", desc:"Fast, flexible NoSQL database"},
+  {word:"VPC", freq:4, domain:"aws-core", desc:"Virtual Private Cloud: Isolated network section"},
+  {word:"RDS", freq:4, domain:"aws-db", desc:"Relational Database Service"},
+  {word:"CloudFront", freq:3, domain:"aws-core", desc:"Content Delivery Network (CDN)"},
+  {word:"Route 53", freq:3, domain:"aws-core", desc:"Scalable DNS web service"},
+  {word:"Auto Scaling", freq:4, domain:"aws-core", desc:"Automatically adjust capacity"},
+  {word:"Fargate", freq:4, domain:"aws-serverless", desc:"Serverless compute for containers"},
+  {word:"Redshift", freq:3, domain:"aws-db", desc:"Cloud data warehousing"},
+  {word:"SNS/SQS", freq:3, domain:"aws-serverless", desc:"Messaging and queuing services"}
+];
 
-dbCloud.innerHTML="";
+const azKeywords = [
+  {word:"OpenAI Service", freq:5, domain:"az-data", desc:"Enterprise-grade access to GPT-4o"},
+  {word:"Bicep / ARM", freq:4, domain:"az-compute", desc:"Infrastructure as Code for Azure"},
+  {word:"Service Bus", freq:4, domain:"az-net", desc:"Enterprise message queuing and pub-sub"},
+  {word:"Azure Data Factory", freq:5, domain:"az-data", desc:"Cloud ETL service for scale-out data integration"},
+  {word:"Private Link", freq:4, domain:"az-net", desc:"Accessing PaaS services via private IP"},
+  {word:"Managed Identities", freq:5, domain:"az-identity", desc:"Passwordless authentication for Azure resources"},
+  {word:"Entra ID", freq:5, domain:"az-identity", desc:"Azure Entra ID (formerly Azure AD): Identity and access management"},
+  {word:"AKS", freq:5, domain:"az-compute", desc:"Azure Kubernetes Service: Managed container orchestration"},
+  {word:"VNET", freq:5, domain:"az-net", desc:"Azure Virtual Network: Private network in the cloud"},
+  {word:"Cosmos DB", freq:4, domain:"az-data", desc:"Globally distributed, multi-model NoSQL database"},
+  {word:"Blob Storage", freq:5, domain:"az-data", desc:"Object storage for unstructured data"},
+  {word:"RBAC", freq:5, domain:"az-identity", desc:"Role-Based Access Control"},
+  {word:"Virtual Machines", freq:4, domain:"az-compute", desc:"On-demand scalable computing resources"},
+  {word:"Azure Functions", freq:4, domain:"az-compute", desc:"Serverless event-driven compute"},
+  {word:"Resource Groups", freq:3, domain:"az-gov", desc:"Logical containers for Azure resources"},
+  {word:"App Service", freq:4, domain:"az-compute", desc:"HTTP-based service for hosting web apps"},
+  {word:"ExpressRoute", freq:3, domain:"az-net", desc:"Private connection from on-prem to Azure"},
+  {word:"Azure SQL", freq:4, domain:"az-data", desc:"Managed relational database service"},
+  {word:"NSG", freq:4, domain:"az-net", desc:"Network Security Group: Filter network traffic"}
+];
 
-list.forEach(k=>{
-let tag=document.createElement("span");
-tag.className=`tag freq${k.freq} ${k.domain}`;
-tag.textContent=k.word;
-tag.title=k.desc;
-dbCloud.appendChild(tag);
-});
+const mgKeywords = [
+  {word:"BSON", freq:5, domain:"mg-arch", desc:"Binary JSON: Primary storage format"},
+  {word:"Aggregation Pipeline", freq:5, domain:"mg-crud", desc:"Framework for data transformation"},
+  {word:"Sharding", freq:4, domain:"mg-arch", desc:"Horizontal scaling by distributing data"},
+  {word:"Replica Sets", freq:5, domain:"mg-arch", desc:"High availability via data redundancy"},
+  {word:"Index", freq:4, domain:"mg-perf", desc:"Improve query execution speed"},
+  {word:"Atlas", freq:5, domain:"mg-atlas", desc:"Fully managed cloud database"},
+  {word:"Document Model", freq:5, domain:"mg-arch", desc:"Flexible schema mapping to objects"},
+  {word:"Upsert", freq:3, domain:"mg-crud", desc:"Update or insert if not exists"},
+  {word:"Mongoose", freq:4, domain:"mg-crud", desc:"ODM for Node.js"},
+  {word:"GridFS", freq:2, domain:"mg-arch", desc:"Storing large files > 16MB"},
+  {word:"Compound Index", freq:3, domain:"mg-perf", desc:"Index on multiple fields"},
+  {word:"WiredTiger", freq:3, domain:"mg-arch", desc:"Default storage engine"}
+];
 
-}
+const rKeywords = [
+  {word:"Virtual DOM", freq:5, domain:"r-core", desc:"React's lightweight copy of the real DOM"},
+  {word:"JSX", freq:5, domain:"r-core", desc:"JavaScript XML syntax extension"},
+  {word:"useState", freq:5, domain:"r-hooks", desc:"Hook for functional component state"},
+  {word:"useEffect", freq:5, domain:"r-hooks", desc:"Hook for side effects (API calls, subs)"},
+  {word:"Context API", freq:4, domain:"r-state", desc:"Global state management without prop drilling"},
+  {word:"Redux", freq:4, domain:"r-state", desc:"Predictable state container for JS apps"},
+  {word:"React Router", freq:4, domain:"r-core", desc:"Standard library for routing in React"},
+  {word:"Memoization", freq:3, domain:"r-perf", desc:"useMemo and useCallback for performance"},
+  {word:"Props", freq:5, domain:"r-core", desc:"Properties passed to components"},
+  {word:"Fiber", freq:3, domain:"r-perf", desc:"React's reconciliation engine"},
+  {word:"SSR", freq:3, domain:"r-core", desc:"Server-Side Rendering (Next.js)"},
+  {word:"Custom Hooks", freq:4, domain:"r-hooks", desc:"Reusable logic functions"}
+];
 
-renderDB(dbKeywords);
-
-document.getElementById("dbSearch").addEventListener("keyup",e=>{
-let q=e.target.value.toLowerCase();
-renderDB(dbKeywords.filter(k => k.word.toLowerCase().includes(q)));
-});
-
-function jumpToExam(examType, keyword) {
-    // Redirect to exam.html with both the exam type and the specific keyword
-    window.location.href = `exam.html?type=${examType}&focus=${encodeURIComponent(keyword)}`;
-}
-
-// Attach listeners to all tags in all clouds
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.tag').forEach(tag => {
-        tag.addEventListener('click', function() {
-            // Find which cloud this tag belongs to (e.g., 'aws-cloud' -> 'aws')
-            const cloudContainer = this.closest('[id$="-cloud"]');
-            if (cloudContainer) {
-                const cloudType = cloudContainer.id.split('-')[0];
-                jumpToExam(cloudType, this.textContent.trim());
-            }
+    // --- LOGIC ---
+    function renderCloud(containerId, list, type) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        list.forEach(k => {
+            const tag = document.createElement("span");
+            tag.className = `tag freq${k.freq} ${k.domain}`;
+            tag.textContent = k.word;
+            tag.title = k.desc;
+            tag.onclick = () => jumpToExam(type, k.word);
+            container.appendChild(tag);
         });
-    });
-});
-    
-</script>
-
-</div>
-<div id="azure-cloud" style="font-family: Arial; background: #f0f4f8; padding: 30px; border-radius: 8px; margin-bottom: 40px;">
-    <style>
-        #azure-cloud .tag { display: inline-block; margin: 8px; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.2s; color: white; }
-        #azure-cloud .tag:hover { transform: scale(1.15); box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
-        .az-compute { background: #0078d4; }
-        .az-data { background: #5ea0ef; }
-        .az-identity { background: #323130; }
-        .az-net { background: #00ad56; }
-        .az-gov { background: #8b5cf6; }
-    </style>
-
-    <h2 style="text-align:center; color:#0078d4;">Azure Solutions Architect / Admin Buzzword Cloud</h2>
-    <div style="text-align:center; margin-bottom:25px;">
-        <input id="azSearch" placeholder="Search Azure (e.g. VNET, Entra)" style="padding:10px; width:320px; border-radius:6px; border:1px solid #ccc;">
-    </div>
-    <div class="cloud" id="azCloud" style="text-align:center;"></div>
-    
-    <div style="margin-top: 30px; text-align: center;">
-        <span class="tag az-compute">Compute & Hybrid</span>
-        <span class="tag az-data">Data & Storage</span>
-        <span class="tag az-identity">Identity (Entra)</span>
-        <span class="tag az-net">Networking</span>
-    </div>
-
-    <script>
-        const azKeywords = [
-            {word:"Azure Entra ID", freq:5, domain:"az-identity", desc:"Formerly Azure AD: Identity and access management"},
-            {word:"Virtual Machines", freq:4, domain:"az-compute", desc:"On-demand scalable computing resources"},
-            {word:"AKS", freq:5, domain:"az-compute", desc:"Azure Kubernetes Service: Managed container orchestration"},
-            {word:"VNET", freq:5, domain:"az-net", desc:"Azure Virtual Network: Private network in the cloud"},
-            {word:"Cosmos DB", freq:4, domain:"az-data", desc:"Globally distributed, multi-model NoSQL database"},
-            {word:"Blob Storage", freq:5, domain:"az-data", desc:"Object storage for unstructured data"},
-            {word:"Azure Functions", freq:4, domain:"az-compute", desc:"Serverless event-driven compute"},
-            {word:"Resource Groups", freq:3, domain:"az-gov", desc:"Logical containers for Azure resources"},
-            {word:"App Service", freq:4, domain:"az-compute", desc:"HTTP-based service for hosting web apps"},
-            {word:"ExpressRoute", freq:3, domain:"az-net", desc:"Private connection from on-prem to Azure"},
-            {word:"Azure SQL", freq:4, domain:"az-data", desc:"Managed relational database service"},
-            {word:"RBAC", freq:5, domain:"az-identity", desc:"Role-Based Access Control"},
-            {word:"NSG", freq:4, domain:"az-net", desc:"Network Security Group: Filter network traffic"}
-        ];
-        function renderAZ(l){
-            const c=document.getElementById("azCloud"); c.innerHTML="";
-            l.forEach(k=>{
-                let t=document.createElement("span"); t.className=`tag freq${k.freq} ${k.domain}`;
-                t.textContent=k.word; t.title=k.desc; c.appendChild(t);
-            });
-        }
-        renderAZ(azKeywords);
-        document.getElementById("azSearch").addEventListener("keyup",e=>renderAZ(azKeywords.filter(k=>k.word.toLowerCase().includes(e.target.value.toLowerCase()))));
-    </script>
-</div>
-<div id="aws-cloud" style="font-family: Arial; background: #232f3e; padding: 30px; border-radius: 8px; color: white; margin-bottom: 40px;">
-    <style>
-        #aws-cloud .tag { display: inline-block; margin: 8px; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.2s; color: white; }
-        .aws-core { background: #ff9900; color: #232f3e !important; font-weight: bold; }
-        .aws-serverless { background: #ec7211; }
-        .aws-db { background: #3b48cc; }
-        .aws-sec { background: #7aa116; }
-    </style>
-
-    <h2 style="text-align:center; color:#ff9900;">AWS Certified Solutions Architect Buzzword Cloud</h2>
-    <div style="text-align:center; margin-bottom:25px;">
-        <input id="awsSearch" placeholder="Search AWS (e.g. S3, Lambda)" style="padding:10px; width:320px; background:#37475a; color:white; border:none; border-radius:6px;">
-    </div>
-    <div class="cloud" id="awsCloud" style="text-align:center;"></div>
-
-    <script>
-        const awsKeywords = [
-            {word:"EC2", freq:5, domain:"aws-core", desc:"Elastic Compute Cloud: Virtual servers"},
-            {word:"S3", freq:5, domain:"aws-core", desc:"Simple Storage Service: Scalable object storage"},
-            {word:"Lambda", freq:5, domain:"aws-serverless", desc:"Serverless functions: Run code without servers"},
-            {word:"VPC", freq:4, domain:"aws-core", desc:"Virtual Private Cloud: Isolated network section"},
-            {word:"IAM", freq:5, domain:"aws-sec", desc:"Identity and Access Management"},
-            {word:"DynamoDB", freq:5, domain:"aws-db", desc:"Fast, flexible NoSQL database"},
-            {word:"RDS", freq:4, domain:"aws-db", desc:"Relational Database Service"},
-            {word:"CloudFront", freq:3, domain:"aws-core", desc:"Content Delivery Network (CDN)"},
-            {word:"Route 53", freq:3, domain:"aws-core", desc:"Scalable DNS web service"},
-            {word:"Auto Scaling", freq:4, domain:"aws-core", desc:"Automatically adjust capacity"},
-            {word:"Fargate", freq:4, domain:"aws-serverless", desc:"Serverless compute for containers"},
-            {word:"Redshift", freq:3, domain:"aws-db", desc:"Cloud data warehousing"},
-            {word:"SNS/SQS", freq:3, domain:"aws-serverless", desc:"Messaging and queuing services"}
-        ];
-        function renderAWS(l){
-            const c=document.getElementById("awsCloud"); c.innerHTML="";
-            l.forEach(k=>{
-                let t=document.createElement("span"); t.className=`tag freq${k.freq} ${k.domain}`;
-                t.textContent=k.word; t.title=k.desc; c.appendChild(t);
-            });
-        }
-        renderAWS(awsKeywords);
-        document.getElementById("awsSearch").addEventListener("keyup",e=>renderAWS(awsKeywords.filter(k=>k.word.toLowerCase().includes(e.target.value.toLowerCase()))));
-    </script>
-</div>
-<div id="mongodb-cloud" style="font-family: Arial; background: #e3f2fd; padding: 30px; border-radius: 8px; margin-bottom: 40px;">
-    <style>
-        #mongodb-cloud .tag { display: inline-block; margin: 8px; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.2s; color: white; }
-        .mg-crud { background: #13aa52; }
-        .mg-arch { background: #001e2b; }
-        .mg-perf { background: #494949; }
-        .mg-atlas { background: #00ed64; color: #001e2b !important; }
-    </style>
-
-    <h2 style="text-align:center; color:#13aa52;">MongoDB Developer / DBA Buzzword Cloud</h2>
-    <div style="text-align:center; margin-bottom:25px;">
-        <input id="mgSearch" placeholder="Search MongoDB (e.g. Sharding, BSON)" style="padding:10px; width:320px; border-radius:6px; border:1px solid #13aa52;">
-    </div>
-    <div class="cloud" id="mgCloud" style="text-align:center;"></div>
-
-    <script>
-        const mgKeywords = [
-            {word:"BSON", freq:5, domain:"mg-arch", desc:"Binary JSON: Primary storage format"},
-            {word:"Aggregation Pipeline", freq:5, domain:"mg-crud", desc:"Framework for data transformation"},
-            {word:"Sharding", freq:4, domain:"mg-arch", desc:"Horizontal scaling by distributing data"},
-            {word:"Replica Sets", freq:5, domain:"mg-arch", desc:"High availability via data redundancy"},
-            {word:"Index", freq:4, domain:"mg-perf", desc:"Improve query execution speed"},
-            {word:"Atlas", freq:5, domain:"mg-atlas", desc:"Fully managed cloud database"},
-            {word:"Document Model", freq:5, domain:"mg-arch", desc:"Flexible schema mapping to objects"},
-            {word:"Upsert", freq:3, domain:"mg-crud", desc:"Update or insert if not exists"},
-            {word:"Mongoose", freq:4, domain:"mg-crud", desc:"ODM for Node.js"},
-            {word:"GridFS", freq:2, domain:"mg-arch", desc:"Storing large files > 16MB"},
-            {word:"Compound Index", freq:3, domain:"mg-perf", desc:"Index on multiple fields"},
-            {word:"WiredTiger", freq:3, domain:"mg-arch", desc:"Default storage engine"}
-        ];
-        function renderMG(l){
-            const c=document.getElementById("mgCloud"); c.innerHTML="";
-            l.forEach(k=>{
-                let t=document.createElement("span"); t.className=`tag freq${k.freq} ${k.domain}`;
-                t.textContent=k.word; t.title=k.desc; c.appendChild(t);
-            });
-        }
-        renderMG(mgKeywords);
-        document.getElementById("mgSearch").addEventListener("keyup",e=>renderMG(mgKeywords.filter(k=>k.word.toLowerCase().includes(e.target.value.toLowerCase()))));
-    </script>
-</div>
-<div id="react-cloud" style="font-family: Arial; background: #20232a; padding: 30px; border-radius: 8px; color: #61dafb; margin-bottom: 40px;">
-    <style>
-        #react-cloud .tag { display: inline-block; margin: 8px; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.2s; color: #20232a; font-weight: bold; }
-        .r-hooks { background: #61dafb; }
-        .r-state { background: #fb7e61; }
-        .r-core { background: #ffffff; }
-        .r-perf { background: #a1fb61; }
-    </style>
-
-    <h2 style="text-align:center;">React Frontend Engineer Buzzword Cloud</h2>
-    <div style="text-align:center; margin-bottom:25px;">
-        <input id="rSearch" placeholder="Search React (e.g. Hooks, Context)" style="padding:10px; width:320px; border-radius:6px; background:#282c34; color:white; border:1px solid #61dafb;">
-    </div>
-    <div class="cloud" id="rCloud" style="text-align:center;"></div>
-
-    <script>
-        const rKeywords = [
-            {word:"Virtual DOM", freq:5, domain:"r-core", desc:"React's lightweight copy of the real DOM"},
-            {word:"JSX", freq:5, domain:"r-core", desc:"JavaScript XML syntax extension"},
-            {word:"useState", freq:5, domain:"r-hooks", desc:"Hook for functional component state"},
-            {word:"useEffect", freq:5, domain:"r-hooks", desc:"Hook for side effects (API calls, subs)"},
-            {word:"Context API", freq:4, domain:"r-state", desc:"Global state management without prop drilling"},
-            {word:"Redux", freq:4, domain:"r-state", desc:"Predictable state container for JS apps"},
-            {word:"React Router", freq:4, domain:"r-core", desc:"Standard library for routing in React"},
-            {word:"Memoization", freq:3, domain:"r-perf", desc:"useMemo and useCallback for performance"},
-            {word:"Props", freq:5, domain:"r-core", desc:"Properties passed to components"},
-            {word:"Fiber", freq:3, domain:"r-perf", desc:"React's reconciliation engine"},
-            {word:"SSR", freq:3, domain:"r-core", desc:"Server-Side Rendering (Next.js)"},
-            {word:"Custom Hooks", freq:4, domain:"r-hooks", desc:"Reusable logic functions"}
-        ];
-        function renderR(l){
-            const c=document.getElementById("rCloud"); c.innerHTML="";
-            l.forEach(k=>{
-                let t=document.createElement("span"); t.className=`tag freq${k.freq} ${k.domain}`;
-                t.textContent=k.word; t.title=k.desc; c.appendChild(t);
-            });
-        }
-        renderR(rKeywords);
-        document.getElementById("rSearch").addEventListener("keyup",e=>renderR(rKeywords.filter(k=>k.word.toLowerCase().includes(e.target.value.toLowerCase()))));
-    </script>
-</div>    
-<div id="ai-engineering-cloud">
-    <style>
-        #ai-engineering-cloud {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0f172a; /* Darker professional background */
-            padding: 30px;
-            margin-bottom: 40px;
-            color: #f8fafc;
-            border-radius: 8px;
-        }
-
-        #ai-engineering-cloud h2 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #38bdf8;
-        }
-
-        #ai-engineering-cloud .search {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        #ai-engineering-cloud input {
-            padding: 10px;
-            width: 320px;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #334155;
-            background: #1e293b;
-            color: white;
-        }
-
-        #ai-engineering-cloud .cloud {
-            max-width: 1100px;
-            margin: auto;
-            text-align: center;
-        }
-
-        #ai-engineering-cloud .tag {
-            display: inline-block;
-            margin: 8px;
-            padding: 10px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: 0.2s;
-            color: white;
-        }
-
-        #ai-engineering-cloud .tag:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
-
-        /* Frequency sizing */
-        .freq1 { font-size: 12px; opacity: 0.7; }
-        .freq2 { font-size: 14px; opacity: 0.8; }
-        .freq3 { font-size: 18px; opacity: 0.9; }
-        .freq4 { font-size: 24px; font-weight: 500; }
-        .freq5 { font-size: 34px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-
-        /* AI Categories */
-        .rag { background: #3b82f6; }        /* Retrieval Augmented Generation */
-        .infra { background: #8b5cf6; }      /* Infrastructure & Scaling */
-        .eval { background: #ef4444; }       /* Evaluation & Safety */
-        .optim { background: #10b981; }      /* Model Optimization */
-        .agent { background: #f59e0b; }      /* Agents & Orchestration */
-        .ops { background: #6366f1; }        /* LLMOps */
-        .vector { background: #0ea5e9; }     /* Vector Databases */
-
-        #ai-engineering-cloud .legend {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        #ai-engineering-cloud .legend span {
-            display: inline-block;
-            margin: 5px 10px;
-            padding: 6px 12px;
-            border-radius: 10px;
-            color: white;
-            font-size: 13px;
-        }
-    </style>
-
-    <h2>AI Engineering & LLM Architecture Buzzword Cloud</h2>
-
-    <div class="search">
-        <input id="aiSearch" placeholder="Search AI keyword (e.g. RAG, TTFT, LoRA)">
-    </div>
-
-    <div class="cloud" id="aiCloud"></div>
-
-    <div class="legend">
-        <span class="rag">RAG Architecture</span>
-        <span class="infra">Inference & Infra</span>
-        <span class="eval">Eval & Guardrails</span>
-        <span class="optim">Optimization</span>
-        <span class="agent">Agentic Workflows</span>
-        <span class="ops">LLMOps</span>
-        <span class="vector">Vector Search</span>
-    </div>
-
-    <script>
-        const aiKeywords = [
-            {word:"RAG", freq:5, domain:"rag", desc:"Retrieval-Augmented Generation: Grounding LLMs with external data"},
-            {word:"Vector Database", freq:5, domain:"vector", desc:"Specialized DB for storing and searching high-dimensional embeddings"},
-            {word:"Semantic Search", freq:4, domain:"vector", desc:"Searching by meaning rather than keyword matching"},
-            {word:"Cosine Similarity", freq:3, domain:"vector", desc:"Mathematical metric used to measure vector closeness"},
-            {word:"TTFT", freq:5, domain:"infra", desc:"Time to First Token: Key latency metric for UI responsiveness"},
-            {word:"TPOT", freq:4, domain:"infra", desc:"Time Per Output Token: The reading speed of the LLM stream"},
-            {word:"LoRA", freq:5, domain:"optim", desc:"Low-Rank Adaptation: Efficiently fine-tuning specific model layers"},
-            {word:"Quantization", freq:4, domain:"optim", desc:"Reducing bit-precision (e.g. FP16 to INT4) to save VRAM"},
-            {word:"Continuous Batching", freq:4, domain:"infra", desc:"Iteration-level scheduling to maximize throughput"},
-            {word:"PagedAttention", freq:4, domain:"infra", desc:"vLLM's memory management to reduce KV cache fragmentation"},
-            {word:"Chain of Thought", freq:5, domain:"agent", desc:"Prompting technique to improve model reasoning step-by-step"},
-            {word:"LangChain", freq:4, domain:"agent", desc:"Popular framework for building LLM applications"},
-            {word:"Multi-Agent Systems", freq:4, domain:"agent", desc:"Orchestrating multiple LLMs to perform complex tasks"},
-            {word:"Lost in the Middle", freq:3, domain:"rag", desc:"The phenomenon where LLMs ignore info in the center of long prompts"},
-            {word:"Re-ranking", freq:4, domain:"rag", desc:"Using a second model to refine top results from vector search"},
-            {word:"Prompt Injection", freq:5, domain:"eval", desc:"Security vulnerability where users bypass system instructions"},
-            {word:"Hallucination", freq:5, domain:"eval", desc:"When an LLM generates factually incorrect information"},
-            {word:"Guardrails", freq:4, domain:"eval", desc:"Software layers (like NeMo) that filter toxic or off-topic inputs"},
-            {word:"Fine-Tuning", freq:4, domain:"optim", desc:"Specializing a model on a domain-specific dataset"},
-            {word:"KV Cache", freq:4, domain:"infra", desc:"Storing past token keys/values to speed up generation"},
-            {word:"Speculative Decoding", freq:3, domain:"optim", desc:"Using a small model to draft tokens for a larger model to verify"},
-            {word:"GPU VRAM", freq:4, domain:"infra", desc:"The primary hardware bottleneck for serving large models"},
-            {word:"Tokenization", freq:3, domain:"ops", desc:"Converting raw text into numerical IDs for the model"},
-            {word:"Context Window", freq:5, domain:"infra", desc:"The total number of tokens a model can process at once"},
-            {word:"Chunking Strategy", freq:3, domain:"rag", desc:"How documents are split (Recursive, Semantic, Fixed) for RAG"},
-            {word:"LLM Routing", freq:3, domain:"ops", desc:"Directing queries to cheaper or smarter models based on complexity"}
-        ];
-
-        const aiCloud = document.getElementById("aiCloud");
-
-        function renderAI(list) {
-            aiCloud.innerHTML = "";
-            list.forEach(k => {
-                let tag = document.createElement("span");
-                tag.className = `tag freq${k.freq} ${k.domain}`;
-                tag.textContent = k.word;
-                tag.title = k.desc;
-                aiCloud.appendChild(tag);
-            });
-        }
-
-        renderAI(aiKeywords);
-
-        document.getElementById("aiSearch").addEventListener("keyup", e => {
-            let q = e.target.value.toLowerCase();
-            renderAI(aiKeywords.filter(k => k.word.toLowerCase().includes(q)));
-        });
-    </script>
-</div>
-  
-<h2>Snowflake Architecture</h2>
-
-<img src="assets/snowflake_architecture.png" width="700">
-
-<ul>
-<li>Cloud Services Layer</li>
-<li>Compute Layer (Virtual Warehouses)</li>
-<li>Storage Layer (Micro-partitions)</li>
-</ul>
-
-</div>
-
-<script>
-    function launchExam() {
-        const selectedExam = document.getElementById('examPicker').value;
-        // Redirects to generic page with query parameter
-        window.location.href = `exam.html?type=${selectedExam}`;
     }
+
+    function jumpToExam(type, keyword) {
+        window.location.href = `exam.html?type=${type}&focus=${encodeURIComponent(keyword)}`;
+    }
+
+    function launchExam() {
+        const selected = document.getElementById('examPicker').value;
+        window.location.href = `exam.html?type=${selected}`;
+    }
+
+    // Initialize all
+    document.addEventListener('DOMContentLoaded', () => {
+        renderCloud("dbCloud", dbKeywords, "databricks");
+        renderCloud("aiCloud", aiKeywords, "ai");
+        renderCloud("azCloud", azKeywords, "azure");
+        renderCloud("awsCloud", awsKeywords, "aws");
+        renderCloud("mgCloud", mgKeywords, "mongodb");
+        renderCloud("rCloud", rKeywords, "react");
+
+
+        // Search listeners
+        const bindSearch = (id, cloudId, data, type) => {
+            document.getElementById(id).addEventListener('keyup', e => {
+                const q = e.target.value.toLowerCase();
+                renderCloud(cloudId, data.filter(k => k.word.toLowerCase().includes(q)), type);
+            });
+        };
+
+        bindSearch("dbSearch", "dbCloud", dbKeywords, "databricks");
+        bindSearch("aiSearch", "aiCloud", aiKeywords, "ai");
+        bindSearch("azSearch", "azCloud", azKeywords, "azure");
+        bindSearch("awsSearch", "awsCloud", awsKeywords, "aws");
+    });
 </script>
 </body>
 </html>
