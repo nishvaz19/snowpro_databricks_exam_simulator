@@ -7298,5 +7298,38 @@ const questionBank = [
     answer: 1,
     explanation: "Tracking is used during the development phase to log parameters and results, while the Registry is used for governance and deployment of finalized models.",
     hint: "Metrics vs lifecycle management."
-  } 
+  },
+   /* ======================================================
+   AZURE MIGRATION & GOVERNANCE SCENARIOS
+   ====================================================== */
+  {
+    id: 513,
+    difficulty: "hard",
+    category: "governance",
+    question: "When migrating from AWS Control Tower, which Azure framework should be used to establish a governed, multi-subscription environment with built-in guardrails?",
+    options: [
+      "Azure Resource Groups",
+      "Azure Landing Zones (Enterprise-Scale)",
+      "Azure DevTest Labs",
+      "Azure Lighthouse"
+    ],
+    answer: 1,
+    explanation: "Azure Landing Zones provide the architectural framework (using Management Groups and Azure Policy) to implement a 'Control Tower' equivalent for centralized governance.",
+    hint: "Think 'Enterprise-Scale' architecture."
+  },
+  {
+    id: 514,
+    difficulty: "medium",
+    category: "networking",
+    question: "A company is migrating a workload that uses AWS Direct Connect. What is the equivalent Azure service for a private, dedicated connection to the on-premises environment?",
+    options: [
+      "Azure VPN Gateway",
+      "Azure ExpressRoute",
+      "Azure Front Door",
+      "Azure Private Link"
+    ],
+    answer: 1,
+    explanation: "ExpressRoute is the direct competitor to AWS Direct Connect, providing a private connection that does not traverse the public internet.",
+    hint: "Private, high-speed connection."
+  },
 ];
