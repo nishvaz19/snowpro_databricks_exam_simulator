@@ -7332,4 +7332,37 @@ const questionBank = [
     explanation: "ExpressRoute is the direct competitor to AWS Direct Connect, providing a private connection that does not traverse the public internet.",
     hint: "Private, high-speed connection."
   },
+   /* ======================================================
+   AWS TO AZURE MIGRATION SCENARIOS
+   ====================================================== */
+  {
+    id: 515,
+    difficulty: "medium",
+    category: "storage",
+    question: "During a migration from AWS to Azure, which service is primarily used to move petabytes of data from S3 buckets to Azure Data Lake Storage (ADLS) Gen2?",
+    options: [
+      "AWS DataSync",
+      "Azure Storage Mover",
+      "AWS Snowball",
+      "Azure Import/Export"
+    ],
+    answer: 1,
+    explanation: "Azure Storage Mover is a fully managed migration service specifically designed to migrate files and folders (including S3 data) to Azure Storage.",
+    hint: "A managed Azure service for file migration."
+  },
+  {
+    id: 516,
+    difficulty: "hard",
+    category: "identity",
+    question: "When mapping security principles during a migration, an AWS IAM Role with an attached 'Trust Policy' is most closely equivalent to which Azure concept?",
+    options: [
+      "Azure AD User",
+      "Azure Managed Identity",
+      "Azure Resource Group",
+      "Azure Subscription"
+    ],
+    answer: 1,
+    explanation: "Azure Managed Identities (User-assigned or System-assigned) allow resources to authenticate without credentials, similar to how IAM Roles work for EC2 or Lambda.",
+    hint: "Passwordless authentication for resources."
+  },
 ];
