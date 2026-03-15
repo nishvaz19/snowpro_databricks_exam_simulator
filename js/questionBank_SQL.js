@@ -3393,5 +3393,164 @@ const questionBank = [
     answer: 1,
     explanation: "Serializable prevents all concurrency phenomena (Dirty reads, Non-repeatable reads, Phantoms) but has the highest performance cost.",
     hint: "Strict isolation."
+  },
+   /* ======================================================
+     SQL CERTIFICATION QUESTION BANK (Batch 6: 251-265)
+     Topics: Performance, Locking, ACID, and Best Practices
+     ====================================================== */
+  {
+    id: 251,
+    difficulty: "medium",
+    category: "basics",
+    question: "Which component of SQL includes commands like GRANT and REVOKE to manage database permissions?",
+    options: ["DDL (Data Definition Language)", "DML (Data Manipulation Language)", "DCL (Data Control Language)", "TCL (Transaction Control Language)"],
+    answer: 2,
+    explanation: "DCL (Data Control Language) is used to control access to data in the database, primarily through granting and revoking permissions.",
+    hint: "Think 'Control'."
+  },
+  {
+    id: 252,
+    difficulty: "hard",
+    category: "scenarios",
+    question: "What is the key difference between DELETE and TRUNCATE?",
+    options: [
+      "DELETE is DDL; TRUNCATE is DML",
+      "DELETE allows a WHERE clause and is logged row-by-row; TRUNCATE is a bulk operation that removes all rows and is minimally logged",
+      "TRUNCATE can be used to delete specific records",
+      "There is no difference in performance"
+    ],
+    answer: 1,
+    explanation: "DELETE is a DML command that can target specific rows and is fully logged. TRUNCATE is a DDL command that resets the table (and identity seeds) much faster because it doesn't log individual row deletions.",
+    hint: "Row-by-row vs Bulk."
+  },
+  {
+    id: 253,
+    difficulty: "medium",
+    category: "basics",
+    question: "Which function is best used to return the first non-null value in a list of arguments?",
+    options: ["ISNULL()", "NULLIF()", "COALESCE()", "NVL()"],
+    answer: 2,
+    explanation: "COALESCE() is the ANSI standard function that evaluates arguments in order and returns the first one that is not NULL.",
+    hint: "Commonly used for providing default values."
+  },
+  {
+    id: 254,
+    difficulty: "hard",
+    category: "scenarios",
+    question: "What query structure would you use to find duplicate emails in a 'Users' table?",
+    options: [
+      "SELECT email FROM Users WHERE email = email",
+      "SELECT email, COUNT(*) FROM Users GROUP BY email HAVING COUNT(*) > 1",
+      "SELECT DISTINCT email FROM Users",
+      "SELECT email FROM Users ORDER BY email"
+    ],
+    answer: 1,
+    explanation: "To find duplicates, you must group by the column in question and filter the groups that have a count greater than one.",
+    hint: "Group and count."
+  },
+  {
+    id: 255,
+    difficulty: "hard",
+    category: "performance",
+    question: "When comparing IN and EXISTS for a large subquery, why is EXISTS often faster?",
+    options: [
+      "EXISTS ignores NULL values",
+      "EXISTS stops scanning as soon as a single match is found (Short-circuiting), whereas IN might evaluate the entire subquery result set",
+      "IN is a deprecated operator",
+      "EXISTS uses more memory"
+    ],
+    answer: 1,
+    explanation: "EXISTS performs a 'semi-join' and returns TRUE immediately upon finding a match, whereas IN typically requires the subquery to be fully materialized first.",
+    hint: "Stopping early vs finishing the list."
+  },
+  {
+    id: 256,
+    difficulty: "medium",
+    category: "indexes",
+    question: "What is the primary trade-off of adding multiple indexes to a table?",
+    options: [
+      "It makes the database files smaller",
+      "It speeds up SELECT queries but slows down INSERT, UPDATE, and DELETE operations",
+      "It makes the data more secure",
+      "It allows for more NULL values"
+    ],
+    answer: 1,
+    explanation: "Every time data is modified (DML), the database must also update the indexes, which adds overhead to write operations.",
+    hint: "Read speed vs Write speed."
+  },
+  {
+    id: 257,
+    difficulty: "hard",
+    category: "indexes",
+    question: "Which statement correctly describes a 'Clustered Index'?",
+    options: [
+      "It is a separate structure from the data rows",
+      "It physically sorts and stores the data rows in the table based on the key values",
+      "A table can have up to 249 clustered indexes",
+      "It is only used for non-numeric columns"
+    ],
+    answer: 1,
+    explanation: "Because a Clustered Index dictates the physical order of data on the disk, there can only be one per table.",
+    hint: "Physical sorting."
+  },
+  {
+    id: 258,
+    difficulty: "medium",
+    category: "transactions",
+    question: "In the context of ACID properties, what does 'Durability' ensure?",
+    options: [
+      "That transactions are processed in a timely manner",
+      "That once a transaction is committed, it will remain so even in the event of a power failure or system crash",
+      "That only one user can access the table at a time",
+      "That data is encrypted at rest"
+    ],
+    answer: 1,
+    explanation: "Durability guarantees that committed data is saved to non-volatile memory (permanent storage).",
+    hint: "Permanence."
+  },
+  {
+    id: 259,
+    difficulty: "hard",
+    category: "performance",
+    question: "What is the 'NOLOCK' hint (or READ UNCOMMITTED isolation level) used for?",
+    options: [
+      "To prevent other users from reading the data",
+      "To allow a query to read data that is currently being modified by another transaction, avoiding wait times",
+      "To encrypt the result set",
+      "To force the query to use a specific index"
+    ],
+    answer: 1,
+    explanation: "NOLOCK improves performance by not requesting shared locks, but it carries the risk of 'Dirty Reads' (reading uncommitted data).",
+    hint: "Reading without waiting for locks."
+  },
+  {
+    id: 260,
+    difficulty: "hard",
+    category: "performance",
+    question: "How do RANK() and DENSE_RANK() differ when handling ties?",
+    options: [
+      "RANK() leaves gaps in the numbering sequence after a tie; DENSE_RANK() does not",
+      "DENSE_RANK() is only for integers",
+      "RANK() is faster than DENSE_RANK()",
+      "DENSE_RANK() ignores NULLs"
+    ],
+    answer: 0,
+    explanation: "If two rows are tied for 1st, RANK() will list them as 1, 1 and then skip to 3. DENSE_RANK() will list them as 1, 1 and then go to 2.",
+    hint: "Gaps vs No gaps."
+  },
+  {
+    id: 261,
+    difficulty: "medium",
+    category: "performance",
+    question: "What is the purpose of an 'EXPLAIN' or 'EXPLAIN PLAN' statement?",
+    options: [
+      "To provide a description of each column in the table",
+      "To show the execution path the query optimizer will take to retrieve data",
+      "To explain the SQL syntax to a beginner",
+      "To generate a report for the manager"
+    ],
+    answer: 1,
+    explanation: "The execution plan reveals if a query is performing full table scans or index seeks, which is critical for performance tuning.",
+    hint: "The optimizer's roadmap."
   }
 ];
