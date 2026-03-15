@@ -3803,4 +3803,218 @@ const questionBank = [
     answer: 1,
     explanation: "It ensures atomicity: either both business data and the event are saved, or neither is. A separate relayer then publishes messages from the outbox table to the broker."
   },
+  /* ======================================================
+     JAVA & SPRING BOOT MASTER QUESTION BANK (Batch 8/6)
+     Topics: Concurrency, Collections Internals, SOLID, Design Patterns
+     ====================================================== */
+  {
+    id: 316,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "What is the primary purpose of the 'volatile' keyword in Java multithreading?",
+    options: [
+      "To make a variable thread-safe and atomic",
+      "To ensure visibility of variable changes across threads by preventing local caching",
+      "To lock a block of code so only one thread can enter",
+      "To prevent a variable from being garbage collected"
+    ],
+    answer: 1,
+    explanation: "Volatile ensures that every read of a variable comes from main memory and every write goes directly to main memory, preventing threads from seeing stale cached values. It does NOT ensure atomicity."
+  },
+  {
+    id: 317,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "How does 'ReentrantLock' provide more flexibility than the 'synchronized' keyword?",
+    options: [
+      "It is faster in all scenarios",
+      "It is automatically released by the JVM",
+      "It offers features like tryLock() with timeouts, fair locking, and multiple Condition variables",
+      "It can only be used on classes, not methods"
+    ],
+    answer: 2,
+    explanation: "Unlike synchronized, ReentrantLock allows for non-blocking lock attempts (tryLock), the ability to interrupt a thread waiting for a lock, and fairness policies to prevent thread starvation."
+  },
+  {
+    id: 318,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "In Java 8+, what happens to a HashMap bucket (Node) when the number of items exceeds the 'TREEIFY_THRESHOLD'?",
+    options: [
+      "The map size is doubled immediately",
+      "The bucket is converted from a linked list to a balanced Red-Black Tree to improve search time from O(n) to O(log n)",
+      "The extra items are moved to a new bucket",
+      "An Exception is thrown"
+    ],
+    answer: 1,
+    explanation: "To prevent performance degradation during high collision scenarios, Java 8 converts lists to trees once a bucket reaches 8 entries (provided the total map capacity is at least 64)."
+  },
+  {
+    id: 319,
+    difficulty: "medium",
+    category: "Java Core",
+    question: "What is the difference between ConcurrentHashMap and Collections.synchronizedMap()?",
+    options: [
+      "ConcurrentHashMap locks the entire map; synchronizedMap locks segments",
+      "ConcurrentHashMap uses fine-grained locking (segments or CAS) allowing concurrent reads/writes; synchronizedMap locks the whole object",
+      "synchronizedMap is faster for multithreaded apps",
+      "ConcurrentHashMap allows null keys and values"
+    ],
+    answer: 1,
+    explanation: "ConcurrentHashMap allows multiple threads to access different parts of the map simultaneously without blocking each other, whereas synchronizedMap requires every thread to wait for a single global lock."
+  },
+  {
+    id: 320,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "Which of the following describes a 'Fail-Safe' iterator?",
+    options: [
+      "It throws a ConcurrentModificationException if the collection is modified during iteration",
+      "It works on a clone/snapshot of the collection (e.g., CopyOnWriteArrayList) and does not throw exceptions if the original is modified",
+      "It prevents any other thread from modifying the collection",
+      "It only works with primitive types"
+    ],
+    answer: 1,
+    explanation: "Fail-safe iterators operate on a copy of the data. This allows iteration to continue safely even if the original collection is modified by another thread."
+  },
+  {
+    id: 321,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "According to the 'Liskov Substitution Principle' (L in SOLID), what must be true for a subclass?",
+    options: [
+      "A subclass must always override every method of the parent",
+      "A subclass should be able to replace its parent class without breaking the application's correctness",
+      "A subclass should have more methods than the parent",
+      "Private methods in the parent must be protected in the child"
+    ],
+    answer: 1,
+    explanation: "LSP states that objects of a superclass should be replaceable with objects of its subclasses without affecting the functionality from the client's perspective."
+  },
+  {
+    id: 322,
+    difficulty: "medium",
+    category: "Design Patterns",
+    question: "Which pattern would you use to define a family of algorithms, encapsulate each one, and make them interchangeable at runtime?",
+    options: [
+      "Singleton Pattern",
+      "Strategy Pattern",
+      "Observer Pattern",
+      "Factory Pattern"
+    ],
+    answer: 1,
+    explanation: "The Strategy pattern allows a client to choose an algorithm implementation (like different payment methods) at runtime via composition."
+  },
+  {
+    id: 323,
+    difficulty: "hard",
+    category: "Design Patterns",
+    question: "What is the primary difference between the 'Adapter' and 'Decorator' patterns?",
+    options: [
+      "Adapter adds new behavior; Decorator changes the interface",
+      "Adapter converts one interface to another; Decorator adds new responsibilities to an object without changing its interface",
+      "They are identical",
+      "Decorator is only used for UI components"
+    ],
+    answer: 1,
+    explanation: "Adapter is about 'matching' two incompatible interfaces. Decorator is about 'enhancing' or adding features to an existing object dynamically."
+  },
+  {
+    id: 324,
+    difficulty: "medium",
+    category: "Java Core",
+    question: "What is the role of 'ThreadLocal' in Java?",
+    options: [
+      "To share a variable globally across all threads",
+      "To provide thread-local variables where each thread has its own independently initialized copy",
+      "To lock a thread during execution",
+      "To increase the priority of a specific thread"
+    ],
+    answer: 1,
+    explanation: "ThreadLocal is commonly used to store thread-specific data like Transaction IDs or User Sessions, ensuring they are not shared or corrupted by other threads."
+  },
+  {
+    id: 325,
+    difficulty: "hard",
+    category: "Java Core",
+    question: "What are common signs of a 'Memory Leak' in a Java application?",
+    options: [
+      "The application runs out of disk space",
+      "The 'Old Gen' memory usage steadily increases over time and does not drop after a Full GC",
+      "The CPU usage drops to 0%",
+      "The application restarts every 5 minutes"
+    ],
+    answer: 1,
+    explanation: "Memory leaks occur when objects are no longer needed but remain reachable (e.g., in a static List), preventing the Garbage Collector from reclaiming them."
+  },
+  {
+    id: 326,
+    difficulty: "medium",
+    category: "Microservices",
+    question: "In Microservices, what is the role of an 'API Gateway' compared to a 'Service Mesh'?",
+    options: [
+      "They are the same thing",
+      "API Gateway handles North-South traffic (client to server); Service Mesh handles East-West traffic (service to service)",
+      "Service Mesh is for UI only",
+      "API Gateway is used to store database passwords"
+    ],
+    answer: 1,
+    explanation: "The Gateway is the entry point for external clients. A Service Mesh (like Istio) manages internal communication, security, and observability between the microservices themselves."
+  },
+  {
+    id: 327,
+    difficulty: "hard",
+    category: "Database",
+    question: "What is the main difference between a 'Clustered' and 'Non-Clustered' index?",
+    options: [
+      "Clustered indexes are slower",
+      "A Clustered index determines the physical order of data in the table; a Non-Clustered index is a separate structure with pointers to the data",
+      "You can have many Clustered indexes but only one Non-Clustered index",
+      "Non-Clustered indexes cannot be used for strings"
+    ],
+    answer: 1,
+    explanation: "Because a Clustered index physically sorts the table rows, there can only be one per table (usually the Primary Key). Non-Clustered indexes are like a book's index at the back."
+  },
+  {
+    id: 328,
+    difficulty: "hard",
+    category: "Database",
+    question: "Which SQL Isolation Level prevents 'Non-Repeatable Reads' but might still allow 'Phantom Reads'?",
+    options: [
+      "Read Uncommitted",
+      "Read Committed",
+      "Repeatable Read",
+      "Serializable"
+    ],
+    answer: 2,
+    explanation: "Repeatable Read ensures that if you read a row twice, the data won't change. However, it doesn't prevent new rows (phantoms) from being added to the range by another transaction."
+  },
+  {
+    id: 329,
+    difficulty: "medium",
+    category: "Database",
+    question: "What is the requirement for a table to be in Third Normal Form (3NF)?",
+    options: [
+      "It must have a Primary Key",
+      "It must be in 2NF and have no transitive functional dependencies (non-key columns must depend only on the primary key)",
+      "It must not have any NULL values",
+      "It must be split into at least 10 tables"
+    ],
+    answer: 1,
+    explanation: "3NF ensures that data is non-redundant. Non-key attributes must not depend on other non-key attributes; they must depend 'on the key, the whole key, and nothing but the key'."
+  },
+  {
+    id: 330,
+    difficulty: "medium",
+    category: "Algorithms",
+    question: "Which data structure is most efficient for implementing an LRU (Least Recently Used) Cache?",
+    options: [
+      "A simple Array",
+      "A HashMap combined with a Doubly Linked List (or a LinkedHashMap in Java)",
+      "A Binary Search Tree",
+      "A Stack"
+    ],
+    answer: 1,
+    explanation: "A HashMap provides O(1) lookup, and a Doubly Linked List allows O(1) removal and addition of elements to track the order of access."
+  } 
 ];
