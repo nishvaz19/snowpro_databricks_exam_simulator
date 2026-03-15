@@ -5407,6 +5407,66 @@ explanation:"If the data is small, adding workers increases the time spent movin
   answer: 1,
   explanation: "Shell scripts are used for operational tasks like triggering CLI commands, managing environment setup, and handling pre/post-job logic.",
   hint: "Operational glue logic."
-} 
+},
+   {
+  id: 338,
+  difficulty: "hard",
+  category: "performance",
+  question: "You observe a 'straggler' task in Spark UI where one task takes 20x longer than others. What is the most likely cause?",
+  options: ["Network latency", "Data Skew", "Small file problem", "Driver failure"],
+  answer: 1,
+  explanation: "Data Skew occurs when a specific key has significantly more records than others, causing one partition to be much larger and taking longer to process.",
+  hint: "Think about uneven data distribution."
+},
+{
+  id: 339,
+  difficulty: "medium",
+  category: "streaming",
+  question: "Which mechanism in Structured Streaming prevents the state store from growing infinitely when performing windowed aggregations?",
+  options: ["Checkpointing", "Watermarking", "Trigger.Once", "Auto Loader"],
+  answer: 1,
+  explanation: "Watermarking defines how late data can be; once the watermark passes the window end time, the state for that window is dropped.",
+  hint: "Handles late-arriving data."
+},
+{
+  id: 340,
+  difficulty: "easy",
+  category: "governance",
+  question: "Unity Catalog introduces a standard for referencing tables. What is this called?",
+  options: ["Flat Namespace", "2-Layer Namespace", "3-Layer Namespace", "Hive Metastore"],
+  answer: 2,
+  explanation: "Unity Catalog uses a 3-layer namespace: catalog.schema.table (or catalog.database.table).",
+  hint: "Catalog, Schema, Table."
+},
+{
+  id: 341,
+  difficulty: "medium",
+  category: "performance",
+  question: "How does 'Predicate Pushdown' improve query performance in Databricks?",
+  options: ["By increasing shuffle partitions", "By filtering data at the storage layer before it enters the Spark engine", "By caching all data in memory", "By using Python UDFs"],
+  answer: 1,
+  explanation: "Predicate pushdown allows Spark to 'push' filters (WHERE clauses) down to the Parquet/Delta file level, reducing I/O by reading only relevant data.",
+  hint: "Filtering at the source."
+},
+{
+  id: 342,
+  difficulty: "medium",
+  category: "performance",
+  question: "What specific process does the OPTIMIZE command use to resolve the small file problem?",
+  options: ["Z-Ordering", "Bin-Packing", "Broadcast Join", "Predicate Pushdown"],
+  answer: 1,
+  explanation: "OPTIMIZE uses bin-packing to coalesce many small files into larger, more efficient files (typically around 1GB).",
+  hint: "Combining small files into a 'bin'."
+},
+{
+  id: 343,
+  difficulty: "easy",
+  category: "security",
+  question: "To avoid hard-coding credentials in notebooks, what Databricks feature should be used?",
+  options: ["Environment Variables", "Secret Scopes", "Hard-coded strings", "DBFS root"],
+  answer: 1,
+  explanation: "Secret Scopes allow you to store sensitive credentials securely and reference them in notebooks using dbutils.secrets.get().",
+  hint: "Securely managing keys."
+}
 ];  
 
