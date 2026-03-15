@@ -5467,6 +5467,102 @@ explanation:"If the data is small, adding workers increases the time spent movin
   answer: 1,
   explanation: "Secret Scopes allow you to store sensitive credentials securely and reference them in notebooks using dbutils.secrets.get().",
   hint: "Securely managing keys."
-}
+},
+/* ======================================================
+WORKFLOWS: PARENT-CHILD TASKS & ERROR HANDLING (344 - 349)
+====================================================== */
+{
+  id: 344,
+  difficulty: "hard",
+  category: "orchestration",
+  question: "In a Databricks Job with multiple tasks, which utility is used to programmatically pass a dynamic value (e.g., a processed file path) from a parent task to a child task?",
+  options: ["dbutils.widgets.get()", "dbutils.jobs.taskValues.set()", "os.environ.put()", "spark.conf.set()"],
+  answer: 1,
+  explanation: "The taskValues utility (set and get) allows tasks to share metadata or dynamic values with downstream tasks within the same job run.",
+  hint: "Jobs utility for Task Values."
+},
+{
+  id: 345,
+  difficulty: "medium",
+  category: "orchestration",
+  question: "A Data Engineer wants 'Task B' to run only if the preceding 'Task A' fails (e.g., for error cleanup or logging). Which configuration should be applied to Task B?",
+  options: ["Depends on: Task A (Successful)", "Depends on: Task A (Failed)", "Run if: Any failed", "Depends on: Task A (Finished)"],
+  answer: 1,
+  explanation: "Databricks Workflows allow you to trigger downstream tasks based on the specific outcome (Success or Failure) of their parent tasks.",
+  hint: "Failure dependency."
+},
+{
+  id: 346,
+  difficulty: "medium",
+  category: "monitoring",
+  question: "If you need to receive an alert specifically when a critical 'Gold Layer' task fails, but NOT for 'Bronze' or 'Silver' failures in the same job, where should you configure the alert?",
+  options: ["Job-level 'On Failure' settings", "Task-level 'On Failure' notification settings", "Cluster-level event logs", "Unity Catalog Audit log"],
+  answer: 1,
+  explanation: "Task-level notifications provide granular monitoring, allowing alerts for specific high-priority tasks rather than the entire pipeline status.",
+  hint: "Task-level configuration."
+},
+{
+  id: 347,
+  difficulty: "medium",
+  category: "monitoring",
+  question: "Besides Email, which feature in Databricks allows Job/Task alerts to be sent to external tools like Slack, Microsoft Teams, or PagerDuty?",
+  options: ["System Notifications (Webhooks)", "Spark UI Storage Tab", "DBFS Mount Points", "Delta Sharing Recipient"],
+  answer: 0,
+  explanation: "System Notifications support Webhooks, which can be configured to send job status updates to third-party communication and incident management platforms.",
+  hint: "Webhooks for external apps."
+},
+{
+  id: 348,
+  difficulty: "medium",
+  category: "orchestration",
+  question: "A production task fails occasionally due to transient network issues. What is the most efficient way to handle this without manual intervention?",
+  options: ["Wrap the entire notebook in a try-except block", "Configure a 'Retry Policy' within the task settings", "Set 'Maximum Concurrent Runs' to 10", "Restart the entire cluster manually"],
+  answer: 1,
+  explanation: "Task Retry Policies allow you to define the number of attempts and the interval between them, providing resilience against transient failures.",
+  hint: "Task Retry Policy."
+},
+{
+  id: 349,
+  difficulty: "hard",
+  category: "orchestration",
+  question: "Which Databricks Workflow task type allows for branching logic, directing the flow to different tasks based on a boolean expression?",
+  options: ["Notebook task", "Run Job task", "If/Else condition task", "ForEach task"],
+  answer: 2,
+  explanation: "The If/Else condition task evaluates a boolean expression (often using task values from previous steps) to determine which branch of the workflow to execute.",
+  hint: "Conditional branching."
+},
+/* ======================================================
+WORKFLOWS: CONFIG-DRIVEN BRANCHING & DYNAMIC JOBS (350 - 351)
+====================================================== */
+{
+  id: 350,
+  difficulty: "hard",
+  category: "orchestration",
+  question: "A File Arrival Trigger starts a parent job. The first task reads a 'metadata_config' table to determine the target table name and processing logic based on the file prefix. How should this 'Target_Type' be passed to downstream tasks for branching?",
+  options: [
+    "Write the value to a temporary CSV file in DBFS",
+    "Use dbutils.jobs.taskValues.set('target_type', value) in the lookup notebook",
+    "Pass it as a Spark configuration property (spark.conf.set)",
+    "Hard-code the logic in every possible downstream notebook"
+  ],
+  answer: 1,
+  explanation: "By setting a taskValue in the first (lookup) task, you can reference it in 'If/Else' condition tasks or as parameters in subsequent tasks using the {{tasks.lookup.values.target_type}} syntax.",
+  hint: "Use taskValues for workflow-level variables."
+},
+{
+  id: 351,
+  difficulty: "hard",
+  category: "orchestration",
+  question: "To trigger a specific 'Child Job' and pass it the file path processed by a 'Parent Job', which Task Type and parameter syntax should be used in the Databricks Workflow UI?",
+  options: [
+    "Type: Notebook; Param: dbutils.widgets.get('path')",
+    "Type: Run Job; Param: {{tasks.parent_task.values.path}}",
+    "Type: Python Script; Param: sys.argv[1]",
+    "Type: Pipeline; Param: context.file_path"
+  ],
+  answer: 1,
+  explanation: "The 'Run Job' task type allows you to trigger another existing job. You can parameterize that child job by passing values from the current run using dynamic value references (double curly braces).",
+  hint: "Run Job task with dynamic references."
+},   
 ];  
 
