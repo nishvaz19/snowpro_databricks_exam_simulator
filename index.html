@@ -22,22 +22,44 @@
         }
         .mg-atlas { background: #13aa52; } /* MongoDB Green */
         .mg-perf { background: #00684a; }  /* Deep Green */
-        /* Snowflake Domains */
-.sn-core { background: #29b5e8; }
+        /* Optimized Backgrounds for White Text Contrast */
+
+/* Snowflake Domains */
+.sn-core { background: #4682B4; }     /* Steel Blue */
 .sn-compute { background: #005685; }
 .sn-storage { background: #1a6d91; }
-.sn-services { background: #5db0d7; }
+.sn-services { background: #00BFFF; }  /* Deep Sky Blue (Azure-like) */
+.sn-cost { background: #4682B6; }  /* Deeper Sky Blue */
 
 /* Kafka Domains */
-.kf-core { background: #000000; color: #fff; }
+.kf-core { background: #000000; }
 .kf-stream { background: #333333; }
 .kf-connect { background: #555555; }
 .kf-ops { background: #777777; }
-        .r-core { background: #61dafb; color: #20232a !important; } /* React Blue */
-        .r-perf { background: #4a5568; }
+.kf-cost { background: #4682B6; }  /* Deeper Sky Blue */
+        
+/* Technology & React Domains */
+.r-hooks { background: #F08080; color: white !important; } /* Light Coral */
+.r-core { background: #4682B4; color: white !important; }  /* Steel Blue */
+.r-state { background: #CD5C5C; } /* Indian Red */
+.r-cost { background: #4682B6; }  /* Deeper Sky Blue */
+.r-perf { background: #4a5568; }
         .agent { background: #f59e0b; }    
         .container { max-width: 1100px; margin: 0 auto; }
 
+/* Databricks & Data Domains */
+.delta, .db-delta { background: #059669; } /* Darker Emerald */
+.spark, .db-spark { background: #D97706; } /* Darker Amber */
+.streaming, .db-stream { background: #DC2626; } /* Stronger Red */
+.db-cost { background: #4682B6; }  /* Deeper Sky Blue */
+
+/* AI & Cloud Domains */
+.rag { background: #2563EB; }   /* Royal Blue */
+.infra { background: #7C3AED; } /* Deep Violet */
+.az-data { background: #0078D4; } 
+.aws-core { background: #E67E22; color: white !important; } /* Darker Orange */
+.cost { background: #4682B6; }  /* Deeper Sky Blue */
+     
         /* Selector Card */
         .exam-selector-card {
             background: white;
@@ -187,8 +209,7 @@
         <a href="practice.html">💻 SQL Lab</a>
         <a href="analytics.html">📊 Analytics</a>
     </div>
-
-    <div id="mongodb-cloud" class="cloud-section" style="background: #e3f2fd;">
+    <div id="mongodb-cloud" class="cloud-section" style="background: #f1f5f9;">
     <h2 style="color: #13aa52;">MongoDB Atlas Cloud</h2>
     <div class="search-box"><input id="mgSearch" placeholder="Search MongoDB..."></div>
     <div class="cloud-display" id="mgCloud"></div>
@@ -220,7 +241,7 @@
         </div>
     </div>
 
-    <div id="azure-cloud" class="cloud-section" style="background: #f0f4f8;">
+    <div id="azure-cloud" class="cloud-section" style="background: #e2e8f0;">
         <h2 style="color: #0078d4;">Azure Solutions Cloud</h2>
         <div class="search-box"><input id="azSearch" placeholder="Search Azure..."></div>
         <div class="cloud-display" id="azCloud"></div>
@@ -231,7 +252,7 @@
         <div class="search-box"><input id="awsSearch" placeholder="Search AWS..." style="background: #37475a; color: white; border:none;"></div>
         <div class="cloud-display" id="awsCloud"></div>
     </div>
-<div id="snowflake-cloud" class="cloud-section" style="background: #e1f5fe;">
+<div id="snowflake-cloud" class="cloud-section" style="background: #f1f5f9;">
     <h2 style="color: #29b5e8;">Snowflake Data Cloud</h2>
     <div class="search-box"><input id="snSearch" placeholder="Search Snowflake (Micro-partitions, Zero-copy...)"></div>
     <div class="cloud-display" id="snCloud"></div>
