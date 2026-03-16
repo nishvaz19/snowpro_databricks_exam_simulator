@@ -2555,8 +2555,1061 @@ const mongodbBatch4 = [
     answer: 2,
     explanation: "MongoDB was first released as an open-source project in February 2009.",
     hint: "End of the 2000s."
+  },
+  {
+    id: 201,
+    difficulty: "medium",
+    category: "infrastructure",
+    question: "Which MongoDB deployment topology provides automatic failover and redundancy?",
+    options: ["Standalone Server", "Replica Set", "Single Node Cluster", "Local Instance"],
+    answer: 1,
+    explanation: "Replica Sets provide redundancy and automatic failover by maintaining multiple copies of the data across nodes.",
+    hint: "High availability cluster."
+  },
+  {
+    id: 202,
+    difficulty: "hard",
+    category: "operations",
+    question: "Which MongoDB utility is primarily used for monitoring real-time database performance metrics like connections and memory usage?",
+    options: ["mongodump", "mongostat", "mongoexport", "mongorestore"],
+    answer: 1,
+    explanation: "mongostat provides a quick overview of MongoDB instance performance including inserts, queries, connections, and memory.",
+    hint: "Real-time stats tool."
+  },
+  {
+    id: 203,
+    difficulty: "medium",
+    category: "operations",
+    question: "What does the 'mongotop' tool report?",
+    options: [
+      "Query execution plans",
+      "Time spent reading and writing data per collection",
+      "CPU usage of MongoDB",
+      "Network latency between nodes"
+    ],
+    answer: 1,
+    explanation: "mongotop tracks how much time MongoDB spends reading and writing data for each collection.",
+    hint: "Top-like monitoring tool."
+  },
+  {
+    id: 204,
+    difficulty: "hard",
+    category: "devops",
+    question: "Which infrastructure-as-code tool is commonly used to automate MongoDB cluster deployment in cloud environments?",
+    options: ["Docker", "Terraform", "Kubernetes", "Jenkins"],
+    answer: 1,
+    explanation: "Terraform is widely used for infrastructure provisioning including MongoDB clusters on AWS, Azure, and GCP.",
+    hint: "IaC provisioning tool."
+  },
+  {
+    id: 205,
+    difficulty: "medium",
+    category: "devops",
+    question: "Which configuration management tool is commonly used to automate MongoDB installation and configuration across servers?",
+    options: ["Git", "Ansible", "Nginx", "Redis"],
+    answer: 1,
+    explanation: "Ansible automates server provisioning and application deployment including MongoDB configuration.",
+    hint: "Agentless automation."
+  },
+  {
+    id: 206,
+    difficulty: "hard",
+    category: "monitoring",
+    question: "Which monitoring stack is commonly used to visualize MongoDB metrics collected from exporters?",
+    options: [
+      "ELK Stack",
+      "Prometheus and Grafana",
+      "Hadoop and Spark",
+      "Kibana and Redis"
+    ],
+    answer: 1,
+    explanation: "Prometheus collects metrics while Grafana provides dashboards and visualization.",
+    hint: "Popular observability stack."
+  },
+  {
+    id: 207,
+    difficulty: "medium",
+    category: "atlas",
+    question: "What is MongoDB Ops Manager primarily used for?",
+    options: [
+      "Client-side query optimization",
+      "Managing and monitoring MongoDB clusters on-premises",
+      "Writing aggregation queries",
+      "Data transformation pipelines"
+    ],
+    answer: 1,
+    explanation: "Ops Manager provides automation, monitoring, and backup management for on-prem MongoDB deployments.",
+    hint: "Enterprise management platform."
+  },
+  {
+    id: 208,
+    difficulty: "hard",
+    category: "security",
+    question: "Which MongoDB feature encrypts data while it is stored on disk?",
+    options: [
+      "TLS Encryption",
+      "Encryption at Rest",
+      "RBAC",
+      "IP Whitelisting"
+    ],
+    answer: 1,
+    explanation: "Encryption at Rest ensures data files are encrypted on disk to protect against unauthorized access.",
+    hint: "Disk-level encryption."
+  },
+  {
+    id: 209,
+    difficulty: "medium",
+    category: "security",
+    question: "What is the purpose of Role-Based Access Control (RBAC) in MongoDB?",
+    options: [
+      "To optimize queries",
+      "To manage user permissions and access privileges",
+      "To shard collections",
+      "To compress database files"
+    ],
+    answer: 1,
+    explanation: "RBAC allows administrators to assign permissions to users based on defined roles.",
+    hint: "User privilege model."
+  },
+  {
+    id: 210,
+    difficulty: "hard",
+    category: "performance",
+    question: "What is the purpose of 'capacity planning' for MongoDB clusters?",
+    options: [
+      "Writing queries faster",
+      "Estimating resource requirements such as storage, CPU, and memory for future workloads",
+      "Reducing the number of collections",
+      "Migrating databases automatically"
+    ],
+    answer: 1,
+    explanation: "Capacity planning ensures the cluster can handle future workload growth without performance degradation.",
+    hint: "Future resource planning."
+  },
+  {
+    id: 211,
+    difficulty: "medium",
+    category: "devops",
+    question: "Why is MongoDB commonly integrated into CI/CD pipelines?",
+    options: [
+      "To automate testing, deployment, and schema updates",
+      "To replace application servers",
+      "To generate dashboards",
+      "To compress logs"
+    ],
+    answer: 0,
+    explanation: "CI/CD pipelines automate application and database deployment processes.",
+    hint: "Automation pipeline."
+  },
+  {
+    id: 212,
+    difficulty: "hard",
+    category: "operations",
+    question: "Which process is responsible for the core database server functionality in MongoDB?",
+    options: ["mongos", "mongod", "mongoctl", "mongoagent"],
+    answer: 1,
+    explanation: "mongod is the primary database server process responsible for handling data requests and storage.",
+    hint: "Main database daemon."
+  },
+  {
+    id: 213,
+    difficulty: "medium",
+    category: "infrastructure",
+    question: "In a sharded MongoDB cluster, which component stores metadata about the cluster?",
+    options: ["Shard Router", "Config Servers", "Primary Node", "Replica Manager"],
+    answer: 1,
+    explanation: "Config Servers store metadata including chunk distribution and cluster configuration.",
+    hint: "Metadata storage."
+  },
+  {
+    id: 214,
+    difficulty: "hard",
+    category: "monitoring",
+    question: "Which metric is most important when diagnosing MongoDB query performance issues?",
+    options: [
+      "Disk manufacturer",
+      "Query execution time and documents examined",
+      "Operating system version",
+      "Hostname configuration"
+    ],
+    answer: 1,
+    explanation: "Query performance is typically diagnosed by examining execution time and how many documents are scanned.",
+    hint: "Execution metrics."
+  },
+  {
+    id: 215,
+    difficulty: "medium",
+    category: "linux",
+    question: "Which operating system environment is most commonly used for production MongoDB deployments?",
+    options: ["Windows Server", "Linux", "macOS", "ChromeOS"],
+    answer: 1,
+    explanation: "Most enterprise MongoDB deployments run on Linux due to stability and performance.",
+    hint: "Common server OS."
+  },
+  {
+    id: 216,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Why is sharding used in MongoDB?",
+    options: [
+      "To compress documents",
+      "To distribute data across multiple servers for scalability",
+      "To encrypt data",
+      "To reduce index size"
+    ],
+    answer: 1,
+    explanation: "Sharding horizontally partitions data across multiple nodes to scale large datasets and workloads.",
+    hint: "Horizontal scaling."
+  },
+  {
+    id: 217,
+    difficulty: "medium",
+    category: "performance",
+    question: "Which operation helps analyze how MongoDB executes a query?",
+    options: ["profile()", "explain()", "monitor()", "trace()"],
+    answer: 1,
+    explanation: "The explain() method reveals query plans and execution statistics.",
+    hint: "Query plan analysis."
+  },
+  {
+    id: 218,
+    difficulty: "hard",
+    category: "governance",
+    question: "What is the primary purpose of database governance in MongoDB environments?",
+    options: [
+      "Improving network speed",
+      "Establishing policies for schema design, security, and data lifecycle management",
+      "Reducing collection count",
+      "Automating backups"
+    ],
+    answer: 1,
+    explanation: "Governance ensures consistent standards for schema design, access control, and compliance.",
+    hint: "Policy management."
+  },
+  {
+    id: 219,
+    difficulty: "medium",
+    category: "operations",
+    question: "Which MongoDB command is commonly used to check server status and resource usage?",
+    options: ["db.serverStatus()", "db.clusterInfo()", "db.systemStats()", "db.monitor()"],
+    answer: 0,
+    explanation: "serverStatus() returns detailed statistics about the running MongoDB instance.",
+    hint: "Server health command."
+  },
+  {
+    id: 220,
+    difficulty: "hard",
+    category: "architecture",
+    question: "What is the main advantage of designing MongoDB schemas based on application query patterns?",
+    options: [
+      "It increases document size",
+      "It optimizes read performance by reducing joins",
+      "It prevents indexing",
+      "It eliminates replication"
+    ],
+    answer: 1,
+    explanation: "MongoDB schema design typically follows query patterns to minimize joins and improve performance.",
+    hint: "Query-driven schema design."
   }
 ];
 
-// Final update
+//  update
 questionBank.push(...mongodbBatch4);
+const mongodbBatch5 = [
+  {
+    id: 221,
+    difficulty: "medium",
+    category: "infrastructure",
+    question: "Which MongoDB deployment topology provides automatic failover and redundancy?",
+    options: ["Standalone Server", "Replica Set", "Single Node Cluster", "Local Instance"],
+    answer: 1,
+    explanation: "Replica Sets provide redundancy and automatic failover by maintaining multiple copies of the data across nodes.",
+    hint: "High availability cluster."
+  },
+  {
+    id: 222,
+    difficulty: "hard",
+    category: "operations",
+    question: "Which MongoDB utility is primarily used for monitoring real-time database performance metrics like connections and memory usage?",
+    options: ["mongodump", "mongostat", "mongoexport", "mongorestore"],
+    answer: 1,
+    explanation: "mongostat provides a quick overview of MongoDB instance performance including inserts, queries, connections, and memory.",
+    hint: "Real-time stats tool."
+  },
+  {
+    id: 223,
+    difficulty: "medium",
+    category: "operations",
+    question: "What does the 'mongotop' tool report?",
+    options: [
+      "Query execution plans",
+      "Time spent reading and writing data per collection",
+      "CPU usage of MongoDB",
+      "Network latency between nodes"
+    ],
+    answer: 1,
+    explanation: "mongotop tracks how much time MongoDB spends reading and writing data for each collection.",
+    hint: "Top-like monitoring tool."
+  },
+  {
+    id: 224,
+    difficulty: "hard",
+    category: "devops",
+    question: "Which infrastructure-as-code tool is commonly used to automate MongoDB cluster deployment in cloud environments?",
+    options: ["Docker", "Terraform", "Kubernetes", "Jenkins"],
+    answer: 1,
+    explanation: "Terraform is widely used for infrastructure provisioning including MongoDB clusters on AWS, Azure, and GCP.",
+    hint: "IaC provisioning tool."
+  },
+  {
+    id: 225,
+    difficulty: "medium",
+    category: "devops",
+    question: "Which configuration management tool is commonly used to automate MongoDB installation and configuration across servers?",
+    options: ["Git", "Ansible", "Nginx", "Redis"],
+    answer: 1,
+    explanation: "Ansible automates server provisioning and application deployment including MongoDB configuration.",
+    hint: "Agentless automation."
+  },
+  {
+    id: 226,
+    difficulty: "hard",
+    category: "monitoring",
+    question: "Which monitoring stack is commonly used to visualize MongoDB metrics collected from exporters?",
+    options: [
+      "ELK Stack",
+      "Prometheus and Grafana",
+      "Hadoop and Spark",
+      "Kibana and Redis"
+    ],
+    answer: 1,
+    explanation: "Prometheus collects metrics while Grafana provides dashboards and visualization.",
+    hint: "Popular observability stack."
+  },
+  {
+    id: 227,
+    difficulty: "medium",
+    category: "atlas",
+    question: "What is MongoDB Ops Manager primarily used for?",
+    options: [
+      "Client-side query optimization",
+      "Managing and monitoring MongoDB clusters on-premises",
+      "Writing aggregation queries",
+      "Data transformation pipelines"
+    ],
+    answer: 1,
+    explanation: "Ops Manager provides automation, monitoring, and backup management for on-prem MongoDB deployments.",
+    hint: "Enterprise management platform."
+  },
+  {
+    id: 228,
+    difficulty: "hard",
+    category: "security",
+    question: "Which MongoDB feature encrypts data while it is stored on disk?",
+    options: [
+      "TLS Encryption",
+      "Encryption at Rest",
+      "RBAC",
+      "IP Whitelisting"
+    ],
+    answer: 1,
+    explanation: "Encryption at Rest ensures data files are encrypted on disk to protect against unauthorized access.",
+    hint: "Disk-level encryption."
+  },
+  {
+    id: 229,
+    difficulty: "medium",
+    category: "security",
+    question: "What is the purpose of Role-Based Access Control (RBAC) in MongoDB?",
+    options: [
+      "To optimize queries",
+      "To manage user permissions and access privileges",
+      "To shard collections",
+      "To compress database files"
+    ],
+    answer: 1,
+    explanation: "RBAC allows administrators to assign permissions to users based on defined roles.",
+    hint: "User privilege model."
+  },
+  {
+    id: 230,
+    difficulty: "hard",
+    category: "performance",
+    question: "What is the purpose of 'capacity planning' for MongoDB clusters?",
+    options: [
+      "Writing queries faster",
+      "Estimating resource requirements such as storage, CPU, and memory for future workloads",
+      "Reducing the number of collections",
+      "Migrating databases automatically"
+    ],
+    answer: 1,
+    explanation: "Capacity planning ensures the cluster can handle future workload growth without performance degradation.",
+    hint: "Future resource planning."
+  },
+  {
+    id: 231,
+    difficulty: "medium",
+    category: "devops",
+    question: "Why is MongoDB commonly integrated into CI/CD pipelines?",
+    options: [
+      "To automate testing, deployment, and schema updates",
+      "To replace application servers",
+      "To generate dashboards",
+      "To compress logs"
+    ],
+    answer: 0,
+    explanation: "CI/CD pipelines automate application and database deployment processes.",
+    hint: "Automation pipeline."
+  },
+  {
+    id: 232,
+    difficulty: "hard",
+    category: "operations",
+    question: "Which process is responsible for the core database server functionality in MongoDB?",
+    options: ["mongos", "mongod", "mongoctl", "mongoagent"],
+    answer: 1,
+    explanation: "mongod is the primary database server process responsible for handling data requests and storage.",
+    hint: "Main database daemon."
+  },
+  {
+    id: 233,
+    difficulty: "medium",
+    category: "infrastructure",
+    question: "In a sharded MongoDB cluster, which component stores metadata about the cluster?",
+    options: ["Shard Router", "Config Servers", "Primary Node", "Replica Manager"],
+    answer: 1,
+    explanation: "Config Servers store metadata including chunk distribution and cluster configuration.",
+    hint: "Metadata storage."
+  },
+  {
+    id: 234,
+    difficulty: "hard",
+    category: "monitoring",
+    question: "Which metric is most important when diagnosing MongoDB query performance issues?",
+    options: [
+      "Disk manufacturer",
+      "Query execution time and documents examined",
+      "Operating system version",
+      "Hostname configuration"
+    ],
+    answer: 1,
+    explanation: "Query performance is typically diagnosed by examining execution time and how many documents are scanned.",
+    hint: "Execution metrics."
+  },
+  {
+    id: 235,
+    difficulty: "medium",
+    category: "linux",
+    question: "Which operating system environment is most commonly used for production MongoDB deployments?",
+    options: ["Windows Server", "Linux", "macOS", "ChromeOS"],
+    answer: 1,
+    explanation: "Most enterprise MongoDB deployments run on Linux due to stability and performance.",
+    hint: "Common server OS."
+  },
+  {
+    id: 236,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Why is sharding used in MongoDB?",
+    options: [
+      "To compress documents",
+      "To distribute data across multiple servers for scalability",
+      "To encrypt data",
+      "To reduce index size"
+    ],
+    answer: 1,
+    explanation: "Sharding horizontally partitions data across multiple nodes to scale large datasets and workloads.",
+    hint: "Horizontal scaling."
+  },
+  {
+    id: 237,
+    difficulty: "medium",
+    category: "performance",
+    question: "Which operation helps analyze how MongoDB executes a query?",
+    options: ["profile()", "explain()", "monitor()", "trace()"],
+    answer: 1,
+    explanation: "The explain() method reveals query plans and execution statistics.",
+    hint: "Query plan analysis."
+  },
+  {
+    id: 238,
+    difficulty: "hard",
+    category: "governance",
+    question: "What is the primary purpose of database governance in MongoDB environments?",
+    options: [
+      "Improving network speed",
+      "Establishing policies for schema design, security, and data lifecycle management",
+      "Reducing collection count",
+      "Automating backups"
+    ],
+    answer: 1,
+    explanation: "Governance ensures consistent standards for schema design, access control, and compliance.",
+    hint: "Policy management."
+  },
+  {
+    id: 239,
+    difficulty: "medium",
+    category: "operations",
+    question: "Which MongoDB command is commonly used to check server status and resource usage?",
+    options: ["db.serverStatus()", "db.clusterInfo()", "db.systemStats()", "db.monitor()"],
+    answer: 0,
+    explanation: "serverStatus() returns detailed statistics about the running MongoDB instance.",
+    hint: "Server health command."
+  },
+  {
+    id: 240,
+    difficulty: "hard",
+    category: "architecture",
+    question: "What is the main advantage of designing MongoDB schemas based on application query patterns?",
+    options: [
+      "It increases document size",
+      "It optimizes read performance by reducing joins",
+      "It prevents indexing",
+      "It eliminates replication"
+    ],
+    answer: 1,
+    explanation: "MongoDB schema design typically follows query patterns to minimize joins and improve performance.",
+    hint: "Query-driven schema design."
+  }
+];
+
+// Append to master database
+questionBank.push(...mongodbBatch5);
+const mongodbBatch6 = [
+  {
+    id: 240,
+    difficulty: "hard",
+    category: "sharding",
+    question: "What is the main risk of choosing a monotonically increasing shard key (e.g., timestamp) in MongoDB?",
+    options: [
+      "Data compression failures",
+      "Hot shard problem due to uneven write distribution",
+      "Index corruption",
+      "Replica lag"
+    ],
+    answer: 1,
+    explanation: "Monotonically increasing shard keys cause new writes to target the same shard, creating a hot shard bottleneck.",
+    hint: "Single shard overload."
+  },
+  {
+    id: 241,
+    difficulty: "medium",
+    category: "replication",
+    question: "What is the function of the MongoDB 'oplog'?",
+    options: [
+      "Stores index metadata",
+      "Records all write operations for replication",
+      "Tracks user authentication events",
+      "Stores query execution plans"
+    ],
+    answer: 1,
+    explanation: "The oplog (operations log) records all changes to the database so secondary nodes can replicate them.",
+    hint: "Replication log."
+  },
+  {
+    id: 242,
+    difficulty: "hard",
+    category: "replication",
+    question: "Why is oplog size important in a MongoDB replica set?",
+    options: [
+      "It determines query performance",
+      "It defines how long secondaries can fall behind before requiring resync",
+      "It controls index rebuild speed",
+      "It limits document size"
+    ],
+    answer: 1,
+    explanation: "A larger oplog allows secondaries to stay in sync even if replication lag occurs.",
+    hint: "Replication buffer."
+  },
+  {
+    id: 243,
+    difficulty: "medium",
+    category: "consistency",
+    question: "What does 'writeConcern: majority' guarantee?",
+    options: [
+      "Writes are stored on disk immediately",
+      "Writes are acknowledged after being committed to a majority of replica set members",
+      "Writes are executed faster",
+      "Writes are stored only on the primary node"
+    ],
+    answer: 1,
+    explanation: "Majority write concern ensures durability by confirming replication to most nodes.",
+    hint: "Durability guarantee."
+  },
+  {
+    id: 244,
+    difficulty: "medium",
+    category: "consistency",
+    question: "What does 'readConcern: majority' ensure?",
+    options: [
+      "Reads only return committed data replicated to a majority of nodes",
+      "Reads are faster",
+      "Reads bypass indexes",
+      "Reads come only from secondaries"
+    ],
+    answer: 0,
+    explanation: "Majority read concern ensures that returned data is fully committed across the replica set.",
+    hint: "Consistent reads."
+  },
+  {
+    id: 245,
+    difficulty: "hard",
+    category: "transactions",
+    question: "MongoDB multi-document ACID transactions were introduced in which version?",
+    options: ["3.2", "3.6", "4.0", "5.0"],
+    answer: 2,
+    explanation: "MongoDB 4.0 introduced multi-document ACID transactions for replica sets.",
+    hint: "Major architectural upgrade."
+  },
+  {
+    id: 246,
+    difficulty: "medium",
+    category: "performance",
+    question: "Which command helps analyze the execution plan of a MongoDB query?",
+    options: [
+      "db.analyze()",
+      "db.profile()",
+      "explain()",
+      "db.trace()"
+    ],
+    answer: 2,
+    explanation: "The explain() method shows how MongoDB executes queries and whether indexes are used.",
+    hint: "Query planner."
+  },
+  {
+    id: 247,
+    difficulty: "hard",
+    category: "indexing",
+    question: "What is the purpose of a 'compound index' in MongoDB?",
+    options: [
+      "To encrypt data",
+      "To index multiple fields within a single index structure",
+      "To replicate documents",
+      "To compress collections"
+    ],
+    answer: 1,
+    explanation: "Compound indexes support queries that filter or sort on multiple fields.",
+    hint: "Multi-field index."
+  },
+  {
+    id: 248,
+    difficulty: "medium",
+    category: "monitoring",
+    question: "Which MongoDB command returns detailed server metrics including memory usage and connections?",
+    options: [
+      "db.serverStatus()",
+      "db.systemStats()",
+      "db.health()",
+      "db.clusterStatus()"
+    ],
+    answer: 0,
+    explanation: "serverStatus() provides detailed runtime statistics for monitoring.",
+    hint: "Server health metrics."
+  },
+  {
+    id: 249,
+    difficulty: "hard",
+    category: "architecture",
+    question: "What is the primary purpose of MongoDB Config Servers in a sharded cluster?",
+    options: [
+      "Store user credentials",
+      "Store cluster metadata and chunk distribution",
+      "Handle client connections",
+      "Replicate documents"
+    ],
+    answer: 1,
+    explanation: "Config servers store metadata about shard distribution and cluster configuration.",
+    hint: "Cluster metadata."
+  },
+  {
+    id: 250,
+    difficulty: "medium",
+    category: "scaling",
+    question: "What scaling strategy does MongoDB sharding implement?",
+    options: [
+      "Vertical scaling",
+      "Horizontal scaling",
+      "Memory scaling",
+      "Index scaling"
+    ],
+    answer: 1,
+    explanation: "Sharding distributes data across multiple servers to scale horizontally.",
+    hint: "Scale-out architecture."
+  },
+  {
+    id: 251,
+    difficulty: "hard",
+    category: "troubleshooting",
+    question: "What is the most common cause of slow MongoDB queries in large collections?",
+    options: [
+      "Too many collections",
+      "Missing or inefficient indexes",
+      "Large BSON documents",
+      "Replica set elections"
+    ],
+    answer: 1,
+    explanation: "Missing indexes force MongoDB to perform collection scans, which degrade performance.",
+    hint: "Query optimization."
+  },
+  {
+    id: 252,
+    difficulty: "medium",
+    category: "devops",
+    question: "Which containerization platform is commonly used to run MongoDB in modern DevOps environments?",
+    options: ["Docker", "Apache Spark", "Hadoop", "Airflow"],
+    answer: 0,
+    explanation: "Docker containers are commonly used to package and deploy MongoDB environments.",
+    hint: "Container platform."
+  },
+  {
+    id: 253,
+    difficulty: "hard",
+    category: "security",
+    question: "Which MongoDB security feature encrypts database files stored on disk?",
+    options: [
+      "TLS",
+      "RBAC",
+      "Encryption at Rest",
+      "Audit Logging"
+    ],
+    answer: 2,
+    explanation: "Encryption at Rest protects stored data from unauthorized access to disk storage.",
+    hint: "Disk encryption."
+  },
+  {
+    id: 254,
+    difficulty: "medium",
+    category: "monitoring",
+    question: "Which tool provides a graphical interface for managing MongoDB databases?",
+    options: [
+      "Mongo Shell",
+      "MongoDB Compass",
+      "mongostat",
+      "mongotop"
+    ],
+    answer: 1,
+    explanation: "MongoDB Compass is the official GUI for exploring and managing MongoDB data.",
+    hint: "Visual management tool."
+  },
+  {
+    id: 255,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Why is embedding related data within a document often preferred in MongoDB?",
+    options: [
+      "To eliminate all indexes",
+      "To reduce joins and improve read performance",
+      "To decrease storage requirements",
+      "To simplify replication"
+    ],
+    answer: 1,
+    explanation: "Embedding related data reduces the need for joins and improves query performance.",
+    hint: "Document modeling."
+  },
+  {
+    id: 256,
+    difficulty: "medium",
+    category: "backup",
+    question: "Which MongoDB tool is used to restore BSON backups created by mongodump?",
+    options: [
+      "mongoimport",
+      "mongorestore",
+      "mongoexport",
+      "mongostat"
+    ],
+    answer: 1,
+    explanation: "mongorestore restores BSON backup files generated by mongodump.",
+    hint: "Backup restore tool."
+  },
+  {
+    id: 257,
+    difficulty: "hard",
+    category: "performance",
+    question: "What is the main advantage of index intersection in MongoDB?",
+    options: [
+      "Combining multiple indexes to satisfy a query",
+      "Encrypting indexes",
+      "Reducing storage usage",
+      "Balancing shards"
+    ],
+    answer: 0,
+    explanation: "Index intersection allows MongoDB to combine multiple indexes to resolve a query.",
+    hint: "Multiple indexes working together."
+  },
+  {
+    id: 258,
+    difficulty: "medium",
+    category: "architecture",
+    question: "Which MongoDB storage engine is the default in modern versions?",
+    options: [
+      "MMAPv1",
+      "RocksDB",
+      "WiredTiger",
+      "InnoDB"
+    ],
+    answer: 2,
+    explanation: "WiredTiger is the default storage engine offering compression and concurrency improvements.",
+    hint: "Modern engine."
+  },
+  {
+    id: 259,
+    difficulty: "hard",
+    category: "troubleshooting",
+    question: "What does high replication lag usually indicate?",
+    options: [
+      "Primary node failure",
+      "Secondaries unable to apply oplog operations quickly enough",
+      "Index rebuild",
+      "Network encryption errors"
+    ],
+    answer: 1,
+    explanation: "Replication lag occurs when secondary nodes cannot process oplog updates fast enough.",
+    hint: "Replication delay."
+  },
+  {
+    id: 260,
+    difficulty: "medium",
+    category: "operations",
+    question: "Which Linux command is commonly used to check MongoDB process resource usage?",
+    options: [
+      "ls",
+      "top",
+      "mkdir",
+      "pwd"
+    ],
+    answer: 1,
+    explanation: "The 'top' command helps monitor CPU and memory usage of MongoDB processes.",
+    hint: "Process monitoring."
+  }
+];
+
+questionBank.push(...mongodbBatch6);
+const mongodbBatch7 = [
+  {
+    id: 261,
+    difficulty: "hard",
+    category: "troubleshooting",
+    question: "A MongoDB cluster suddenly experiences high query latency. What is the FIRST thing an engineer should analyze?",
+    options: [
+      "Server hardware vendor",
+      "Query execution plans and indexes",
+      "Application UI logs",
+      "Database collection names"
+    ],
+    answer: 1,
+    explanation: "Slow queries are most commonly caused by inefficient indexes or full collection scans.",
+    hint: "Start with query plans."
+  },
+  {
+    id: 262,
+    difficulty: "hard",
+    category: "sharding",
+    question: "A shard in a MongoDB cluster is receiving significantly more traffic than others. What is the most likely cause?",
+    options: [
+      "Replica set elections",
+      "Unbalanced shard key distribution",
+      "Network encryption overhead",
+      "MongoDB version mismatch"
+    ],
+    answer: 1,
+    explanation: "Poor shard key selection can cause uneven distribution, resulting in hot shards.",
+    hint: "Shard key issue."
+  },
+  {
+    id: 263,
+    difficulty: "medium",
+    category: "performance",
+    question: "What MongoDB feature allows automatic balancing of data across shards?",
+    options: [
+      "Balancer",
+      "Router",
+      "Aggregator",
+      "Cluster Monitor"
+    ],
+    answer: 0,
+    explanation: "The balancer redistributes chunks between shards to maintain even data distribution.",
+    hint: "Background distribution process."
+  },
+  {
+    id: 264,
+    difficulty: "hard",
+    category: "replication",
+    question: "If a secondary node falls too far behind the primary and the oplog no longer contains the required operations, what happens?",
+    options: [
+      "Automatic reindexing",
+      "Full initial sync is required",
+      "Primary restarts",
+      "Replication stops permanently"
+    ],
+    answer: 1,
+    explanation: "If oplog entries are missing, the secondary must perform a full initial synchronization.",
+    hint: "Complete resync."
+  },
+  {
+    id: 265,
+    difficulty: "medium",
+    category: "scaling",
+    question: "What is the main advantage of horizontal scaling in MongoDB?",
+    options: [
+      "Reducing memory usage",
+      "Adding more servers to distribute workload",
+      "Compressing data automatically",
+      "Reducing replication overhead"
+    ],
+    answer: 1,
+    explanation: "Horizontal scaling distributes workload across multiple nodes.",
+    hint: "Scale-out."
+  },
+  {
+    id: 266,
+    difficulty: "hard",
+    category: "performance",
+    question: "Which index type improves performance for queries filtering on fields that exist in only some documents?",
+    options: [
+      "Compound index",
+      "Sparse index",
+      "Hashed index",
+      "Wildcard index"
+    ],
+    answer: 1,
+    explanation: "Sparse indexes include only documents containing the indexed field.",
+    hint: "Indexes missing fields."
+  },
+  {
+    id: 267,
+    difficulty: "medium",
+    category: "security",
+    question: "What is the primary purpose of MongoDB audit logging?",
+    options: [
+      "Speed up queries",
+      "Track security-related database actions",
+      "Compress logs",
+      "Improve indexing"
+    ],
+    answer: 1,
+    explanation: "Audit logs record security-relevant operations such as authentication and role changes.",
+    hint: "Security tracking."
+  },
+  {
+    id: 268,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Which design strategy is recommended when modeling large one-to-many relationships in MongoDB?",
+    options: [
+      "Embedding all child documents indefinitely",
+      "Referencing documents with ObjectIDs",
+      "Storing everything in one collection",
+      "Removing relationships entirely"
+    ],
+    answer: 1,
+    explanation: "Large one-to-many relationships are better modeled using references to avoid huge documents.",
+    hint: "Avoid document bloat."
+  },
+  {
+    id: 269,
+    difficulty: "medium",
+    category: "operations",
+    question: "Which MongoDB command displays current operations running on the server?",
+    options: [
+      "db.currentOp()",
+      "db.operations()",
+      "db.serverOps()",
+      "db.activeQueries()"
+    ],
+    answer: 0,
+    explanation: "db.currentOp() shows currently running database operations.",
+    hint: "Live operations."
+  },
+  {
+    id: 270,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Why are Config Servers deployed as a replica set in a MongoDB sharded cluster?",
+    options: [
+      "To increase write speed",
+      "To ensure metadata redundancy and availability",
+      "To compress metadata",
+      "To store application data"
+    ],
+    answer: 1,
+    explanation: "Config servers hold critical cluster metadata and must remain highly available.",
+    hint: "Metadata safety."
+  },
+  {
+    id: 271,
+    difficulty: "medium",
+    category: "performance",
+    question: "Which MongoDB feature allows partial indexing of documents based on a filter condition?",
+    options: [
+      "Compound index",
+      "Partial index",
+      "TTL index",
+      "Cluster index"
+    ],
+    answer: 1,
+    explanation: "Partial indexes only index documents that match a specified filter condition.",
+    hint: "Filtered index."
+  },
+  {
+    id: 272,
+    difficulty: "hard",
+    category: "transactions",
+    question: "Which limitation historically existed before MongoDB introduced distributed transactions?",
+    options: [
+      "Single document writes were not atomic",
+      "Multi-document atomicity was not supported",
+      "Indexes were unavailable",
+      "Replication was not supported"
+    ],
+    answer: 1,
+    explanation: "Before MongoDB 4.0, atomicity was limited to single documents.",
+    hint: "Document-level atomicity."
+  },
+  {
+    id: 273,
+    difficulty: "medium",
+    category: "devops",
+    question: "Which orchestration platform is widely used to run MongoDB clusters in containerized environments?",
+    options: [
+      "Kubernetes",
+      "Jenkins",
+      "Spark",
+      "Airflow"
+    ],
+    answer: 0,
+    explanation: "Kubernetes is commonly used to orchestrate containerized MongoDB deployments.",
+    hint: "Container orchestration."
+  },
+  {
+    id: 274,
+    difficulty: "hard",
+    category: "performance",
+    question: "Which situation most likely causes excessive disk I/O in MongoDB?",
+    options: [
+      "Large number of collections",
+      "Frequent collection scans without indexes",
+      "Using aggregation pipelines",
+      "Replica set configuration"
+    ],
+    answer: 1,
+    explanation: "Collection scans force MongoDB to read entire collections from disk.",
+    hint: "Missing indexes."
+  },
+  {
+    id: 275,
+    difficulty: "medium",
+    category: "operations",
+    question: "Which MongoDB shell command lists all databases in the current cluster?",
+    options: [
+      "show collections",
+      "show databases",
+      "db.list()",
+      "db.show()"
+    ],
+    answer: 1,
+    explanation: "show databases lists all databases available in the cluster.",
+    hint: "Database listing."
+  }
+];
+
+questionBank.push(...mongodbBatch7);
