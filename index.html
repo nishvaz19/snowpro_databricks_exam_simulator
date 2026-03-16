@@ -574,7 +574,7 @@ const dataArchitectKeywords = [
         renderCloud("snCloud", snKeywords, "snowflake");
         renderCloud("kfCloud", kfKeywords, "kafka");
         // Render Data Architect Cloud
-        renderCloud("daCloud", dataArchitectKeywords, "dataarchitect");
+        renderCloud("daCloud", dataArchitectKeywords, "data_architect");
         // Search listeners
         const bindSearch = (id, cloudId, data, type) => {
             document.getElementById(id).addEventListener('keyup', e => {
@@ -591,7 +591,7 @@ const dataArchitectKeywords = [
         bindSearch("rSearch", "rCloud", rKeywords, "react");
         bindSearch("snSearch", "snCloud", snKeywords, "snowflake");
         bindSearch("kfSearch", "kfCloud", kfKeywords, "kafka");
-        bindSearch("daSearch", "daCloud", dataArchitectKeywords, "dataarchitect");
+        bindSearch("daSearch", "daCloud", dataArchitectKeywords, "data_architect");
     });
 </script>
 </body>
