@@ -5703,5 +5703,84 @@ LEADERSHIP & DATA GOVERNANCE
   explanation: "Row-Level Security (RLS) filters data at the database level based on the user's identity. This ensures security is maintained regardless of which tool is used to access the data.",
   hint: "Filter the 'Rows', not the 'Tables'."
 },
+/* ======================================================
+PYSPARK DATAFRAME API & SPARK SQL OPERATIONS
+====================================================== */
+
+{
+  id: 360,
+  difficulty: "medium",
+  category: "pyspark_basics",
+  question: "When loading a CSV file using spark.read.format('csv'), what is the primary consequence of setting 'inferSchema' to False (the default behavior)?",
+  options: [
+    "Spark will automatically detect integer and boolean types",
+    "All columns will be loaded as StringType",
+    "The job will fail if a schema is not manually provided",
+    "Spark will read only the first 100 rows to determine types"
+  ],
+  answer: 1,
+  explanation: "By default, Spark does not trigger an extra pass over the data to determine types; it treats all fields as strings unless 'inferSchema' is set to True or a schema is explicitly defined.",
+  hint: "Think about the most 'lazy' and safe default data type for text files."
+},
+{
+  id: 361,
+  difficulty: "medium",
+  category: "pyspark_basics",
+  question: "In the following query: df.groupBy('State').agg(avg('Population').alias('Avg_Pop')), what is the purpose of the .alias() method?",
+  options: [
+    "To create a temporary view for SQL queries",
+    "To rename the resulting aggregation column for better readability",
+    "To cast the Population column to a different data type",
+    "To partition the data physically by the alias name"
+  ],
+  answer: 1,
+  explanation: "The .alias() method is used to provide a specific name to the output column of an expression, which is especially useful after aggregations that produce names like 'avg(Population)'.",
+  hint: "It acts like the 'AS' keyword in standard SQL."
+},
+{
+  id: 362,
+  difficulty: "hard",
+  category: "spark_sql",
+  question: "A developer executes df.createOrReplaceTempView('population_data'). What is the scope and lifecycle of this view?",
+  options: [
+    "It is visible to all users across all clusters in the workspace",
+    "It is visible to all notebooks running on the same cluster",
+    "It is only visible to the current SparkSession and is lost when the session ends",
+    "It is persisted permanently in the Hive Metastore until manually dropped"
+  ],
+  answer: 2,
+  explanation: "Temporary views are session-scoped. They are not shared across different SparkSessions or notebooks unless they are created as 'Global Temporary Views' (_global_temp).",
+  hint: "It is 'Temporary' and tied specifically to your current notebook session."
+},
+{
+  id: 363,
+  difficulty: "medium",
+  category: "delta_lake",
+  question: "When writing data using df.write.format('delta').mode('overwrite').saveAsTable('avg_state_population'), what happens if the table 'avg_state_population' already exists?",
+  options: [
+    "The operation fails to prevent data loss",
+    "The existing data and schema are replaced by the new DataFrame's data and schema",
+    "The new data is appended to the existing records",
+    "Only the metadata is updated, but the physical files remain unchanged"
+  ],
+  answer: 1,
+  explanation: "The 'overwrite' mode combined with 'saveAsTable' replaces the entire contents and the metadata (schema) of the target table with the contents of the DataFrame.",
+  hint: "Consider the meaning of 'overwrite' in the context of a table."
+},
+{
+  id: 364,
+  difficulty: "hard",
+  category: "pyspark_basics",
+  question: "You need to join two DataFrames, df_csv and df_agg, on the 'State' column. Which syntax is most efficient for preventing duplicate join columns in the resulting DataFrame?",
+  options: [
+    "df_csv.join(df_agg, df_csv['State'] == df_agg['State'], 'inner')",
+    "df_csv.join(df_agg, 'State', 'inner')",
+    "df_csv.join(df_agg, col('df_csv.State') == col('df_agg.State'))",
+    "spark.sql('SELECT * FROM df_csv JOIN df_agg ON df_csv.State = df_agg.State')"
+  ],
+  answer: 1,
+  explanation: "When you pass the join column name as a string (or a list of strings), Spark performs an 'equi-join' and automatically drops the duplicate join column from the right-hand side DataFrame.",
+  hint: "Passing the column name as a string is a shorthand that handles column deduplication."
+},   
 ];  
 
