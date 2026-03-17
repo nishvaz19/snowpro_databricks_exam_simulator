@@ -5781,6 +5781,233 @@ PYSPARK DATAFRAME API & SPARK SQL OPERATIONS
   answer: 1,
   explanation: "When you pass the join column name as a string (or a list of strings), Spark performs an 'equi-join' and automatically drops the duplicate join column from the right-hand side DataFrame.",
   hint: "Passing the column name as a string is a shorthand that handles column deduplication."
-},   
+},
+[
+  {
+    "id": 365,
+    "difficulty": "hard",
+    "category": "databricks_pyspark_idempotency",
+    "question": "A PySpark job fails halfway through writing a large batch of data to a Delta table. Which Delta Lake feature primarily ensures that a partial write does not corrupt the table's state upon a job retry?",
+    "options": [
+      "Z-Order Indexing",
+      "ACID transactions (Atomicity)",
+      "Schema Evolution",
+      "Dynamic Partition Pruning"
+    ],
+    "answer": 1,
+    "explanation": "Delta Lake provides ACID transactions. The 'Atomicity' property ensures that a write operation either completes fully or not at all; if a job fails, the partial data is never committed, allowing for a clean, idempotent retry.",
+    "hint": "Think about the 'A' in ACID compliance."
+  },
+  {
+    "id": 366,
+    "difficulty": "hard",
+    "category": "databricks_pyspark_idempotency",
+    "question": "You are processing daily logs and want to ensure that re-running the job for '2025-03-17' replaces existing data for that day without affecting other dates. Which configuration or method is most appropriate for an idempotent partition overwrite?",
+    "options": [
+      "df.write.mode('overwrite').save(path)",
+      "df.write.mode('append').partitionBy('date').save(path)",
+      "df.write.format('delta').option('replaceWhere', \"date = '2025-03-17'\").save(path)",
+      "df.write.format('delta').mode('ignore').save(path)"
+    ],
+    "answer": 2,
+    "explanation": "The 'replaceWhere' option in Delta Lake allows you to atomicity overwrite only the data matching a specific predicate (like a date partition), ensuring the job is idempotent for that specific slice of data.",
+    "hint": "This method targets a specific 'where' clause for the overwrite operation."
+  },
+  {
+    "id": 367,
+    "difficulty": "hard",
+    "category": "databricks_pyspark_idempotency",
+    "question": "To achieve idempotency when merging Change Data Capture (CDC) logs into a Silver-tier Delta table, which PySpark command should be used to handle both updates to existing rows and inserts for new rows?",
+    "options": [
+      "df.union(target_df).dropDuplicates()",
+      "DeltaTable.forPath(spark, path).alias('t').merge(df.alias('s'), 't.id = s.id').whenMatchedUpdateAll().whenNotMatchedInsertAll().execute()",
+      "df.write.mode('overwrite').saveAsTable('target_table')",
+      "df.write.format('delta').option('partitionOverwriteMode', 'dynamic').save(path)"
+    ],
+    "answer": 1,
+    "explanation": "The Delta Lake MERGE operation (upsert) is the standard way to achieve idempotency for CDC. It checks for existing keys and only updates or inserts as needed, preventing duplicate records regardless of how many times the source data is processed.",
+    "hint": "This operation is commonly referred to as an 'Upsert'."
+  },
+  {
+    "id": 368,
+    "difficulty": "hard",
+    "category": "databricks_pyspark_idempotency",
+    "question": "Which of the following practices is likely to BREAK the idempotency of a Databricks job if the job is re-run for a historical backfill?",
+    "options": [
+      "Using a deterministic hash of the business keys to create a unique ID.",
+      "Using the 'current_timestamp()' function to populate a 'processed_at' column.",
+      "Using Delta Lake checkpoints in a Structured Streaming pipeline.",
+      "Hardcoding the source file path to a specific partition folder."
+    ],
+    "answer": 1,
+    "explanation": "Using 'current_timestamp()' is non-deterministic. If a job is re-run, it will generate a different timestamp for the same record, resulting in a different end-state and breaking the principle of idempotency.",
+    "hint": "Avoid functions that rely on the 'now' of the system clock."
+  },
+  {
+    "id": 369,
+    "difficulty": "hard",
+    "category": "databricks_pyspark_idempotency",
+    "question": "In a Structured Streaming context, how does Databricks ensure that a job can be restarted after a failure without processing the same data twice or missing data?",
+    "options": [
+      "By using the 'dropDuplicates()' transformation on every batch.",
+      "By storing state information and source offsets in a 'checkpointLocation'.",
+      "By setting the 'trigger' to 'once=True' for every run.",
+      "By automatically deleting the target table and recreating it on every restart."
+    ],
+    "answer": 1,
+    "explanation": "Checkpoints record the exact offset of data processed from the source. When a stream restarts, it reads the checkpoint to resume exactly where it left off, ensuring exactly-once processing (idempotency).",
+    "hint": "This feature tracks 'offsets' in a persistent storage location."
+  },
+  [
+  {
+    "id": 370,
+    "difficulty": "easy",
+    "category": "pyspark_idempotency",
+    "question": "What is the primary goal of an idempotent PySpark job?",
+    "options": [
+      "To ensure the job runs as fast as possible",
+      "To ensure that running the job multiple times with the same input results in the same final state",
+      "To automatically delete all source data after a successful run",
+      "To compress the output files to the smallest possible size"
+    ],
+    "answer": 1,
+    "explanation": "Idempotency means that an operation can be applied multiple times without changing the result beyond the initial application. In data engineering, this ensures reliability and easy retries.",
+    "hint": "Think about the concept of 'rerunability'."
+  },
+  {
+    "id": 371,
+    "difficulty": "easy",
+    "category": "pyspark_idempotency",
+    "question": "Which write mode is generally NOT idempotent when running a job multiple times on the same data source?",
+    "options": [
+      "overwrite",
+      "ignore",
+      "append",
+      "errorifexists"
+    ],
+    "answer": 2,
+    "explanation": "The 'append' mode simply adds new data to the existing destination. If the same job is run twice, the data will be duplicated, violating the principle of idempotency.",
+    "hint": "Which mode adds data without checking for existing records?"
+  },
+  {
+    "id": 372,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "Why is it considered a best practice to avoid using 'current_timestamp()' in idempotent transformation logic?",
+    "options": [
+      "It makes the Spark job consume more memory",
+      "It is not supported by Delta Lake tables",
+      "It produces different values on every rerun, leading to inconsistent end-states",
+      "It requires a special Databricks license"
+    ],
+    "answer": 2,
+    "explanation": "Idempotent jobs should be deterministic. 'current_timestamp()' changes every time the job runs, meaning a rerun will produce different data (e.g., a different 'processed_at' time) than the original run.",
+    "hint": "Think about whether the output remains exactly the same if you run the job today vs. tomorrow."
+  },
+  {
+    "id": 373,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "When using Delta Lake, which command is most commonly used to perform an idempotent 'upsert'?",
+    "options": [
+      "df.write.mode('overwrite').save()",
+      "deltaTable.alias('t').merge(df.alias('s'), 't.id = s.id').whenMatchedUpdateAll().whenNotMatchedInsertAll().execute()",
+      "df.write.format('delta').mode('append').save()",
+      "spark.sql('REFRESH TABLE target_table')"
+    ],
+    "answer": 1,
+    "explanation": "The MERGE operation (upsert) ensures that if a record already exists, it is updated, and if it doesn't, it is inserted. This prevents duplicate primary keys during retries.",
+    "hint": "This operation combines 'Update' and 'Insert'."
+  },
+  {
+    "id": 374,
+    "difficulty": "easy",
+    "category": "pyspark_idempotency",
+    "question": "In the context of idempotency, what is the benefit of 'Reliability'?",
+    "options": [
+      "The job will never fail",
+      "The job can recover from failures by simply restarting without manual data cleanup",
+      "The job uses less CPU power",
+      "The job is compatible with all versions of Python"
+    ],
+    "answer": 1,
+    "explanation": "Reliability in idempotent pipelines means that if a network glitch or cluster failure occurs, you can safely trigger the job again knowing it won't corrupt data or create duplicates.",
+    "hint": "Consider what happens after a job fails halfway through."
+  },
+  {
+    "id": 375,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "Which technique allows you to overwrite a specific slice of data (e.g., a specific date) in a Delta table to ensure a daily batch job is idempotent?",
+    "options": [
+      "Using the 'replaceWhere' option",
+      "Deleting the entire table and recreating it",
+      "Using df.distinct() before writing",
+      "Setting spark.databricks.delta.retentionDurationCheck.enabled to false"
+    ],
+    "answer": 0,
+    "explanation": "The 'replaceWhere' option allows you to atomicity overwrite only the data that matches a specific predicate, such as a partition date, making the rerun idempotent for that specific day.",
+    "hint": "This option targets a specific 'where' clause during an overwrite."
+  },
+  {
+    "id": 376,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "How does Structured Streaming maintain idempotency during a restart after failure?",
+    "options": [
+      "By using the 'limit' transformation",
+      "By utilizing a 'checkpointLocation' to track processed offsets",
+      "By doubling the number of worker nodes",
+      "By converting the stream into a static DataFrame"
+    ],
+    "answer": 1,
+    "explanation": "Checkpoints store the state and the exact offsets of the data processed. Upon restart, the stream uses this metadata to resume exactly where it left off, avoiding duplicate processing.",
+    "hint": "Think of this as a 'bookmark' for your data stream."
+  },
+  {
+    "id": 377,
+    "difficulty": "easy",
+    "category": "pyspark_idempotency",
+    "question": "Which of these is a 'Best Practice' for designing idempotent PySpark jobs?",
+    "options": [
+      "Always use 'append' mode to save space",
+      "Include unique keys or natural identifiers in your data model",
+      "Avoid using Delta Lake to reduce complexity",
+      "Use random numbers for record IDs"
+    ],
+    "answer": 1,
+    "explanation": "Unique keys are essential for idempotency because they allow you to identify whether a record has already been processed or if it needs to be updated.",
+    "hint": "How would you tell if two records are actually the same record?"
+  },
+  {
+    "id": 378,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "If you are performing a backfill for the month of January, which idempotent approach is most efficient for a partitioned Delta table?",
+    "options": [
+      "Dropping the table and reloading all data from the beginning of time",
+      "Using 'INSERT OVERWRITE' for the January partitions",
+      "Appending January data to the existing table and running a 'DISTINCT' query later",
+      "Updating each row manually using a for-loop"
+    ],
+    "answer": 1,
+    "explanation": "In Spark, 'INSERT OVERWRITE' on a partitioned table (with dynamic partition overwrite enabled) replaces only the relevant partitions, making it the most efficient way to backfill data idempotently.",
+    "hint": "This method replaces only the specific 'folders' (partitions) involved."
+  },
+  {
+    "id": 379,
+    "difficulty": "medium",
+    "category": "pyspark_idempotency",
+    "question": "What is 'fingerprinting' in the context of creating unique transaction IDs?",
+    "options": [
+      "Using biometric data to secure the Databricks workspace",
+      "Generating a unique hash (e.g., SHA-256) based on key columns in a record",
+      "Printing the schema of a DataFrame to the console",
+      "Labeling data with the name of the developer who wrote the code"
+    ],
+    "answer": 1,
+    "explanation": "Fingerprinting involves creating a deterministic hash of the business keys. If the same record comes through again, the hash remains the same, allowing the system to identify it as a duplicate.",
+    "hint": "A hash function that produces a unique ID for a specific set of input columns."
+  }, 
 ];  
 
