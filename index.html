@@ -205,6 +205,7 @@
             <option value="aws">AWS Certification</option>
             <option value="ai_arch">AI Architect</option> 
             <option value="JavaScript">JavaScript</option> 
+            <option value="TypeScript_NestJS">TypeScript, NestJS, Angular</option> 
             <option value="dotnet">dotnet & C# & asp.net</option> 
             <option value="kafka">Kafka</option>
             <option value="hl7">HL7</option>
@@ -281,6 +282,20 @@
         <span class="kf-connect">Connect</span><span class="kf-ops">Ops</span>
     </div>
 </div>
+<div id="typescript_nestjs-cloud" class="cloud-section" style="background:#f1f5f9; color: white;">
+    <h2 style="color:#29b5e8;">Typescript, NestJS, Angular Platform</h2>
+
+    <div class="search-box">
+        <input id="typescript_nestjsSearch" placeholder="Search Typescript, NestJS, Angular (async, yield...)">
+    </div>
+
+    <div class="cloud-display" id="typescript_nestjsCloud"></div>
+
+    <div class="legend">
+        <span class="typescript_nestjs-architecture">Architecture</span>
+    </div>
+</div>   
+
  <div id="data_architect-cloud" class="cloud-section" style="background:#232f3e; color: white;">
     <h2 style="color:#ff9900;">Data Architect Platform</h2>
 
@@ -574,6 +589,46 @@ const kfKeywords = [
   {word:"Replication Factor", freq:3, domain:"kf-ops", desc:"Number of copies of data for fault tolerance"},
   {word:"cost", freq:3, domain:"kf-cost", desc:"cost optimization"},  
 ];
+/**
+ * Keyword mapping for the 500 MCQ Question Bank
+ * Domain legend: 
+ * az-compute (Cloud/DevOps), az-data (Data/State), 
+ * arch (Architecture), sec (Security/Auth)
+ */
+const typescript_nestjsKeywords = [
+  // --- CLOUD & DEVOPS (The "Pro" Additions) ---
+  { word: "AWS CDK", freq: 5, domain: "az-compute", desc: "Infrastructure as Code for NestJS using TypeScript" },
+  { word: "Fargate", freq: 4, domain: "az-compute", desc: "Serverless container execution for NestJS" },
+  { word: "Blue-Green", freq: 3, domain: "az-compute", desc: "Zero-downtime deployment strategy" },
+  { word: "Key Vault", freq: 4, domain: "sec", desc: "Secure secret management for Azure/AWS" },
+  { word: "Docker", freq: 5, domain: "az-compute", desc: "Containerization for NestJS microservices" },
+
+  // --- ARCHITECTURE & NESTJS ---
+  { word: "Dependency Injection", freq: 10, domain: "arch", desc: "Inversion of Control container in NestJS/Angular" },
+  { word: "Microservices", freq: 8, domain: "arch", desc: "Distributed systems using TCP, Redis, or NATS" },
+  { word: "CQRS", freq: 5, domain: "arch", desc: "Command Query Responsibility Segregation" },
+  { word: "Interceptors", freq: 7, domain: "arch", desc: "AOP technique to transform request/response streams" },
+  { word: "Guards", freq: 9, domain: "sec", desc: "Authentication and RBAC logic layer" },
+  { word: "ForwardRef", freq: 4, domain: "arch", desc: "Resolving circular dependencies in DI" },
+
+  // --- ANGULAR & STATE MANAGEMENT ---
+  { word: "Signals", freq: 9, domain: "az-data", desc: "Fine-grained reactivity introduced in Angular 16+" },
+  { word: "NgRx", freq: 7, domain: "az-data", desc: "Global state management based on Redux patterns" },
+  { word: "Standalone", freq: 6, domain: "arch", desc: "Components that don't require NgModules" },
+  { word: "Hydration", freq: 4, domain: "az-compute", desc: "Non-destructive SSR-to-Client transition" },
+  { word: "RxJS", freq: 10, domain: "az-data", desc: "Reactive Extensions for asynchronous streams" },
+
+  // --- TYPESCRIPT ADVANCED ---
+  { word: "Generics", freq: 8, domain: "arch", desc: "Reusable components that work over a variety of types" },
+  { word: "Utility Types", freq: 7, domain: "arch", desc: "Partial, Pick, Omit, and Record mappings" },
+  { word: "Mapped Types", freq: 5, domain: "arch", desc: "Creating new types based on existing ones" },
+  { word: "Type Guards", freq: 6, domain: "sec", desc: "Runtime type checking with the 'is' keyword" },
+
+  // --- TESTING ---
+  { word: "Jest", freq: 8, domain: "arch", desc: "Unit testing framework for NestJS and Angular" },
+  { word: "Cypress", freq: 6, domain: "arch", desc: "End-to-end testing for frontend workflows" },
+  { word: "Mocks", freq: 5, domain: "arch", desc: "Simulating dependencies for isolated tests" }
+];
 
 const dataArchitectKeywords = [
 {word:"Lakehouse", freq:5, domain:"architecture", desc:"Unified architecture combining data lake and warehouse"},
@@ -664,6 +719,7 @@ const eaKeywords = [
         // Render Data Architect Cloud
         renderCloud("daCloud", dataArchitectKeywords, "data_architect");
         renderCloud("eaCloud", eaKeywords, "enterprise_architect");
+        renderCloud("typescript_nestjsCloud", eaKeywords, "typescript_nestjs");
         // Search listeners
         const bindSearch = (id, cloudId, data, type) => {
             document.getElementById(id).addEventListener('keyup', e => {
@@ -682,6 +738,7 @@ const eaKeywords = [
         bindSearch("kfSearch", "kfCloud", kfKeywords, "kafka");
         bindSearch("daSearch", "daCloud", dataArchitectKeywords, "data_architect");
         bindSearch("eaSearch", "eaCloud", eaKeywords, "enterprise_architect");
+        bindSearch("typescript_nestjsSearch", "typescript_nestjsCloud", typescript_nestjsKeywords, "typescript_nestjs");
     });
 </script>
 </body>
