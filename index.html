@@ -44,7 +44,23 @@
 .data { background: #0078D4; } 
 .component { background: #4682B6; }  /* Deeper Sky Blue */        
 .compute { background: #005685; }       
-        
+
+ /* Web3 & Blockchain Domains */
+.wb-core { background: #6366f1; }       /* Indigo - Core Architecture */
+.wb-security { background: #dc2626; }   /* Red - Security/Auditing */
+.wb-infrastructure { background: #0891b2; } /* Cyan - Infrastructure/L2 */
+.wb-defi { background: #059669; }       /* Emerald - DeFi/Tokenomics */
+.wb-tooling { background: #4f46e5; }    /* Violet - Dev Tooling */
+.wb-zkp { background: #7c3aed; }        /* Purple - Zero Knowledge */
+
+/* Search input specific for Web3 */
+#web3BlockChainSearch {
+    border: 2px solid #6366f1;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}       
 /* Technology & React Domains */
 .r-hooks { background: #F08080; color: white !important; } /* Light Coral */
 .r-core { background: #4682B4; color: white !important; }  /* Steel Blue */
@@ -670,10 +686,56 @@ const typescriptNestjsKeywords = [
   { word: "Mocks", freq: 5, domain: "architecture", desc: "Simulating dependencies for isolated tests" }
 ];
     
+// Keywords for Web3 Technical Architect
 const web3BlockChainKeywords = [
-  { word: "Blockchain", freq: 10, domain: "architecture", desc: "Blockchain methodology" },
-];
+    // Core Architecture & Fintech
+    { word: "Banking", weight: 20, class: "wb-core" },
+    { word: "Blockchain", weight: 25, class: "wb-core" },
+    { word: "Ledger", weight: 18, class: "wb-core" },
+    { word: "Hybrid", weight: 15, class: "wb-core" },
+    { word: "Interoperability", weight: 20, class: "wb-core" },
     
+    // Security & Cryptography
+    { word: "Security", weight: 22, class: "wb-security" },
+    { word: "Cryptography", weight: 20, class: "wb-security" },
+    { word: "Asymmetric", weight: 15, class: "wb-security" },
+    { word: "Slither", weight: 18, class: "wb-security" },
+    { word: "Mythril", weight: 18, class: "wb-security" },
+    { word: "Echidna", weight: 18, class: "wb-security" },
+    { word: "Merkle", weight: 15, class: "wb-security" },
+    
+    // ZK & Advanced Tech
+    { word: "ZKP", weight: 25, class: "wb-zkp" },
+    { word: "zkVMs", weight: 20, class: "wb-zkp" },
+    { word: "Proofs", weight: 18, class: "wb-zkp" },
+    { word: "Abstraction", weight: 20, class: "wb-zkp" },
+    
+    // Integration & Tooling
+    { word: "SmartContracts", weight: 22, class: "wb-tooling" },
+    { word: "Hardhat", weight: 15, class: "wb-tooling" },
+    { word: "Foundry", weight: 18, class: "wb-tooling" },
+    { word: "Ethers", weight: 15, class: "wb-tooling" },
+    { word: "Web3js", weight: 15, class: "wb-tooling" },
+    { word: "Viem", weight: 15, class: "wb-tooling" },
+    { word: "TheGraph", weight: 18, class: "wb-tooling" },
+    
+    // Infrastructure & Standards
+    { word: "Layer2", weight: 20, class: "wb-infrastructure" },
+    { word: "Arbitrum", weight: 15, class: "wb-infrastructure" },
+    { word: "Optimism", weight: 15, class: "wb-infrastructure" },
+    { word: "Oracles", weight: 18, class: "wb-infrastructure" },
+    { word: "Chainlink", weight: 18, class: "wb-infrastructure" },
+    { word: "IPFS", weight: 15, class: "wb-infrastructure" },
+    { word: "Filecoin", weight: 15, class: "wb-infrastructure" },
+    { word: "ERC20", weight: 15, class: "wb-infrastructure" },
+    { word: "ERC721", weight: 15, class: "wb-infrastructure" },
+    { word: "ERC4337", weight: 20, class: "wb-infrastructure" },
+
+    // DeFi & Economy
+    { word: "DeFi", weight: 20, class: "wb-defi" },
+    { word: "Tokenomics", weight: 18, class: "wb-defi" }
+];
+
 const dataArchitectKeywords = [
 {word:"Lakehouse", freq:5, domain:"architecture", desc:"Unified architecture combining data lake and warehouse"},
 {word:"Medallion", freq:4, domain:"architecture", desc:"Bronze Silver Gold layered data architecture"},
@@ -766,7 +828,8 @@ const eaKeywords = [
         renderCloud("daCloud", dataArchitectKeywords, "data_architect");
         renderCloud("eaCloud", eaKeywords, "enterprise_architect");
         renderCloud("typescriptNestjsCloud", typescriptNestjsKeywords, "TypeScript_NestJS");
-        renderCloud("web3BlockChainCloud", web3BlockChainKeywords, "web3_BlockChain");
+        renderCloud("web3BlockChainCloud", web3BlockChainKeywords, "web3blockchain");
+  
         // Search listeners
         const bindSearch = (id, cloudId, data, type) => {
             document.getElementById(id).addEventListener('keyup', e => {
@@ -786,7 +849,7 @@ const eaKeywords = [
         bindSearch("daSearch", "daCloud", dataArchitectKeywords, "data_architect");
         bindSearch("eaSearch", "eaCloud", eaKeywords, "enterprise_architect");
         bindSearch("typescriptNestjsSearch", "typescriptNestjsCloud", typescriptNestjsKeywords, "TypeScript_NestJS");
-        bindSearch("web3BlockChainSearch", "web3BlockChainCloud", web3BlockChainKeywords, "web3_BlockChain");
+        bindSearch("web3BlockChainSearch", "web3BlockChainCloud", web3BlockChainKeywords, "web3blockchain");    
     });
 </script>
 </body>
