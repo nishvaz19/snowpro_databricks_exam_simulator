@@ -4501,4 +4501,420 @@ const questionBank = [
     explanation: "Modular blockchains allow for specialized layers that can scale better than 'Monolithic' blockchains like Ethereum L1 or Solana.",
     hint: "Separation of concerns across layers."
   },
+  /* ======================================================
+     PHASE 11 (CONT.): ARCHITECTURAL MAPPING & SECURITY 
+     ====================================================== */
+  {
+    id: 301,
+    difficulty: "hard",
+    category: "security",
+    question: "When using 'Slither' for static analysis, what is the significance of the 'High' impact 'Reentrancy' detector for an Architect?",
+    options: [
+      "It marks functions that use too much gas",
+      "It identifies state changes occurring after an external call, which could allow recursive balance draining",
+      "It checks if the Python backend is connected",
+      "It validates the CSS of the dApp"
+    ],
+    answer: 1,
+    explanation: "Slither's reentrancy detector is a critical CI/CD step for architects to ensure that 'Checks-Effects-Interactions' are followed before deployment.",
+    hint: "External calls before state updates."
+  },
+  {
+    id: 302,
+    difficulty: "hard",
+    category: "integration",
+    question: "A Technical Architect needs to sync an on-chain ledger with a Java-based Core Banking System. What is the most robust pattern?",
+    options: [
+      "Querying the RPC node every 1 second in a loop",
+      "Using a 'Reliable Webhook' pattern or an Event Indexer (The Graph/SQD) with a message queue (Kafka) for idempotency",
+      "Reading the node's local text logs directly",
+      "Hardcoding the transaction IDs in the Java source"
+    ],
+    answer: 1,
+    explanation: "Direct RPC polling is unreliable. Architects use indexers to capture events, then push to Kafka/RabbitMQ to ensure the Web2 database eventually matches the Web3 state.",
+    hint: "Event-driven architecture."
+  },
+  {
+    id: 303,
+    difficulty: "hard",
+    category: "cryptography",
+    question: "In 'Merkle Tree' architecture, what happens to the Root Hash if a single transaction in the block is modified?",
+    options: [
+      "Nothing, only the leaf changes",
+      "The Root Hash changes completely due to the cascading effect of the hashes up the tree",
+      "The block is automatically deleted",
+      "The gas price for that block increases"
+    ],
+    answer: 1,
+    explanation: "Merkle Trees ensure data integrity; any change at the leaf level propagates to the top, making the entire block hash invalid.",
+    hint: "Hash cascading."
+  },
+  {
+    id: 304,
+    difficulty: "hard",
+    category: "zkp",
+    question: "What is the primary difference between a 'zk-SNARK' and a 'zk-STARK' for an enterprise privacy solution?",
+    options: [
+      "SNARKs are faster to generate",
+      "STARKs do not require a 'Trusted Setup' and are post-quantum secure, but have larger proof sizes",
+      "SNARKs only work on Bitcoin",
+      "STARKs require a centralized server"
+    ],
+    answer: 1,
+    explanation: "Architects prefer STARKs for long-term security as they don't rely on a 'toxic waste' ceremony and are resistant to future quantum computing attacks.",
+    hint: "Trusted Setup vs. Transparency."
+  },
+  {
+    id: 305,
+    difficulty: "hard",
+    category: "interoperability",
+    question: "How does 'LayerZero' differ from a traditional 'Lock-and-Mint' bridge?",
+    options: [
+      "It requires a central admin",
+      "It uses an 'Omnichain' messaging protocol with an Oracle and Relayer to transfer state/messages without locking assets",
+      "It is only for NFTs",
+      "It is slower than a standard bridge"
+    ],
+    answer: 1,
+    explanation: "LayerZero provides a transport layer for cross-chain communication, enabling native asset transfers rather than wrapped versions.",
+    hint: "Messaging vs. Wrapping."
+  },
+  {
+    id: 306,
+    difficulty: "hard",
+    category: "standards",
+    question: "For a Technical Architect, what is the primary benefit of EIP-712 (Typed Data Hashing)?",
+    options: [
+      "It makes transactions cheaper",
+      "It provides a human-readable format for users to sign in their wallet (e.g., Metamask) rather than a hex string",
+      "It encrypts the private key",
+      "It allows Java to read Solidity"
+    ],
+    answer: 1,
+    explanation: "EIP-712 prevents 'blind signing' by showing the user exactly what they are approving (e.g., 'Transfer 50 USDC'), which is vital for security-first banking apps.",
+    hint: "Human-readable signatures."
+  },
+  {
+    id: 307,
+    difficulty: "hard",
+    category: "security",
+    question: "Which tool would you use to perform 'Symbolic Execution' to find paths that could lead to an integer overflow in a legacy Solidity contract?",
+    options: ["Slither", "Mythril", "Prettier", "Etherscan"],
+    answer: 1,
+    explanation: "Mythril uses symbolic execution to explore all possible contract states and identify vulnerabilities that simple testing might miss.",
+    hint: "Security analysis via symbolic math."
+  },
+  {
+    id: 308,
+    difficulty: "medium",
+    category: "tooling",
+    question: "In a 'Foundry' environment, what is the purpose of 'Anvil'?",
+    options: [
+      "To deploy to Mainnet",
+      "A local Ethereum node used for development and testing with high-speed performance",
+      "A code minifier",
+      "A wallet browser extension"
+    ],
+    answer: 1,
+    explanation: "Anvil is the Foundry equivalent of Hardhat Network or Ganache, providing a local chain for rapid testing.",
+    hint: "Local test node."
+  },
+  {
+    id: 309,
+    difficulty: "hard",
+    category: "architecture",
+    question: "When designing a 'Hybrid Integration,' why might an architect use a 'Paymaster' in ERC-4337?",
+    options: [
+      "To steal gas from the user",
+      "To allow the application to pay for the user's gas (gasless UX) or allow the user to pay in ERC-20 tokens",
+      "To encrypt the transaction",
+      "To speed up the blockchain"
+    ],
+    answer: 1,
+    explanation: "Paymasters allow enterprises to onboard Web2 users who don't have ETH by sponsoring their initial onboarding transactions.",
+    hint: "Sponsoring gas fees."
+  },
+  {
+    id: 310,
+    difficulty: "hard",
+    category: "blockchain_primitives",
+    question: "What is the 'State Bloat' problem in Ethereum, and how does 'State Statelessness' (Verkle Trees) aim to solve it?",
+    options: [
+      "The blockchain is too fast",
+      "The growing size of the full state makes it hard for individuals to run nodes; Verkle trees allow smaller proofs to verify state",
+      "Users have too many tokens",
+      "Servers are overheating"
+    ],
+    answer: 1,
+    explanation: "Verkle Trees allow for much smaller 'Witnesses,' meaning nodes don't need to store the entire state to verify a transaction.",
+    hint: "Scaling node requirements."
+  },
+  {
+    id: 311,
+    difficulty: "medium",
+    category: "fintech",
+    question: "In DeFi, what is 'Recursive Lending'?",
+    options: [
+      "Borrowing from a bank and lending to a friend",
+      "Lending an asset, borrowing another, and re-depositing the borrowed asset to lever up yield",
+      "A bug in the loan contract",
+      "Paying back a loan early"
+    ],
+    answer: 1,
+    explanation: "This increases capital efficiency but exposes the user to high liquidation risk if the asset prices fluctuate slightly.",
+    hint: "Looping liquidity for yield."
+  },
+  {
+    id: 312,
+    difficulty: "hard",
+    category: "zkp",
+    question: "What is a 'zkVM' (e.g., RISC Zero, Succinct) compared to a 'zkEVM'?",
+    options: [
+      "zkVM is only for Windows; zkEVM is for Linux",
+      "A zkVM can prove the execution of general-purpose code (like Rust or C++), whereas a zkEVM is specialized for Ethereum bytecode",
+      "They are the same thing",
+      "zkVM is slower than zkEVM"
+    ],
+    answer: 1,
+    explanation: "zkVMs allow architects to use traditional languages like Rust/C++ to generate proofs, enabling complex logic not possible in Solidity.",
+    hint: "General purpose vs. EVM specific."
+  },
+  {
+    id: 313,
+    difficulty: "hard",
+    category: "security",
+    question: "What is the 'Oracle Manipulation' attack on a DeFi protocol?",
+    options: [
+      "Hacking the Oracle server directly",
+      "Using a large flash loan to artificially move the price of an asset on a low-liquidity DEX used as a price source",
+      "Changing the time on the computer",
+      "Phishing the developer's email"
+    ],
+    answer: 1,
+    explanation: "If a contract relies on a single DEX price, an attacker can 'skew' that price and borrow more than they should.",
+    hint: "Price impact exploitation."
+  },
+  {
+    id: 314,
+    difficulty: "medium",
+    category: "integration",
+    question: "Which Node.js library is the successor to 'Ethers.js' for developers focusing on 'Tree-shaking' and minimal bundle size?",
+    options: ["Web3.js", "Viem", "Truffle", "Hardhat"],
+    answer: 1,
+    explanation: "Viem is highly modular and provides much better TypeScript performance and smaller frontend bundles than Ethers.",
+    hint: "Modern, modular Web3 library."
+  },
+  {
+    id: 315,
+    difficulty: "hard",
+    category: "scaling",
+    question: "What is 'Proto-Danksharding' (EIP-4844) and how does it lower L2 costs?",
+    options: [
+      "By removing gas fees for L1",
+      "By introducing 'Blobs' of data that are cheaper than Calldata because they are deleted from nodes after ~18 days",
+      "By making blocks 10x larger",
+      "By switching to Proof of Work"
+    ],
+    answer: 1,
+    explanation: "Blobs provide massive storage for rollups at a fraction of the cost, as they don't persist in the 'permanent' state of Ethereum.",
+    hint: "Ephemeral data blobs."
+  },
+  {
+    id: 316,
+    difficulty: "hard",
+    category: "cryptography",
+    question: "In a 'Multi-Party Computation' (MPC) wallet, where is the private key stored?",
+    options: [
+      "On the user's device only",
+      "In a single secure vault",
+      "The key 'never exists' in its entirety; it is split into shards distributed across multiple parties who sign collaboratively",
+      "On the blockchain"
+    ],
+    answer: 2,
+    explanation: "MPC prevents single points of failure by ensuring no one entity ever holds the full private key.",
+    hint: "Distributed key shards."
+  },
+  {
+    id: 317,
+    difficulty: "medium",
+    category: "tokenomics",
+    question: "What is the 'Burn' mechanism in EIP-1559?",
+    options: [
+      "Sending tokens to a random user",
+      "Destroying the base fee of every transaction to create deflationary pressure on the ETH supply",
+      "Deleting the blockchain history",
+      "A way to penalize hackers"
+    ],
+    answer: 1,
+    explanation: "Part of the transaction fee is permanently removed from circulation, potentially making ETH a deflationary asset.",
+    hint: "Fee destruction."
+  },
+  {
+    id: 318,
+    difficulty: "hard",
+    category: "architecture",
+    question: "Why would an architect choose 'Optimism's Superchain' over a standalone L2?",
+    options: [
+      "It is faster",
+      "It provides shared security, interoperability, and a common tech stack (OP Stack) with other chains like Base and Zora",
+      "It is cheaper to deploy",
+      "It doesn't use the EVM"
+    ],
+    answer: 1,
+    explanation: "The Superchain vision allows for horizontal scaling where different chains can easily communicate and share resources.",
+    hint: "Network of interconnected L2s."
+  },
+  {
+    id: 319,
+    difficulty: "hard",
+    category: "storage",
+    question: "What is the role of 'Content Addressing' (CIDs) in IPFS?",
+    options: [
+      "To find the location of a server",
+      "To identify a file by 'what' it is (its hash) rather than 'where' it is stored, ensuring data immutability",
+      "To encrypt the file",
+      "To speed up the internet"
+    ],
+    answer: 1,
+    explanation: "In Web3, we link to a CID. If the file changes, the CID changes, ensuring the NFT metadata can't be silently swapped.",
+    hint: "Hash-based identification."
+  },
+  {
+    id: 320,
+    difficulty: "hard",
+    category: "governance",
+    question: "What is 'Governance Minimization' in protocol design?",
+    options: [
+      "Having no users",
+      "The architectural goal of making a protocol immutable and automated to reduce the need for human intervention/voting",
+      "Only allowing one person to vote",
+      "Deleting the DAO"
+    ],
+    answer: 1,
+    explanation: "Minimized protocols (like Uniswap v2) are safer because there are fewer 'levers' for attackers or bad governance to manipulate.",
+    hint: "Immutability as a feature."
+  },
+  {
+    id: 321,
+    difficulty: "medium",
+    category: "security",
+    question: "In the context of 'Smart Contract Audits', what is a 'False Positive' in a tool like Slither?",
+    options: [
+      "A real bug that was missed",
+      "A vulnerability flagged by the tool that is actually safe in the specific context of that code",
+      "A bug that only happens in Python",
+      "When the audit takes too long"
+    ],
+    answer: 1,
+    explanation: "Automated tools often flag patterns that look like bugs but are intended behavior; architects must filter these during review.",
+    hint: "Incorrectly flagged warning."
+  },
+  {
+    id: 322,
+    difficulty: "hard",
+    category: "cross_chain",
+    question: "What is 'Chainlink CCIP'?",
+    options: [
+      "A new cryptocurrency",
+      "A Cross-Chain Interoperability Protocol that enables secure data and value transfer across different blockchains",
+      "A way to mine Bitcoin",
+      "A wallet for banks"
+    ],
+    answer: 1,
+    explanation: "CCIP uses the same security network that secures billions in Oracle data to allow contracts on L1 to talk to L2 or other L1s.",
+    hint: "Secure cross-chain communication."
+  },
+  {
+    id: 323,
+    difficulty: "hard",
+    category: "fintech",
+    question: "How does 'Proof of Reserves' (PoR) provide transparency for a centralized exchange?",
+    options: [
+      "By publishing the CEO's bank account",
+      "By using Merkle Trees to prove that the exchange holds the assets it claims to have for its users without revealing individual balances",
+      "By hiring a famous auditor",
+      "By showing the total number of users"
+    ],
+    answer: 1,
+    explanation: "PoR allows users to verify their own balance is included in the 'Liability Merkle Tree' held by the exchange.",
+    hint: "Cryptographic proof of solvency."
+  },
+    /* ======================================================
+     PHASE 12: ADVANCED SYSTEM DESIGN & ENTERPRISE WEB3 (324+)
+     ====================================================== */
+  {
+    id: 324,
+    difficulty: "hard",
+    category: "architecture",
+    question: "What is the 'Backend-for-Frontend' (BFF) pattern's role in a Web3 Architect's stack?",
+    options: [
+      "To replace the smart contract",
+      "To aggregate on-chain data (via indexers) and off-chain data (via DBs) into a unified API for the client",
+      "To manage the user's seed phrase",
+      "To mine blocks for the frontend"
+    ],
+    answer: 1,
+    explanation: "dApps are slow if they call RPCs for everything. A BFF layer pre-fetches and joins data to provide a snappy Web2-like experience.",
+    hint: "Data aggregation layer."
+  },
+  {
+    id: 325,
+    difficulty: "hard",
+    category: "security",
+    question: "Why is 'AccessControl' preferred over 'Ownable' in a Corporate Treasury smart contract?",
+    options: [
+      "Ownable is too expensive",
+      "AccessControl allows for Role-Based Access (e.g., separate 'Minter', 'Burner', and 'Admin' roles) reducing the power of a single key",
+      "AccessControl is written in Java",
+      "Ownable only works on Ethereum"
+    ],
+    answer: 1,
+    explanation: "RBAC (Role-Based Access Control) is standard for enterprise security, preventing a single 'Owner' compromise from destroying the system.",
+    hint: "Principle of Least Privilege."
+  },
+  {
+    id: 326,
+    difficulty: "hard",
+    category: "integration",
+    question: "How does a Technical Architect handle 'Transaction Replacement' (Speeding up) in a Node.js script?",
+    options: [
+      "By deleting the transaction and starting over",
+      "By re-sending the transaction with the same 'nonce' but a higher gas fee (at least 10% higher)",
+      "By waiting for the block to expire",
+      "By calling the RPC provider's support team"
+    ],
+    answer: 1,
+    explanation: "Since nonces are strictly ordered, you can 'override' a pending transaction by using the same nonce and paying more gas.",
+    hint: "Same nonce, higher gas."
+  },
+  {
+    id: 327,
+    difficulty: "hard",
+    category: "zkp",
+    question: "What is a 'Recursion' in ZK Proofs and why is it vital for scaling?",
+    options: [
+      "When a function calls itself in Solidity",
+      "The ability for a ZK proof to verify another ZK proof, allowing thousands of transactions to be compressed into one final proof",
+      "A bug in the prover",
+      "Repeating a transaction until it works"
+    ],
+    answer: 1,
+    explanation: "Recursive proofs allow for 'Proof Aggregation,' which is how ZK-Rollups handle thousands of transactions per second.",
+    hint: "Proofs of proofs."
+  },
+  {
+    id: 328,
+    difficulty: "hard",
+    category: "interoperability",
+    question: "What is the 'Fat Protocol' thesis and how is it changing in the era of App-Chains?",
+    options: [
+      "The blockchain is getting too big",
+      "The idea that value captures at the protocol layer (L1) rather than the app layer; now shifting toward 'Fat Apps' on modular stacks",
+      "Tokens make you rich",
+      "L2s are better than L1s"
+    ],
+    answer: 1,
+    explanation: "Originally, value was thought to stay in L1s (like ETH). With L2s and specialized chains, more value is being retained by the applications themselves.",
+    hint: "Value capture: Infrastructure vs. Application."
+  },
   ];
