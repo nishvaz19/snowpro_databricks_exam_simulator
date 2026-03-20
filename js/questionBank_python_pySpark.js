@@ -4920,7 +4920,116 @@ PYTHON & GENERAL DE SCENARIOS (IDs 366 - 403)
     answer: 1,
     explanation: "__str__ is what the print() function uses, while __repr__ is what you see when you inspect the object in a console (aiming for string that could recreate the object).",
     hint: "User-friendly vs. Developer-friendly."
-  },  
+  },
+  /* ======================================================
+ALGORITHM COMPLEXITY & SOLUTIONS DELTA (PHASES 1-4)
+====================================================== */
+
+{
+  id: 419, // Continuing from last ID
+  difficulty: "medium",
+  category: "algorithms",
+  question: "In the 'FizzBuzz Extreme' implementation, what is the time complexity of checking if a number 'm' is prime?",
+  options: ["O(m)", "O(log m)", "O(√m)", "O(1)"],
+  answer: 2,
+  explanation: "Checking up to the square root of m is sufficient to find any factors, resulting in O(√m) complexity.",
+  hint: "Think about the upper limit of the loop."
+},
+{
+  id: 420,
+  difficulty: "easy",
+  category: "algorithms",
+  question: "When reversing a string manually (without slicing), what is the Space Complexity of the resulting string?",
+  options: ["O(1)", "O(log n)", "O(n)", "O(n²)" ],
+  answer: 2,
+  explanation: "A new string of length 'n' is created to store the reversed result, occupying linear space.",
+  hint: "The output size grows with the input size."
+},
+{
+  id: 421,
+  difficulty: "medium",
+  category: "algorithms",
+  question: "What is the Time Complexity of an iterative Fibonacci function compared to a naive recursive one?",
+  options: [
+    "Iterative: O(n), Recursive: O(2ⁿ)",
+    "Iterative: O(n²), Recursive: O(n)",
+    "Iterative: O(1), Recursive: O(n log n)",
+    "Both are O(n)"
+  ],
+  answer: 0,
+  explanation: "Iteration visits each number once (linear), while naive recursion branches twice at each level (exponential).",
+  hint: "Recall the 'tree' structure of recursive calls."
+},
+{
+  id: 422,
+  difficulty: "medium",
+  category: "algorithms",
+  question: "Which approach allows the 'Two Sum' problem to be solved in O(n) time?",
+  options: [
+    "Nested for-loops",
+    "Sorting the array first",
+    "Using a Hash Map (Dictionary) for O(1) lookups of the complement",
+    "Binary search"
+  ],
+  answer: 2,
+  explanation: "By storing seen numbers in a hash map, we can check for (target - current) in a single pass.",
+  hint: "Trading space for time."
+},
+{
+  id: 423,
+  difficulty: "hard",
+  category: "algorithms",
+  question: "When merging overlapping intervals, why is the Time Complexity O(n log n)?",
+  options: [
+    "Because of the merging loop",
+    "Because the intervals must be sorted by start time first",
+    "Because it uses a binary tree",
+    "Because it is a nested operation"
+  ],
+  answer: 1,
+  explanation: "The bottleneck is sorting the intervals; the subsequent merging pass is only O(n).",
+  hint: "What is the most expensive step?"
+},
+{
+  id: 424,
+  difficulty: "medium",
+  category: "algorithms",
+  question: "In the 'Best Time to Buy/Sell Stock' algorithm, what is the optimal Time Complexity?",
+  options: ["O(1)", "O(n)", "O(n log n)", "O(n²)" ],
+  answer: 1,
+  explanation: "You can find the max profit in a single pass by tracking the minimum price seen so far.",
+  hint: "One-pass solution."
+},
+{
+  id: 425,
+  difficulty: "hard",
+  category: "python_core",
+  question: "What two data structures are combined to create an LRU Cache with O(1) 'get' and 'put' operations?",
+  options: [
+    "List and Set",
+    "Dictionary and Doubly Linked List",
+    "Stack and Queue",
+    "Two Heaps"
+  ],
+  answer: 1,
+  explanation: "The Dictionary provides O(1) lookup, and the Doubly Linked List allows O(1) reordering/eviction.",
+  hint: "Pointers and Hash Maps."
+},
+{
+  id: 426,
+  difficulty: "medium",
+  category: "python_core",
+  question: "What is the primary purpose of the '__new__' method in a Singleton pattern implementation?",
+  options: [
+    "To initialize attributes",
+    "To control the creation of the instance and ensure only one exists",
+    "To delete the instance",
+    "To convert the class to a string"
+  ],
+  answer: 1,
+  explanation: "__new__ is the static method that creates the object; overriding it allows us to return an existing instance.",
+  hint: "Instance creation control."
+},
 ];
 
 
