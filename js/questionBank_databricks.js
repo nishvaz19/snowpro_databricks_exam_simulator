@@ -6005,6 +6005,745 @@ PYSPARK DATAFRAME API & SPARK SQL OPERATIONS
     "answer": 1,
     "explanation": "Fingerprinting involves creating a deterministic hash of the business keys. If the same record comes through again, the hash remains the same, allowing the system to identify it as a duplicate.",
     "hint": "A hash function that produces a unique ID for a specific set of input columns."
+  },
+  /* ======================================================
+   ORCHESTRATION & ETL COMPARISON MASTER BANK
+   Topics: ADF vs Databricks, NiFi, Airflow, Dagster
+   ====================================================== */
+  {
+    id: 380,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "In a hybrid ETL architecture, what is the generally recommended role for Azure Data Factory (ADF) compared to Databricks?",
+    options: [
+      "ADF for heavy data transformations; Databricks for ingestion",
+      "ADF for orchestration and ingestion; Databricks for complex transformations and Spark-based processing",
+      "ADF for Machine Learning; Databricks for simple CSV copies",
+      "There is no difference; they are identical tools"
+    ],
+    answer: 1,
+    explanation: "ADF excels at 'dragging and dropping' data from various sources (orchestration/ingestion), while Databricks provides the compute power for complex, code-heavy logic using Spark.",
+    hint: "Think of ADF as the 'Manager' and Databricks as the 'Worker'."
+  },
+  {
+    id: 381,
+    difficulty: "hard",
+    category: "ADF vs Databricks",
+    question: "When comparing 'Mapping Data Flows' in ADF to 'Databricks Notebooks', which statement is true regarding underlying compute?",
+    options: [
+      "ADF Mapping Data Flows run on SQL Server Integration Services (SSIS)",
+      "Both eventually execute on Apache Spark clusters, but ADF abstracts the code into a GUI",
+      "Databricks is serverless, while ADF requires manual VM management",
+      "Mapping Data Flows are faster because they don't use Spark"
+    ],
+    answer: 1,
+    explanation: "Mapping Data Flows provide a visual interface but actually compile into Scala code and run on an underlying Spark cluster managed by Azure.",
+    hint: "Both use Spark 'under the hood' for scale."
+  },
+  {
+    id: 382,
+    difficulty: "medium",
+    category: "Airflow vs ADF",
+    question: "What is a primary advantage of using Apache Airflow over Azure Data Factory for orchestration?",
+    options: [
+      "Airflow is a 'No-Code' tool",
+      "Airflow allows for 'Configuration as Code,' providing more flexibility for complex dynamic pipelines using Python",
+      "Airflow is only available on Azure",
+      "Airflow has a better built-in drag-and-drop UI for building pipelines"
+    ],
+    answer: 1,
+    explanation: "Airflow uses Python to define Directed Acyclic Graphs (DAGs), allowing developers to use loops, functions, and source control more naturally than a GUI-based tool.",
+    hint: "Python-based pipelines."
+  },
+  {
+    id: 383,
+    difficulty: "hard",
+    category: "NiFi vs Airflow",
+    question: "In the context of data processing, how does Apache NiFi differ fundamentally from Apache Airflow?",
+    options: [
+      "NiFi is for batch; Airflow is for real-time",
+      "NiFi is data-centric (focused on the flow of individual data packets); Airflow is task-centric (focused on the execution of a sequence of tasks)",
+      "NiFi cannot handle large files; Airflow can",
+      "Airflow is made by Apache; NiFi is made by Microsoft"
+    ],
+    answer: 1,
+    explanation: "NiFi is designed for continuous data routing and transformation (data flow), whereas Airflow is designed to trigger a specific sequence of discrete jobs (workflow).",
+    hint: "Data-flow vs. Workflow orchestration."
+  },
+  {
+    id: 384,
+    difficulty: "hard",
+    category: "Dagster vs Airflow",
+    question: "What is a key concept in Dagster (often referred to as Dagflow/Dagster logic) that differentiates it from Airflow's task-based model?",
+    options: [
+      "It doesn't use Python",
+      "It is 'Software-Defined Assets', focusing on the data objects being produced rather than just the tasks",
+      "It only runs on Windows",
+      "It is strictly for frontend developers"
+    ],
+    answer: 1,
+    explanation: "Dagster shifts the focus from 'run this script' to 'this data asset should exist,' making it easier to track data lineage and state.",
+    hint: "Asset-based orchestration."
+  },
+  {
+    id: 385,
+    difficulty: "medium",
+    category: "Cost Optimization",
+    question: "Which tool is typically more cost-effective for a simple 'file copy' operation from On-Premise to Azure Blob Storage?",
+    options: [
+      "Databricks (using a Spark Cluster)",
+      "Azure Data Factory (using Copy Activity)",
+      "Apache NiFi (running on a permanent VM)",
+      "Writing a custom C# app"
+    ],
+    answer: 1,
+    explanation: "ADF Copy Activity is highly optimized for data movement and costs significantly less than spinning up a Spark cluster for a simple file transfer.",
+    hint: "Serverless data movement."
+  },
+  {
+    id: 386,
+    difficulty: "hard",
+    category: "ADF vs Databricks",
+    question: "Which scenario explicitly requires Databricks over ADF's built-in activities?",
+    options: [
+      "Moving data from SQL Server to Data Lake",
+      "Running a complex Scikit-Learn machine learning model on large datasets",
+      "Deleting files older than 30 days",
+      "Sending an email notification upon failure"
+    ],
+    answer: 1,
+    explanation: "While ADF can orchestrate, it cannot execute custom Python ML libraries natively at scale. Databricks provides the managed environment for these libraries.",
+    hint: "Data Science and custom Python libraries."
+  },
+  {
+    id: 387,
+    difficulty: "medium",
+    category: "NiFi",
+    question: "What is the 'Backpressure' feature in Apache NiFi?",
+    options: [
+      "A way to speed up the CPU",
+      "A mechanism to stop an upstream component from sending data when a downstream queue is full",
+      "A security feature to block hackers",
+      "A method for compressing files"
+    ],
+    answer: 1,
+    explanation: "Backpressure prevents a fast producer from overwhelming a slow consumer by pausing the flow automatically.",
+    hint: "Flow control when queues are full."
+  },
+  {
+    id: 388,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What is an 'XCom' in Apache Airflow?",
+    options: [
+      "A type of communication satellite",
+      "A mechanism (Cross-Communication) that allows tasks to exchange small amounts of metadata or state information",
+      "A specialized operator for Excel files",
+      "The main dashboard of Airflow"
+    ],
+    answer: 1,
+    explanation: "Tasks in Airflow are isolated. XComs allow them to share data like a 'job_id' or a 'file_count' by pushing to and pulling from the Airflow database.",
+    hint: "Task-to-task messaging."
+  },
+  {
+    id: 389,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "What is 'Integration Runtime' (IR) in Azure Data Factory?",
+    options: [
+      "A type of hard drive",
+      "The compute infrastructure used by ADF to provide data integration capabilities across different network environments",
+      "A programming language for ADF",
+      "A plugin for Chrome"
+    ],
+    answer: 1,
+    explanation: "IR is the 'bridge'. You use a Self-Hosted IR to access on-premise data and an Azure IR for cloud-to-cloud data movement.",
+    hint: "The engine that moves the data."
+  },
+  {
+    id: 390,
+    difficulty: "hard",
+    category: "Orchestration Comparison",
+    question: "Which of these tools is best suited for 'Event-Driven' data ingestion where data must be processed as soon as it arrives in an S3/Blob folder?",
+    options: [
+      "Apache Airflow (with standard scheduling)",
+      "Azure Data Factory (using Storage Event Triggers)",
+      "A standard SQL Stored Procedure",
+      "A cron job"
+    ],
+    answer: 1,
+    explanation: "ADF has native 'Storage Event Triggers' that integrate with Azure Event Grid to start a pipeline immediately upon file arrival.",
+    hint: "Reacting to file arrival."
+  },
+  {
+    id: 391,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "Why would a company use 'Linked Services' in ADF?",
+    options: [
+      "To link two developers together",
+      "To define the connection information (like a connection string) to external data sources",
+      "To speed up the internet",
+      "To create a shortcut on the desktop"
+    ],
+    answer: 1,
+    explanation: "A Linked Service is like a connection string in C#. It tells ADF *where* the data is and *how* to authenticate to it.",
+    hint: "Connection definitions."
+  },
+  {
+    id: 392,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What is the purpose of the 'Airflow Scheduler'?",
+    options: [
+      "To write the code for the user",
+      "To monitor all tasks and DAGs, and trigger task instances whose dependencies have been met",
+      "To act as a database for the logs",
+      "To render the web UI"
+    ],
+    answer: 1,
+    explanation: "The Scheduler is the heart of Airflow; it constantly checks the DAGs to see if it's time to run a job based on time or successful completion of parents.",
+    hint: "The brain of the workflow."
+  },
+  {
+    id: 393,
+    difficulty: "medium",
+    category: "NiFi",
+    question: "In Apache NiFi, what is a 'FlowFile'?",
+    options: [
+      "A file that flows through the air",
+      "The basic unit of data in NiFi, consisting of 'Attributes' (metadata) and 'Content' (the actual data)",
+      "A script written in Java",
+      "A type of database index"
+    ],
+    answer: 1,
+    explanation: "Every piece of data moving through NiFi is a FlowFile. Attributes are key-value pairs used for routing logic.",
+    hint: "Data + Metadata packet."
+  },
+  {
+    id: 394,
+    difficulty: "hard",
+    category: "Dagster",
+    question: "In Dagster, what is a 'Resource'?",
+    options: [
+      "A developer hired for the project",
+      "An external component like a database connection or an API client that can be swapped out for testing (mocking)",
+      "The amount of RAM used",
+      "A type of CSS file"
+    ],
+    answer: 1,
+    explanation: "Resources allow you to separate the 'business logic' of your pipeline from the 'infrastructure,' making local testing much easier.",
+    hint: "Pluggable infrastructure components."
+  },
+  {
+    id: 395,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "Which ADF activity is used to execute a Databricks Notebook?",
+    options: [
+      "Copy Activity",
+      "Databricks Notebook Activity",
+      "Execute Pipeline Activity",
+      "Web Activity"
+    ],
+    answer: 1,
+    explanation: "ADF has a native activity for Databricks that allows you to pass parameters and wait for the notebook to complete.",
+    hint: "Native integration for notebooks."
+  },
+  {
+    id: 396,
+    difficulty: "hard",
+    category: "Security",
+    question: "How should secrets (like API keys) be handled when comparing ADF and Databricks implementations?",
+    options: [
+      "Hardcoded in the notebook or pipeline",
+      "Stored in Azure Key Vault and referenced by both ADF (via Linked Services) and Databricks (via Secret Scopes)",
+      "Saved in a text file on the server",
+      "They should be public"
+    ],
+    answer: 1,
+    explanation: "Both tools integrate with Azure Key Vault to ensure sensitive credentials are never stored in plain text code.",
+    hint: "Centralized secret management."
+  },
+  {
+    id: 397,
+    difficulty: "medium",
+    category: "Airflow",
+    question: "What is an Airflow 'Operator'?",
+    options: [
+      "A person who runs the computer",
+      "A template for a predefined task that encapsulates a specific logic (e.g., PythonOperator, BashOperator, S3ToRedshiftOperator)",
+      "A mathematical symbol like '+'",
+      "A type of computer screen"
+    ],
+    answer: 1,
+    explanation: "Operators define 'what' gets done. When an operator is instantiated in a DAG, it becomes a 'Task'.",
+    hint: "Task templates."
+  },
+  {
+    id: 398,
+    difficulty: "hard",
+    category: "Orchestration",
+    question: "Which of these is a 'pull-based' ingestion tool often used for IoT data before it reaches the Lakehouse?",
+    options: ["Azure Data Factory", "Apache NiFi", "SQL Server", "Airflow"],
+    answer: 1,
+    explanation: "NiFi excels at pulling data from various protocols (MQTT, HTTP, FTP) in real-time or near real-time with granular control.",
+    hint: "Real-time data routing."
+  },
+  {
+    id: 399,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "What is a 'Dataset' in Azure Data Factory?",
+    options: [
+      "A collection of music",
+      "A named view of data that simply points or references the data you want to use in your activities",
+      "A type of Excel sheet",
+      "A physical table in ADF's internal database"
+    ],
+    answer: 1,
+    explanation: "Datasets define the structure of the data (e.g., CSV schema, SQL table name) but do not store the data themselves.",
+    hint: "Data structure reference."
+  },
+  {
+    id: 400,
+    difficulty: "hard",
+    category: "Architecture",
+    question: "In the 'Modern Data Stack', which tool is typically used to handle the 'Transformation' layer *inside* the data warehouse after Airflow or ADF has loaded the data?",
+    options: ["dbt (Data Build Tool)", "Excel", "Notepad++", "Active Directory"],
+    answer: 0,
+    explanation: "dbt is the industry standard for ELT (Extract, Load, Transform) where SQL-based transformations happen inside the warehouse (Snowflake/Databricks/BigQuery).",
+    hint: "SQL-only transformation tool."
+  },
+  {
+    id: 401,
+    difficulty: "hard",
+    category: "Orchestration Patterns",
+    question: "What is 'Sensor' in Apache Airflow?",
+    options: [
+      "A physical hardware device connected to the server",
+      "A special type of operator that keeps running until a certain condition is met (e.g., a file appears or a database record is updated)",
+      "A way to detect if the user is typing",
+      "A security alarm"
+    ],
+    answer: 1,
+    explanation: "Sensors are 'waiting' tasks. They poke a resource at intervals and only allow the DAG to proceed once the criteria is satisfied.",
+    hint: "Waiting for a condition."
+  },
+  {
+    id: 402,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "If you need to process 10,000 small files and merge them into one large Parquet file, which tool is technically superior for the merge?",
+    options: [
+      "ADF Copy Activity",
+      "Databricks (Spark)",
+      "Airflow",
+      "Azure Logic Apps"
+    ],
+    answer: 1,
+    explanation: "Spark (Databricks) is designed for distributed processing and can shuffle and coalesce data efficiently, whereas ADF is better at direct movement.",
+    hint: "Heavy computational lifting."
+  },
+  {
+    id: 403,
+    difficulty: "hard",
+    category: "ADF vs Databricks",
+    question: "What is the 'Self-Hosted Integration Runtime' used for in ADF?",
+    options: [
+      "To run ADF on a personal laptop without internet",
+      "To allow ADF to reach into private networks or on-premise data centers securely",
+      "To host a website inside ADF",
+      "To make ADF run faster in the cloud"
+    ],
+    answer: 1,
+    explanation: "It acts as a gateway proxy. You install it on a machine inside your firewalled network so ADF can 'talk' to your local SQL Server.",
+    hint: "Bridge to on-premise."
+  },
+  {
+    id: 404,
+    difficulty: "medium",
+    category: "NiFi",
+    question: "How does Apache NiFi ensure data provenance?",
+    options: [
+      "By using a blockchain",
+      "By recording every event (creation, routing, transformation) for every piece of data moving through the system",
+      "By asking the developer to write it down",
+      "It doesn't support provenance"
+    ],
+    answer: 1,
+    explanation: "Provenance allows you to see exactly where a specific record came from and what happened to it at every step in the UI.",
+    hint: "Step-by-step history of data."
+  },
+  {
+    id: 405,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What is a 'Directed Acyclic Graph' (DAG)?",
+    options: [
+      "A type of digital signature",
+      "A collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies without loops",
+      "A graph that shows how many users are logged in",
+      "A type of database table"
+    ],
+    answer: 1,
+    explanation: "The 'Acyclic' part is crucial—it means a task cannot eventually point back to itself, ensuring the workflow has a clear start and end.",
+    hint: "No loops in the workflow."
+  },
+  {
+    id: 406,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "In ADF, which activity would you use to iterate through a list of table names and call a child pipeline for each?",
+    options: ["Switch Activity", "ForEach Activity", "Wait Activity", "Validation Activity"],
+    answer: 1,
+    explanation: "ForEach allows you to loop over an array (like a list of tables) and execute tasks in parallel or sequentially.",
+    hint: "The looping activity."
+  },
+  {
+    id: 407,
+    difficulty: "hard",
+    category: "Orchestration",
+    question: "Which orchestration tool is built natively to handle 'Data Quality' as a first-class citizen (Asset-checks)?",
+    options: ["Airflow", "Dagster", "ADF", "NiFi"],
+    answer: 1,
+    explanation: "Dagster encourages the definition of data quality checks alongside the assets themselves, failing the pipeline if data expectations aren't met.",
+    hint: "Modern asset-centric tool."
+  },
+  {
+    id: 408,
+    difficulty: "medium",
+    category: "Databricks",
+    question: "What is the primary language used for writing 'Delta Live Tables' (DLT) pipelines in Databricks?",
+    options: ["C++", "Python or SQL", "Java only", "HTML"],
+    answer: 1,
+    explanation: "DLT allows developers to define end-to-end data pipelines using declarative Python or SQL.",
+    hint: "The standard languages of data."
+  },
+  {
+    id: 409,
+    difficulty: "hard",
+    category: "ADF vs Databricks",
+    question: "Which of these is a major limitation of ADF Mapping Data Flows compared to Databricks?",
+    options: [
+      "It doesn't have a UI",
+      "Cold start time: it often takes 3-5 minutes to spin up the Spark cluster for a simple run",
+      "It is too cheap",
+      "It cannot connect to Azure SQL"
+    ],
+    answer: 1,
+    explanation: "Because ADF has to provision a cluster for the Data Flow, small jobs can be inefficient due to the 'warm-up' time.",
+    hint: "Cluster spin-up time."
+  },
+  {
+    id: 410,
+    difficulty: "medium",
+    category: "Airflow",
+    question: "What is the 'Webserver' in Apache Airflow?",
+    options: [
+      "A server that hosts the company's public website",
+      "The component that provides the user interface for monitoring and managing DAGs",
+      "The part of Airflow that runs the Python code",
+      "A tool for downloading files"
+    ],
+    answer: 1,
+    explanation: "The Webserver serves the UI you see in your browser to trigger and debug jobs.",
+    hint: "The Airflow GUI."
+  },
+  {
+    id: 411,
+    difficulty: "hard",
+    category: "Orchestration Concepts",
+    question: "What is 'Idempotency' in the context of a data pipeline?",
+    options: [
+      "The ability of a pipeline to run faster every time",
+      "The property where running a pipeline multiple times with the same input produces the same output and has no additional side effects",
+      "A security protocol for encrypting data",
+      "A way to rename variables automatically"
+    ],
+    answer: 1,
+    explanation: "Idempotent pipelines are 'safe to retry'. If a job fails halfway, running it again shouldn't result in duplicate data.",
+    hint: "Safe to run again."
+  },
+  {
+    id: 412,
+    difficulty: "medium",
+    category: "NiFi",
+    question: "How do you 'code' in Apache NiFi?",
+    options: [
+      "By writing Python scripts in Notepad",
+      "By dragging and dropping 'Processors' on a canvas and connecting them with 'Relationships'",
+      "By writing SQL queries only",
+      "By using a command-line interface exclusively"
+    ],
+    answer: 1,
+    explanation: "NiFi is a visual programming tool. Logic is built by configuring processors (e.g., GetFile, UpdateAttribute, PutSQL).",
+    hint: "Canvas-based design."
+  },
+  {
+    id: 413,
+    difficulty: "hard",
+    category: "ADF",
+    question: "What is 'Global Parameters' in Azure Data Factory?",
+    options: [
+      "Parameters that control the entire internet",
+      "Constants across a whole factory that can be used by any pipeline, often used for environment-specific URLs",
+      "A way to name the factory",
+      "The username and password of the admin"
+    ],
+    answer: 1,
+    explanation: "Global parameters allow you to change a value (like a base URL) once and have it reflected in all pipelines.",
+    hint: "Factory-wide constants."
+  },
+  {
+    id: 414,
+    difficulty: "medium",
+    category: "Databricks",
+    question: "What is 'Auto Loader' in Databricks?",
+    options: [
+      "A tool that automatically loads your dishwasher",
+      "A feature that incrementally and efficiently processes new data files as they arrive in cloud storage without complex state management",
+      "A way to upload files from your local PC",
+      "An automated way to update Windows"
+    ],
+    answer: 1,
+    explanation: "Auto Loader uses 'cloudFiles' to track which files have been processed, making it easier than manual folder scanning.",
+    hint: "Incremental file ingestion."
+  },
+  {
+    id: 415,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What does the 'Catchup' parameter do in an Airflow DAG?",
+    options: [
+      "It helps the developer catch up on work",
+      "It determines whether Airflow should run all past instances of a DAG that were missed when the DAG is enabled",
+      "It speeds up the database",
+      "It catches errors and sends them to Slack"
+    ],
+    answer: 1,
+    explanation: "If you enable a daily DAG that was supposed to start a month ago, and Catchup=True, Airflow will immediately trigger 30 runs.",
+    hint: "Running missed historical jobs."
+  },
+  {
+    id: 416,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "Which tool offers a better native 'debugger' experience for checking intermediate data values line-by-line?",
+    options: [
+      "ADF (using Debug mode)",
+      "Databricks (using Notebook cells)",
+      "Airflow",
+      "NiFi"
+    ],
+    answer: 1,
+    explanation: "Databricks notebooks allow you to run small chunks of code and immediately see the DataFrame output, which is much faster than running an ADF pipeline.",
+    hint: "Interactive code execution."
+  },
+  {
+    id: 417,
+    difficulty: "hard",
+    category: "Security",
+    question: "What is an 'Azure Managed Identity' in the context of ADF?",
+    options: [
+      "A username for the portal",
+      "An identity for the ADF service itself that allows it to authenticate to other Azure services (like Data Lake) without storing credentials",
+      "A face-recognition login",
+      "A way to identify the developer"
+    ],
+    answer: 1,
+    explanation: "Using Managed Identity is the most secure way to connect ADF to a Data Lake, as there are no passwords to manage or rotate.",
+    hint: "Passwordless service authentication."
+  },
+  {
+    id: 418,
+    difficulty: "medium",
+    category: "Architecture",
+    question: "In a 'Medallion Architecture', which tool is usually used for the 'Bronze to Silver' transformation?",
+    options: [
+      "ADF Copy Activity",
+      "Databricks (Spark)",
+      "Power BI",
+      "Excel"
+    ],
+    answer: 1,
+    explanation: "Moving from Bronze (raw) to Silver (cleaned/filtered) typically requires heavy logic and schema enforcement, which is where Spark shines.",
+    hint: "Cleaning and filtering logic."
+  },
+  {
+    id: 419,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What is a 'Task Group' in Airflow?",
+    options: [
+      "A group of developers",
+      "A UI-only grouping mechanism to organize complex DAGs into visually manageable blocks",
+      "A way to run tasks in parallel only",
+      "A type of database cluster"
+    ],
+    answer: 1,
+    explanation: "Task Groups help clean up the Graph View in the UI by collapsing multiple related tasks into a single icon.",
+    hint: "Visual organization of tasks."
+  },
+  {
+    id: 420,
+    difficulty: "medium",
+    category: "NiFi",
+    question: "What is the 'canvas' in NiFi?",
+    options: [
+      "A physical painting",
+      "The white workspace where you drag and drop processors and build your data flow",
+      "A hidden part of the database",
+      "The login screen"
+    ],
+    answer: 1,
+    explanation: "The canvas is the primary workspace where the logic of NiFi is visually constructed.",
+    hint: "Visual workspace."
+  },
+  {
+    id: 421,
+    difficulty: "hard",
+    category: "ADF",
+    question: "What is the 'Lookup Activity' used for in ADF?",
+    options: [
+      "Looking for a job",
+      "Retrieving a dataset or value from an external source (like a SQL table or JSON file) to be used by downstream activities",
+      "Checking the weather",
+      "Searching for text in a notebook"
+    ],
+    answer: 1,
+    explanation: "Commonly used to get a list of tables from a configuration database to pass into a ForEach loop.",
+    hint: "Fetching configuration or data values."
+  },
+  {
+    id: 422,
+    difficulty: "medium",
+    category: "Databricks",
+    question: "What is 'Unity Catalog' in the Databricks ecosystem?",
+    options: [
+      "A catalog of books",
+      "A unified governance layer for all data and AI assets (files, tables, models) in a Databricks account",
+      "A way to name your clusters",
+      "A shared database for all Azure users"
+    ],
+    answer: 1,
+    explanation: "Unity Catalog provides centralized access control, auditing, and lineage across multiple workspaces.",
+    hint: "Centralized governance."
+  },
+  {
+    id: 423,
+    difficulty: "hard",
+    category: "Dagster",
+    question: "How does Dagster handle 'IO Managers'?",
+    options: [
+      "They manage the input/output of the computer's keyboard",
+      "They define how data is stored and loaded between steps, allowing you to switch from local files to S3 without changing business logic",
+      "They speed up the internet connection",
+      "They are a type of database administrator"
+    ],
+    answer: 1,
+    explanation: "IO Managers abstract away the 'storage' layer. Your code says 'return df', and the IO Manager decides whether to save it as a CSV, Parquet, or SQL table.",
+    hint: "Abstracting data storage."
+  },
+  {
+    id: 424,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "Which tool is better for 'Orchestrating' a workflow that includes an ADF pipeline, a Databricks notebook, and a Power BI refresh?",
+    options: [
+      "Databricks alone",
+      "Azure Data Factory (ADF)",
+      "Excel macros",
+      "SQL Server Management Studio"
+    ],
+    answer: 1,
+    explanation: "ADF is the 'glue' of the Azure ecosystem, with native connectors for Databricks, Power BI, Synapse, and more.",
+    hint: "The Azure service 'glue'."
+  },
+  {
+    id: 425,
+    difficulty: "hard",
+    category: "Architecture",
+    question: "What is the 'Lambda Architecture' in big data?",
+    options: [
+      "An architecture that uses Lambda functions only",
+      "A pattern that combines a fast 'Speed Layer' for real-time data and a 'Batch Layer' for accurate historical data",
+      "A way to design logos",
+      "A type of data encryption"
+    ],
+    answer: 1,
+    explanation: "It was designed to handle massive scale by providing low-latency views while also maintaining a 'source of truth' batch layer.",
+    hint: "Batch + Speed layers."
+  },
+  {
+    id: 426,
+    difficulty: "medium",
+    category: "Airflow",
+    question: "What is the 'Execution Date' in Airflow?",
+    options: [
+      "The date the task was actually run",
+      "The logical date/time for which a DAG is being run (e.g., 'yesterday' if processing daily data)",
+      "The date the developer wrote the code",
+      "The date the server was installed"
+    ],
+    answer: 1,
+    explanation: "If you run a job today to process data from 2023-01-01, the Execution Date (logical date) is 2023-01-01.",
+    hint: "Logical processing time."
+  },
+  {
+    id: 427,
+    difficulty: "hard",
+    category: "Security",
+    question: "What is 'VNet Injection' for Databricks or ADF?",
+    options: [
+      "Giving the computer a vaccine",
+      "Deploying the service inside your own private Virtual Network to ensure traffic stays off the public internet",
+      "A way to speed up the Wi-Fi",
+      "A method for hacking into networks"
+    ],
+    answer: 1,
+    explanation: "This allows you to control the network security rules (NSGs) and keep your data traffic entirely private.",
+    hint: "Network-level security isolation."
+  },
+  {
+    id: 428,
+    difficulty: "medium",
+    category: "ADF vs Databricks",
+    question: "In ADF, what does 'Mapping' refer to in a Copy Activity?",
+    options: [
+      "Using a map to find the data center",
+      "Defining how source columns correspond to sink (destination) columns",
+      "A way to color-code the pipelines",
+      "A type of database indexing"
+    ],
+    answer: 1,
+    explanation: "Column mapping tells ADF that 'CustID' in the source should go into 'CustomerID' in the destination.",
+    hint: "Source-to-Destination column linking."
+  },
+  {
+    id: 429,
+    difficulty: "hard",
+    category: "Airflow",
+    question: "What is the 'Airflow Task Lifecycle'?",
+    options: [
+      "The time it takes to write a task",
+      "The series of states a task goes through: No Status -> Scheduled -> Queued -> Running -> Success/Failed",
+      "A way to delete old tasks",
+      "The version history of the code"
+    ],
+    answer: 1,
+    explanation: "Understanding these states is critical for debugging why a job is 'stuck' (usually in Queued state).",
+    hint: "The states of a task run."
+  },
+  {
+    id: 430,
+    difficulty: "medium",
+    category: "Architecture",
+    question: "Which tool is commonly used to 'Visualize' the data after the ETL process is complete?",
+    options: ["ADF", "Databricks Notebooks (for exploration) or Power BI (for dashboards)", "Airflow", "NiFi"],
+    answer: 1,
+    explanation: "ETL tools move and clean data; visualization tools like Power BI or Databricks SQL are used to actually see and analyze the results.",
+    hint: "Seeing the data."
   }, 
 ];  
 
