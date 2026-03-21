@@ -3400,3 +3400,32 @@ const questionBank = [
     hint: "The UI and Logic engine."
   }
 ];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Memory Management, Asynchronous Patterns, DOM Performance, and ES6+ logic.
+const hotsQuestions = [
+    // 1. Core Engine & Memory (Prototypes, WeakMap, Closures, Garbage Collection) - 20 indices
+    2, 3, 5, 10, 15, 20, 25, 45, 50, 55, 
+    60, 65, 70, 75, 80, 85, 150, 155, 160, 249,
+
+    // 2. Asynchronous JS (Event Loop, Promises, Async/Await, Web Workers) - 20 indices
+    8, 9, 12, 13, 14, 110, 115, 120, 125, 130, 
+    135, 140, 145, 200, 205, 210, 215, 220, 225, 250,
+
+    // 3. Functional Programming & Logic (Currying, Memoization, Hoisting) - 15 indices
+    21, 22, 23, 24, 26, 27, 28, 29, 31, 32, 
+    170, 175, 180, 185, 190,
+
+    // 4. DOM & Browser APIs (Event Delegation, Intersection Observer, Storage) - 15 indices
+    33, 34, 36, 37, 38, 39, 41, 42, 230, 235, 
+    240, 245, 246, 247, 248,
+
+    // 5. Modern ES6+ & Modular Patterns (Destructuring, Proxy, Modules) - 15 indices
+    43, 44, 46, 47, 48, 49, 100, 101, 102, 103, 
+    104, 105, 106, 107, 108,
+
+    // 6. Troubleshooting & Cross-Browser Development - 15 indices
+    90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 
+    165, 166, 167, 168, 169
+];
