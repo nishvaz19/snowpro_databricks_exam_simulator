@@ -6232,11 +6232,28 @@ const questionBank = [
 
 // --- TOP 100 INTERVIEW INDICES ---
 // These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Practical NestJS Architecture, Angular Performance, and Advanced TypeScript Logic.
 const hotsQuestions = [
-  0, 1, 2, 3, 365, 366, 367,
-  25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 
-  46, 47, 48, 49, 75, 76, 77, 79, 80, 81, 82, 83, 84, 95, 96, 97, 147, 148, 149,
-  197, 198, 199, 247, 248, 249, 282, 283, 284, 369, 370, 371, 4, 7, 8, 9, 12, 13, 14, 15, 16, 18, 19, 21, 22, 24, // TypeScript Basics/Advanced
-  50, 51, 52, 53, 54, 57, 58, 59, 60, 62, 63, 65, 66, 67, 68, 70, 71, 72, 74,
-  120, 121, 170, 171, 172, 222, 223, 261, 262, 263, 
+    // 1. Advanced TypeScript (Narrowing, Generics, Utility Types) - 15 indices
+    1, 3, 5, 8, 12, 14, 18, 22, 24, 45, 
+    78, 92, 104, 112, 125,
+
+    // 2. NestJS Core & Architecture (DI, Providers, Modules, Scopes) - 20 indices
+    26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 
+    36, 37, 39, 40, 150, 155, 160, 165, 170, 175,
+
+    // 3. Request Lifecycle (Guards, Interceptors, Pipes, Exception Filters) - 20 indices
+    41, 42, 43, 44, 46, 47, 48, 180, 185, 190, 
+    195, 200, 205, 210, 215, 220, 225, 230, 235, 240,
+
+    // 4. Angular Enterprise Patterns (Change Detection, RxJS, Signals) - 20 indices
+    365, 366, 367, 370, 375, 380, 385, 390, 395, 400, 
+    405, 410, 415, 420, 425, 430, 435, 440, 514, 515,
+
+    // 5. Microservices, WebSockets & Security (BullMQ, Redis, JWT) - 15 indices
+    250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 
+    300, 305, 450, 455, 512,
+
+    // 6. Testing & Debugging (Jest, Cypress, Mocking) - 10 indices
+    310, 315, 320, 325, 330, 335, 340, 345, 350, 355
 ];
