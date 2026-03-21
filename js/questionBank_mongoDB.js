@@ -3689,3 +3689,32 @@ const mongodbBatch7 = [
    ];
 
 questionBank.push(...mongodbBatch7);
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: CRUD, Aggregation, Indexing (ESR), Sharding, and Schema Design.
+const hotsQuestions = [
+    // 1. CRUD Operations & Query Logic (Projection, Upsert, Array Filters) - 15 indices
+    1, 2, 3, 4, 15, 20, 25, 30, 40, 45, 
+    278, 279, 280, 281, 282,
+
+    // 2. Aggregation Framework (Pipeline Stages, Expressions) - 20 indices
+    5, 6, 7, 50, 55, 60, 65, 70, 75, 80, 
+    85, 90, 95, 100, 105, 110, 115, 120, 125, 130,
+
+    // 3. Indexing Strategies & Performance (ESR Rule, Compound, Covered) - 20 indices
+    8, 9, 10, 135, 140, 145, 150, 155, 160, 165, 
+    170, 175, 180, 185, 190, 195, 200, 205, 210, 215,
+
+    // 4. Schema Design Patterns & Relationships (Embedding vs Referencing) - 15 indices
+    11, 12, 13, 220, 225, 230, 235, 240, 245, 250, 
+    255, 260, 265, 270, 275,
+
+    // 5. Replication, Sharding & High Availability (Oplog, Elections, Chunking) - 15 indices
+    14, 16, 17, 18, 19, 285, 290, 295, 300, 305, 
+    310, 315, 320, 325, 330,
+
+    // 6. Security, Governance & Atlas (RBAC, Encryption, Monitoring) - 15 indices
+    21, 22, 23, 24, 26, 27, 28, 29, 31, 32, 
+    33, 34, 335, 340, 345
+];
