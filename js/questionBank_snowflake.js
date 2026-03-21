@@ -1,9 +1,7 @@
 const questionBank = [
-
 /* ======================================================
 SNOWFLAKE ARCHITECTURE
 ====================================================== */
-
 {
 id:1,
 difficulty:"easy",
@@ -4317,5 +4315,34 @@ explanation:"USERADMIN manages users and roles."
     explanation: "The UNDROP command relies on Time Travel to restore dropped objects (tables, schemas, or databases) as long as they are within the retention period.",
     domain: "sn-core"
 }, 
+];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Snowflake Architecture, Performance Tuning, Data Sharing, and Cost Governance.
+const hotsQuestions = [
+    // 1. Core Architecture (Cloud Services, Compute vs Storage, Micro-partitions) - 15 indices
+    0, 1, 2, 3, 4, 10, 15, 20, 25, 30, 
+    45, 120, 215, 283, 285,
+
+    // 2. Data Loading & Pipelines (Snowpipe, COPY, Stages, File Formats) - 20 indices
+    5, 6, 7, 50, 55, 60, 65, 70, 75, 80, 
+    85, 90, 95, 100, 105, 110, 115, 200, 205, 210,
+
+    // 3. Performance & Scaling (Clustering, Search Optimization, Warehouse Sizes) - 20 indices
+    8, 9, 11, 12, 125, 130, 135, 140, 145, 150, 
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 220,
+
+    // 4. Data Protection & Governance (Time Travel, Fail-safe, RBAC, Masking) - 15 indices
+    13, 14, 16, 225, 230, 235, 240, 245, 250, 255, 
+    260, 265, 270, 275, 280,
+
+    // 5. Advanced Features (Zero-Copy Cloning, Data Sharing, UDFs, Streams) - 15 indices
+    17, 18, 19, 21, 22, 23, 24, 26, 27, 28, 
+    29, 31, 32, 282, 284,
+
+    // 6. Cost Management & Monitoring (Query Profile, Resource Monitors) - 15 indices
+    33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 
+    43, 44, 46, 47, 48
 ];
 
