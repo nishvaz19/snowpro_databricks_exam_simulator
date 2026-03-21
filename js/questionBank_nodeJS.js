@@ -2,7 +2,6 @@
    NODE.JS CERTIFICATION QUESTION BANK (Batch 1: 1-50)
    Topics: Event Loop, Buffer, Streams, FS, and Async Patterns
    ====================================================== */
-
 const questionBank = [
   {
     id: 1,
@@ -2459,4 +2458,33 @@ const questionBank = [
     explanation: "While Node.js uses C++, the underlying libuv library is a high-performance asynchronous I/O library written in C.",
     hint: "Low-level language."
   }
+];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Event Loop Internals, Streams/Backpressure, Security, and Scaling.
+const hotsQuestions = [
+    // 1. Event Loop & Asynchronous Patterns (nextTick, setImmediate, Timers) - 20 indices
+    0, 1, 4, 10, 15, 20, 25, 45, 50, 55, 
+    60, 65, 70, 75, 80, 85, 150, 151, 152, 196,
+
+    // 2. Streams & Buffers (Backpressure, Pipe, Transform, Allocation) - 20 indices
+    2, 3, 5, 8, 9, 12, 13, 14, 110, 115, 
+    120, 125, 130, 135, 140, 145, 197, 198, 155, 156,
+
+    // 3. System & File System (fs.promises, Watchers, Error Handling) - 15 indices
+    21, 22, 23, 24, 26, 27, 28, 29, 31, 32, 
+    170, 175, 180, 185, 190,
+
+    // 4. Scaling & Performance (Worker Threads, Cluster, PM2, libuv) - 15 indices
+    33, 34, 36, 37, 38, 39, 41, 42, 199, 200, 
+    160, 161, 162, 163, 164,
+
+    // 5. Security & Web API (JWT, Helmet, Rate Limiting, XSS) - 15 indices
+    43, 44, 46, 47, 48, 49, 100, 101, 102, 103, 
+    104, 105, 106, 107, 108,
+
+    // 6. Practical Scenarios & Debugging (Memory Leaks, N-API, node-gyp) - 15 indices
+    90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 
+    165, 166, 167, 168, 169
 ];
