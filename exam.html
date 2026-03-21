@@ -5,6 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Line 1: Meta Info Alignment */
+.exam-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Line 2: Search/Top 100 Container */
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.hot-selection-box {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    border: 1px solid #000; /* Thin black border */
+    border-radius: 4px;
+    height: 38px; /* Match input height */
+    background: white;
+}
+
+.hot-selection-box label {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* Footer Actions */
+.right-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
         .btn-analytics {
             background: #64748b;
             color: white;
@@ -39,28 +85,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-    .hot-selection-box {
-        display: inline-flex;
-        align-items: center;
-        padding: 5px 12px;
-        border: 1px solid #000; /* Black thin border */
-        border-radius: 4px;
-        background-color: #ffffff;
-        gap: 8px;
-        height: 38px; /* Matches typical dropdown height */
-        box-sizing: border-box;
-    }
-
-    .hot-selection-box label {
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin: 0;
-        color: #000;
-    }
 
     .hot-selection-box input[type="checkbox"] {
         cursor: pointer;
@@ -72,34 +96,33 @@
     <script src="js/examEngine.js"></script>
 </head>
 <body>
-     
 <div class="exam-wrapper">
-    <header class="exam-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 300px;">
-            <h1 id="examTitle">Loading Examination...</h1>
-            <div class="exam-meta">
-                <div id="timer" class="timer"></div>
-                <div id="progress" class="progress"></div>
-                <div id="runningScore" class="running-score" style="font-family: monospace; background: #1e293b; color: #38bdf8; padding: 5px 10px; border-radius: 4px; margin-top: 5px;">
-                    H:0 M:0 E:0 | Score: 0/0
-                </div>
+    <header class="exam-header">
+        <h1 id="examTitle" style="margin-bottom: 15px;">Loading Examination...</h1>
+
+        <div class="exam-meta-row">
+            <div id="timer" class="timer" style="font-weight: bold; color: #e11d48;">00:00</div>
+            <div id="progress" class="progress" style="font-weight: 500;">Question 0 of 0</div>
+            <div id="runningScore" class="running-score" style="font-family: monospace; background: #1e293b; color: #38bdf8; padding: 4px 12px; border-radius: 4px;">
+                H:0 M:0 E:0 | Score: 0/0
+            </div>
+        </div>
+
+        <div class="search-row">
+            <div class="hot-selection-box">
+                <label for="hotToggle">
+                    <input type="checkbox" id="hotToggle" onchange="startExam()">
+                    🔥 Top 100
+                </label>
             </div>
             
-            <div class="search-container" style="align-items: center; flex-wrap: wrap;">
-
-
-    <div class="hot-selection-box">
-        <label for="hotToggle">
-            <input type="checkbox" id="hotToggle" onchange="startExam()">
-            🔥 Top 100
-        </label>
-    </div>
-
-    <input type="text" id="keywordSearch" placeholder="Filter by keyword..." onkeyup="if(event.key==='Enter') startExam()">
-    <button class="btn-focus" onclick="startExam()">Apply Focus</button>
-</div>
+            <input type="text" id="keywordSearch" 
+                   style="flex-grow: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px;" 
+                   placeholder="Filter by keyword (e.g. RxJS)..." 
+                   onkeyup="if(event.key==='Enter') startExam()">
+            
+            <button class="btn-focus" onclick="startExam()" style="padding: 8px 20px;">Apply Focus</button>
         </div>
-        <button class="btn-analytics" onclick="window.location.href='analytics.html'">📊 View Analytics</button>    
     </header>
 
     <main class="exam-container">
@@ -119,6 +142,7 @@
                 <button onclick="nextQuestion()">Next</button>
             </div>
             <div class="right-actions">
+                <button class="btn-analytics" onclick="window.location.href='analytics.html'">📊 View Analytics</button>
                 <button onclick="reviewExam()">Review Flagged</button>
                 <button onclick="submitExam()" class="submit-btn">Submit Exam</button>
             </div>
