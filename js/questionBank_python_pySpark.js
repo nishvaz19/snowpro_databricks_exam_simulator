@@ -5032,4 +5032,28 @@ ALGORITHM COMPLEXITY & SOLUTIONS DELTA (PHASES 1-4)
 },
 ];
 
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: Python Internals, PySpark Optimization, Streaming, Delta Lake, and Algorithms.
+const hotsQuestions = [
+    // Python Core & Advanced (20 indices)
+    0, 1, 2, 5, 6, 8, 10, 12, 14, 20, 
+    27, 29, 32, 38, 41, 46, 48, 52, 96, 99, 
+
+    // PySpark Foundations & Architecture (20 indices)
+    100, 101, 102, 104, 109, 114, 119, 124, 129, 134, 
+    139, 144, 149, 154, 159, 164, 169, 174, 179, 184,
+
+    // PySpark Optimization & Internals (20 indices)
+    200, 201, 204, 209, 214, 219, 223, 224, 229, 234, 
+    239, 244, 249, 255, 259, 264, 269, 275, 276, 279,
+
+    // Structured Streaming & Delta Lake (20 indices)
+    289, 295, 296, 298, 304, 309, 314, 319, 324, 329, 
+    334, 339, 342, 344, 349, 354, 356, 358, 359, 361,
+
+    // DE Scenarios & Algorithms (20 indices)
+    363, 367, 369, 374, 379, 384, 389, 394, 399, 404, 
+    409, 414, 416, 419, 420, 421, 422, 423, 424, 425
+];
 
