@@ -753,3 +753,23 @@ explanation:"Petabyte-scale architectures rely on distributed event streaming pl
     explanation: "The elastic resources of the public cloud are essential for handling petabytes of data efficiently."
   },  
 ];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Note: As the bank currently has 70 questions, all are prioritized for complete domain coverage.
+const hotsQuestions = [
+    // Core Architecture & Modeling (Indices 0-19)
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,           // DW Goals, Cloud Scalability, Kimball, Star Schema, Grain, SCD Type 2, CDC, Lakehouse
+    10, 11, 12, 13, 14, 15, 16, 17, 18, 19, // Streaming, Semantic Layer, Lineage, RBAC, Feature Stores, Partitioning, Data Fabric, Data Vault
+
+    // Advanced Patterns & Medallion (Indices 20-39)
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, // Silver Layer, Active Metadata, Event-Driven, Conformed Dimensions, Training-Serving Skew
+    30, 31, 32, 33, 34, 35, 36, 37, 38, 39, // Customer 360, Data Catalog, Columnar Storage, Vertical vs Horizontal Scaling, Gold Layer
+
+    // Performance & Governance (Indices 40-59)
+    40, 41, 42, 43, 44, 45, 46, 47, 48, 49, // Impact Analysis, Partition Pruning, Virtualization, Kafka, Headless BI, Parquet, Identity Resolution
+    50, 51, 52, 53, 54, 55, 56, 57, 58, 59, // Offline Feature Stores, Backpressure, Activity Schema, Data Skew, Semantic Gap, Column-based
+
+    // Specialized Scale & Strategy (Indices 60-69)
+    60, 61, 62, 63, 64, 65, 66, 67, 68, 69  // Data Mesh, OLAP, Hubs, Data Stewards, S3/ADLS, Windowing, Cube/dbt, Z-Order, Petabyte Scale
+];
