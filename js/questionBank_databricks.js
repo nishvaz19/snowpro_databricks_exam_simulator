@@ -6747,3 +6747,33 @@ PYSPARK DATAFRAME API & SPARK SQL OPERATIONS
   }, 
 ];  
 
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: Medallion, Delta Optimization, Streaming, Unity Catalog, and Performance Tuning.
+const hotsQuestions = [
+    // 1. Fundamentals & Architecture (Medallion, ACID, Storage) - 15 indices
+    0, 1, 2, 3, 4, 5, 10, 13, 18, 19, 
+    32, 148, 150, 215, 231,
+
+    // 2. Delta Lake Deep Dive (Optimize, Vacuum, Time Travel, CDF) - 15 indices
+    20, 21, 22, 23, 24, 31, 34, 35, 36, 37, 
+    38, 147, 214, 242, 280,
+
+    // 3. Spark SQL & PySpark Optimization (Joins, Windows, AQE, DFP) - 20 indices
+    25, 26, 27, 28, 29, 30, 33, 56, 60, 67, 
+    89, 90, 105, 106, 107, 108, 149, 320, 400, 425,
+
+    // 4. Structured Streaming & Auto Loader (Checkpoints, Watermarks) - 15 indices
+    7, 8, 15, 16, 45, 120, 125, 130, 135, 140, 
+    160, 170, 288, 289, 311,
+
+    // 5. Delta Live Tables (DLT) & Data Quality (Expectations) - 15 indices
+    9, 77, 180, 185, 190, 195, 200, 205, 210, 220, 
+    225, 230, 240, 241, 250,
+
+    // 6. Unity Catalog, Security & Governance (Permissions, Lineage) - 10 indices
+    11, 12, 110, 115, 181, 243, 255, 260, 270, 330,
+
+    // 7. Operations & CI/CD (Workflows, Serverless, Infrastructure) - 10 indices
+    14, 17, 70, 80, 85, 88, 100, 334, 357, 421
+];
