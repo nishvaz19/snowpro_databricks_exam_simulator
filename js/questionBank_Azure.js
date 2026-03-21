@@ -7366,3 +7366,32 @@ const questionBank = [
     hint: "Passwordless authentication for resources."
   },
 ];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: Entra ID, Hybrid Networking, Governance, Storage, and AWS Migration Scenarios.
+const hotsQuestions = [
+    // 1. Governance, Identity & Entra ID - 20 indices
+    0, 1, 2, 3, 4, 10, 11, 15, 20, 25, 
+    30, 35, 40, 45, 50, 55, 60, 65, 70, 75,
+
+    // 2. Core Compute (VMs, Scale Sets, App Service) - 15 indices
+    5, 6, 7, 80, 85, 90, 95, 100, 105, 110, 
+    115, 120, 125, 130, 135,
+
+    // 3. Networking & Connectivity (VNet, Peering, DNS) - 20 indices
+    8, 9, 12, 13, 14, 140, 145, 150, 155, 160, 
+    165, 170, 175, 180, 185, 190, 195, 200, 205, 210,
+
+    // 4. Storage & Data Services (Blob, File, ADLS Gen2) - 15 indices
+    215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 
+    265, 270, 275, 280, 285,
+
+    // 5. Security & Monitoring (Sentinel, Defender, Monitor) - 15 indices
+    290, 295, 300, 305, 310, 315, 320, 325, 330, 335, 
+    340, 345, 350, 355, 360,
+
+    // 6. AWS to Azure Migration & Advanced Scenarios - 15 indices
+    480, 485, 490, 495, 500, 505, 506, 507, 508, 509, 
+    510, 511, 512, 513, 514
+];
