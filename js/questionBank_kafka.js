@@ -3640,3 +3640,32 @@ const questionBank = [
     hint: "Background maintenance cost."
   },
 ];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Distributed Architecture, Exactly-Once Semantics, Performance Tuning, and Troubleshooting.
+const hotsQuestions = [
+    // 1. Fundamentals & Scaling (Partitions, Offsets, Replication Factor) - 15 indices
+    0, 1, 2, 4, 10, 15, 20, 25, 30, 45, 
+    150, 151, 152, 153, 154,
+
+    // 2. Producer Deep Dive (Acks, Retries, Idempotence, Compression) - 20 indices
+    5, 6, 7, 8, 9, 50, 55, 60, 65, 70, 
+    75, 80, 85, 90, 95, 100, 105, 110, 115, 120,
+
+    // 3. Consumer Groups & Rebalancing (Sticky Assignors, Commit Strategies) - 20 indices
+    125, 130, 135, 140, 145, 160, 165, 170, 175, 180, 
+    185, 190, 195, 200, 205, 210, 215, 220, 225, 230,
+
+    // 4. Broker Internals & Storage (Log Compaction, Segmenting, ISR, KRaft) - 15 indices
+    3, 11, 12, 13, 14, 235, 240, 241, 242, 243, 
+    244, 245, 246, 247, 250,
+
+    // 5. Advanced Patterns (Exactly-Once (EOS), Schema Registry, Kafka Connect) - 15 indices
+    16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 
+    28, 29, 31, 32, 249,
+
+    // 6. Performance, Monitoring & Hardware (JVM Tuning, OS Swappiness, Latency) - 15 indices
+    33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 
+    43, 44, 46, 47, 48
+];
