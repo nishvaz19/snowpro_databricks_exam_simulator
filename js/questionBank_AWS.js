@@ -6923,3 +6923,31 @@ const questionBank = [
   } 
 ];
 
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: IAM, VPC Networking, Serverless, Databases, and Well-Architected Framework.
+const hotsQuestions = [
+    // 1. IAM & Security (Roles, SCPs, KMS, Secrets Manager) - 15 indices
+    1, 3, 5, 10, 15, 20, 25, 30, 35, 40, 
+    55, 60, 145, 210, 330,
+
+    // 2. VPC & Networking (Peering, NAT Gateway, Transit Gateway) - 20 indices
+    0, 8, 9, 12, 13, 14, 50, 70, 85, 90, 
+    105, 110, 115, 120, 125, 130, 135, 140, 300, 310,
+
+    // 3. Compute (EC2, Lambda, ECS, Fargate) - 15 indices
+    2, 4, 6, 7, 11, 80, 95, 100, 150, 160, 
+    170, 180, 190, 200, 425,
+
+    // 4. Storage & Content Delivery (S3, EFS, CloudFront) - 15 indices
+    16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 
+    28, 29, 31, 32, 400,
+
+    // 5. Databases & Analytics (RDS, Aurora, DynamoDB, Redshift) - 20 indices
+    33, 34, 36, 37, 38, 39, 41, 42, 43, 44, 
+    215, 220, 225, 230, 240, 250, 260, 270, 280, 290,
+
+    // 6. Resilience, Monitoring & Cost (ASG, CloudWatch, Trusted Advisor) - 15 indices
+    45, 46, 47, 48, 49, 315, 320, 340, 350, 360, 
+    370, 380, 390, 410, 450
+];
