@@ -8510,3 +8510,34 @@ const questionBank = [
   },
 ];
 
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: TOGAF ADM, BTABoK Pillars, PMP Essentials, and Modern Architectural Scenarios.
+const hotsQuestions = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,           // TOGAF: ADM Phases & Repository
+    10, 11, 12, 13, 14, 15, 16, 17, 18, 19, // BTABoK: 5 Pillars & Design Decisions
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, // PMP: Communication, Risk, & Leadership
+    30, 31, 32, 33, 34, 35, 36, 37, 38, 39, // Scenarios: Integration, Cloud, & Security
+    40, 41, 42, 43, 44, 45, 46, 47, 48, 49, // Mixed Review: Gaps, Quality, & Governance
+    58, 59, 60, 61,                         // Change Management & Requirement Types
+    96, 97,                                 // Work Packages & Data Lakes
+    110, 111, 112,                          // NPV, Ethics, & Vendor Viability
+    129, 130,                               // Risk Escalation & Eventual Consistency
+    143, 144, 145, 146,                     // Discovery, Reviews, & Resource Leveling
+    157, 158, 159,                          // Gap Matrix & Artifact Definitions
+    160, 161,                               // View vs Viewpoint & Sourcing Strategy
+    192, 193, 194,                          // Schedule Float & API Versioning
+    206, 207,                               // Compliance Rules & Migration Phases
+    216, 217,                               // Taxonomy & Maintainability
+    245, 246,                               // Security CIA & Servant Leadership
+    275, 276,                               // EQ & Expectancy Theory
+    289, 290, 291, 292,                     // Canary Releases & Critical Path
+    304, 305,                               // Architecture Vision & ADD
+    315, 316,                               // Usability & Elasticity vs Scalability
+    335, 336, 337, 338,                     // SSR, Hydration, & DLQ Patterns
+    390, 391,                               // EA Capability & Pilot Light DR
+    408, 409,                               // Vision Buy-in & Role vs Actor
+    410, 411,                               // Value Prop & Competitive Advantage
+    430, 440, 441, 442                      // OIDC, Maturity Models, & BCP
+];
+
