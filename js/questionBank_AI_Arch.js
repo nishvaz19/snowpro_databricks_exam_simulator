@@ -8146,3 +8146,21 @@ const questionBank = [
     hint: "Static to Dynamic."
   }
 ];
+
+// --- TOP 100 INTERVIEW INDICES ---
+// These indices point to unique, high-value questions from the bank for rapid interview prep.
+// Covering: Microservices, AI/MLOps, Resilience, Cloud Native, and Security.
+const hotsQuestions = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,           // Core: Saga, Resilience, Strangler Fig, Scaling
+    10, 12, 13, 14, 15, 16, 17, 18, 19, 20, // CQRS, Bulkhead, API Gateway, Canary, Spot Instances
+    22, 23, 25, 26, 27, 28, 30, 31, 32, 33, // Cold Starts, Service Mesh, DB-per-service, Event Sourcing
+    34, 35, 36, 38, 39, 40, 41, 42, 53, 65, // DLQ, BFF, Stateless, CAP Theorem Basics, Step Functions
+    127, 128, 129, 130, 131, 140, 150, 151, // Versioning, AI Pipelines, Lakehouse, Unity Catalog
+    152, 153, 167, 168, 180, 181, 182, 183, // Feature Stores, Open Table Formats, Inference Latency, Prompt Injection
+    184, 185, 232, 233, 250, 251, 252, 253, // Multi-Region, CSI, mTLS, LangGraph, Zero Trust
+    254, 255, 256, 257, 258, 259, 290, 291, // DSPy, K8s CNI, Traffic Shifting, Secrets Mgmt, Context Distillation
+    366, 367, 368, 380, 381, 382, 383, 384, // Savings Plans, Data Residency, Tokenization, Long-Context LLMs
+    385, 415, 416, 433, 434, 435, 447, 448, // OWASP, WAL, Fine-tuning, OIDC, K8s Namespace Isolation
+    464, 465, 477, 478, 487, 488, 489, 514, // Model Collapse, Zero-Shot, Karpenter, RL, Latency vs Throughput
+    515, 516, 527, 528                      // Brotli, Distributed Tracing, Circuit Breaker Libraries
+];
