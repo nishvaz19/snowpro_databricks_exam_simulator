@@ -6605,24 +6605,20 @@ const questionBank = [
 ];
 
 // --- TOP 100 INTERVIEW INDICES ---
-// These indices point to unique, high-value questions from the bank for rapid interview prep.
-// Focus: Practical NestJS Architecture, Angular Performance, and Advanced TypeScript Logic.
+// These 0-based indices point to unique, high-value questions from the bank for rapid interview prep.
+// Focus: Practical NestJS Architecture, Angular Performance, Advanced TypeScript Logic, Microservices, Security, Testing, Debugging.
 const hotsQuestions = [
     // 1. Advanced TypeScript (Narrowing, Generics, Utility Types) - 15 indices
-    1, 3, 5, 8, 12, 14, 18, 22, 24, 45, 
-    78, 92, 104, 112, 125,
+    0, 1, 2, 3, 4, 7, 8, 11, 13, 15, 17, 19, 21, 22, 24,
 
-    // 2. NestJS Core & Architecture (DI, Providers, Modules, Scopes) - 20 indices
-    26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 
-    36, 37, 39, 40, 150, 155, 160, 165, 170, 175,
+    // 2. NestJS Core & Architecture (DI, Providers, Modules, Scopes) - 25 indices
+    25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
 
-    // 3. Request Lifecycle (Guards, Interceptors, Pipes, Exception Filters) - 20 indices
-    41, 42, 43, 44, 46, 47, 48, 180, 185, 190, 
-    195, 200, 205, 210, 215, 220, 225, 230, 235, 240,
+    // 3. Request Lifecycle & Advanced NestJS (Guards, Interceptors, Pipes) - 30 indices
+    41, 42, 43, 44, 46, 47, 48, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320,
 
-    // 4. Angular Enterprise Patterns (Change Detection, RxJS, Signals) - 20 indices
-    365, 366, 367, 370, 375, 380, 385, 390, 395, 400, 
-    405, 410, 415, 420, 425, 430, 435, 440, 514, 515,
+    // 4. Angular Core & Performance (Signals, Change Detection, RxJS) - 30 indices
+    363, 364, 365, 366, 367, 368, 369, 370, 375, 380, 385, 390, 395, 400, 405, 410, 415, 420, 430, 440, 450, 460, 470, 480, 490, 500, 505, 510, 513, 514
 
     // 5. Microservices, WebSockets & Security (BullMQ, Redis, JWT) - 15 indices
     250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 
