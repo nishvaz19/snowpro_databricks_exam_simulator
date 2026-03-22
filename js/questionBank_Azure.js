@@ -1284,7 +1284,7 @@ const questionBank = [
     hint: "Recycle bin for blobs."
   },
   {
-    id: 6,
+    id: 86,
     difficulty: "easy",
     category: "cost",
     question: "True or False: Inbound data transfer (data going into Azure) is generally free.",
@@ -6212,7 +6212,7 @@ const questionBank = [
     hint: "Encryption in-use."
   },
   {
-    id: 18,
+    id: 418,
     difficulty: "medium",
     category: "governance",
     question: "Which feature allows you to group multiple Azure subscriptions for unified management, policy, and compliance?",
