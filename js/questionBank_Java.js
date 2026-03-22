@@ -4023,7 +4023,7 @@ const questionBank = [
 // These indices point to unique, high-value questions from the bank for rapid interview prep.
 // Covering: Java Core (17/21), Spring Boot, Microservices, Security, and JPA/Hibernate.
 const hotsQuestions = [
-    // 1. Java Core & Modern Features (Sealed, Records, Loom) - 15 indices
+    // 1. Java Core & Modern Features (Sealed, Records, Loom, Memory) - 15 indices
     0, 1, 6, 40, 43, 47, 51, 55, 60, 65, 152, 155, 217, 220, 329,
 
     // 2. Spring Boot Core & Dependency Injection - 15 indices
@@ -4033,13 +4033,13 @@ const hotsQuestions = [
     3, 8, 46, 52, 57, 62, 156, 219, 282, 295, 313, 314, 215, 216, 223,
 
     // 4. Security, JWT & OAuth2 - 10 indices
-    5, 45, 61, 150, 188, 281, 189, 99, 5, 48,
+    4, 5, 45, 61, 150, 188, 281, 189, 99, 48,
 
     // 5. JPA, Hibernate & Transaction Management - 15 indices
     53, 59, 67, 100, 104, 222, 297, 312, 327, 328, 56, 63, 66, 101, 105,
 
-    // 6. Breadth Coverage (Collections, Web, Docker, Testing) - 30 indices
+    // 6. Breadth Coverage (Collections, Web, Docker, Testing, Algorithms) - 30 indices
     10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
     20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
-    30, 31, 32, 33, 34, 35, 36, 37, 38, 39
+    30, 31, 32, 33, 34, 35, 36, 37, 330, 325
 ];
